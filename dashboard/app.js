@@ -1,37 +1,36 @@
-import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, fingerprint, clock, parseRanges } from './logic.js';
-import { STORAGE_KEY, readApprovals, storageAvailable, saveApproval, reconcileWeek } from './approvals.js';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js';
+import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js';
 
 const $ = id => document.getElementById(id);
 const todayIso = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
 let monday=mondayFor();
 let selected=todayIso();
 let followToday=true; // automatically advance the live Today view across midnight
-// A public coach link is a simplified view, not security / authentication.
-const isCoachView=new URLSearchParams(window.location.search).get('view')==='coach';
-document.body.classList.toggle('coach-view',isCoachView);
-// Keep a coach's Home Screen shortcut in coach mode.
-if(isCoachView){const manifest=document.querySelector('link[rel="manifest"]');if(manifest)manifest.href='./coach.webmanifest';}
-let mode=isCoachView?'week':'overview';
+let mode='overview';
 let filter='all';
-let model={events:[],issues:[]};
-let approved=new Set();
+let model={events:[]};
+let monthFocus=monthStart(selected),monthModel={events:[]};
+let teamFilter='all',teamChoices=[],lastTeamOptions='';
 let lastFetched='';
 let loading=false;
-const canSave=storageAvailable(localStorage);
-approved=new Set(readApprovals(localStorage).map(x=>x.id));
-
 function el(tag,classes,text){const n=document.createElement(tag);if(classes)n.className=classes;if(text!==undefined)n.textContent=String(text);return n;}
-const viewSwitch=el('a','view-switch',isCoachView?'AD view':'Coach view ↗');
-viewSwitch.href=isCoachView?window.location.pathname:`${window.location.pathname}?view=coach`;
-viewSwitch.setAttribute('aria-label',isCoachView?'Open AD dashboard':'Open shareable coach schedule');
-document.querySelector('.header-actions').prepend(viewSwitch);
-const subtitle=document.querySelector('.brand-subtitle');
-if(subtitle)subtitle.textContent=isCoachView?'Coach schedules':'AD Command Center';
-if(isCoachView){$('overviewTab').hidden=true;$('issuesTab').hidden=true;$('approvalStatus').hidden=true;}
+function formatWeek(){
+  if(mode==='month')return monthTitle(monthFocus);
+  return `${niceDate(monday,{month:'short',day:'numeric'})} – ${niceDate(dayOffset(monday,6),{month:'short',day:'numeric',year:'numeric'})}`;
+}
+function visible(e){return filtered(e,filter,teamFilter);}
+function syncTeamDropdown(){
+  const control=$('teamFilter');if(!control)return;
+  const choices=teamChoices.filter(t=>filter==='all'||t.traits.school===filter||(filter==='MS'&&t.traits.school==='EL'));
+  if(teamFilter!=='all'&&!choices.some(t=>t.key===teamFilter))teamFilter='all';
+  const signature=filter+'|'+choices.map(t=>t.key+':'+t.label).join(';');
+  if(signature!==lastTeamOptions){
+    control.replaceChildren(new Option('All teams','all'),...choices.map(t=>new Option(t.label,t.key)));
+    lastTeamOptions=signature;
+  }
+  control.value=teamFilter;
+}
 
-function formatWeek(){return `${niceDate(monday,{month:'short',day:'numeric'})} – ${niceDate(dayOffset(monday,6),{month:'short',day:'numeric',year:'numeric'})}`;}
-function visible(e){return filter==='all'||e.group===filter;}
-function currentIssues(){return model.issues.filter(i=>!approved.has(i.id)&&(filter==='all'||i.group===filter||i.group==='Other'));}
 function setNotice(text){$('notice').textContent=text;$('notice').hidden=!text;}
 function weekHasDay(date){return weekDays(monday).includes(date);}
 async function load(){
@@ -43,9 +42,11 @@ async function load(){
     const responses=await Promise.all(paths.map(p=>fetch(`${p}?v=${ts}`,{cache:'no-store'})));
     if(responses.some(r=>!r.ok))throw Error('One or more published schedule files could not be downloaded');
     const [fac,tran,status]=await Promise.all(responses.map(r=>r.json()));
+    const catalog=buildCatalog(fac);
     model=processSchedules(fac,tran,monday);
-    model.issues=await Promise.all(model.issues.map(async issue=>({...issue,id:await fingerprint(issue.signature)})));
-    approved=reconcileWeek(localStorage,monday,new Set(model.issues.map(issue=>issue.id)));
+    model.events=tagEvents(model.events,catalog);
+    monthModel=buildMonthModel(fac,tran,monthFocus,catalog);
+    teamChoices=availableTeams(catalog,monthFocus,monthModel.events);
     lastFetched=status.fetchedAt||fac.fetchedAt||'';
     const notices=[];
     if(status.schedules?.some(s=>!s.ok))notices.push('A source schedule did not refresh successfully. Published information could be outdated.');
@@ -54,7 +55,6 @@ async function load(){
     $('freshness').textContent=stale?'⚠ Schedule data may be outdated':`Updated ${new Date(lastFetched).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`;
     $('freshness').classList.toggle('stale',stale);
     if(stale)notices.push('No successful schedule refresh reported in the past 90 minutes.');
-    if(!canSave&&!isCoachView)notices.push('Local approval storage unavailable in this browser.');
     setNotice(notices.join(' '));
   }catch(err){
     setNotice(`Could not load schedules: ${err.message}. Previously loaded events are still shown, if available.`);
@@ -114,30 +114,30 @@ function laneSection(lane,entries){
   section.append(items);return section;
 }
 function groupedGrid(list){const grid=el('div','facility-grid');for(const lane of LANES)grid.append(laneSection(lane,list.filter(e=>laneFor(e)===lane.id)));return grid;}
-function dayStrip(target,events,issues){
+function dayStrip(target,events){
   const dates=weekDays(monday);
   $(target).replaceChildren(...dates.map((date,i)=>{
-    const count=!isCoachView?issues.filter(issue=>issue.date===date).length:0;
     const n=events.filter(e=>e.date===date).length;
-    const b=el('button',`day ${selected===date?'selected':''} ${count?'has-issues':''}`);
+    const b=el('button',`day ${selected===date?'selected':''}`);
     b.type='button';b.setAttribute('aria-pressed',String(selected===date));
     b.append(el('div','day-name',['MON','TUE','WED','THU','FRI','SAT','SUN'][i]),
              el('div','day-number',new Date(`${date}T12:00:00`).getDate()),
-             el('div','day-count',count?`${count} to review`:`${n} items`));
+             el('div','day-count',`${n} items`));
     b.onclick=()=>{selected=date;followToday=false;render();};return b;
   }));
 }
 function dayHeading(date,count){const head=el('div','day-header');head.append(el('h2','',niceDate(date,{weekday:'long',month:'long',day:'numeric'})),el('span','count',`${count} calendar ${count===1?'item':'items'}`));return head;}
-function renderWeek(events,issues){
-  dayStrip('days',events,issues);
-  const list=events.filter(e=>e.date===selected),container=$('dayDetails');container.replaceChildren(dayHeading(selected,list.length));
-  if(!list.length)container.append(el('div','empty','Nothing found for this date in the published schedules.'));
-  else container.append(groupedGrid(list));
+function renderMonth(events){
+  drawMonth($('monthDetails'),{
+    focus:monthFocus,selected,events,
+    onDay:date=>{selected=date;followToday=false;render();},
+    onTimeline:date=>{selected=date;monday=mondayFor(new Date(date+'T12:00:00'));followToday=false;mode='timeline';load();}
+  });
 }
 function jumpTo(modeName){setMode(modeName);}
-function renderOverview(events,issues){
-  dayStrip('overviewDays',events,issues);
-  const list=events.filter(e=>e.date===selected),activeIssues=issues.filter(e=>e.date===selected);
+function renderOverview(events){
+  dayStrip('overviewDays',events);
+  const list=events.filter(e=>e.date===selected);
   const counts=LANES.map(lane=>list.filter(e=>laneFor(e)===lane.id).length);
   const container=$('overviewDetails');container.replaceChildren();
   const top=el('div','overview-top'),heading=el('div','');
@@ -150,19 +150,14 @@ function renderOverview(events,issues){
     const p=el('div','overview-pill');p.append(el('div','overview-value',value),el('div','overview-caption',label));pills.append(p);
   }
   container.append(pills);
-  if(!isCoachView&&activeIssues.length){
-    const alert=el('div','overview-alert');
-    alert.append(el('span','',`${activeIssues.length} potential ${activeIssues.length===1?'issue needs':'issues need'} review`));
-    const btn=el('button','','Review issues →');btn.onclick=()=>jumpTo('issues');alert.append(btn);container.append(alert);
-  }
   const section=el('div','overview-section');section.append(el('h3','','Today’s schedule'.replace('Today',selected===todayIso()?'Today':'Selected day')));
-  const openWeek=el('button','subtle-button','Full schedule →');openWeek.onclick=()=>jumpTo('week');section.append(openWeek);container.append(section);
-  if(!list.length){container.append(el('div','empty','No events are listed for this day. Use Week to browse other dates.'));return;}
+  const openWeek=el('button','subtle-button','Full schedule →');openWeek.onclick=()=>jumpTo('month');section.append(openWeek);container.append(section);
+  if(!list.length){container.append(el('div','empty','No events are listed for this day. Use Month to browse other dates.'));return;}
   const compact=el('div','facility-grid');
   for(const lane of LANES)compact.append(laneSection(lane,sortEvents(list.filter(e=>laneFor(e)===lane.id)).slice(0,4)));
   container.append(compact);
   if(counts.some(n=>n>4)){
-    const action=el('div','overview-shortcut');const btn=el('button','subtle-button','See all events →');btn.onclick=()=>jumpTo('week');action.append(btn);container.append(action);
+    const action=el('div','overview-shortcut');const btn=el('button','subtle-button','See all events →');btn.onclick=()=>jumpTo('month');action.append(btn);container.append(action);
   }
 }
 
@@ -196,8 +191,8 @@ function arrangeTracks(entries){
   }
   return groups.flat();
 }
-function renderTimeline(events,issues){
-  dayStrip('timelineDays',events,issues);
+function renderTimeline(events){
+  dayStrip('timelineDays',events);
   const list=events.filter(e=>e.date===selected),container=$('timelineDetails');container.replaceChildren(dayHeading(selected,list.length));
   container.append(el('p','timeline-intro','The vertical scale shows actual facility time ranges. Dashed markers mean start time only; the end time is unknown. Away games are listed separately.'));
   const plotted={field:[],gym:[]},extras=[];
@@ -252,60 +247,61 @@ function renderTimeline(events,issues){
     container.append(sections);
   }
 }
-function renderIssues(issues){
-  const wrap=$('issuesList');wrap.replaceChildren();
-  if(!issues.length)wrap.append(el('div','empty','No active potential issues found for this week.'));
-  for(const issue of issues){
-    const card=el('article','issue-card');
-    card.append(el('div','issue-date',niceDate(issue.date)),el('div','issue-title',issue.title),el('p','issue-body',issue.details));
-    const btn=el('button','approve','✓ Approve on this device');btn.disabled=!canSave;btn.onclick=()=>setApproval(issue.id,true);
-    card.append(btn);wrap.append(card);
-  }
-  const hidden=model.issues.filter(i=>approved.has(i.id));
-  if(hidden.length){
-    const details=el('details','approved-panel'),summary=el('summary','',`Approved on this device (${hidden.length})`);details.append(summary);
-    for(const issue of hidden){
-      const item=el('div','approved-item'),t=el('span','',`${niceDate(issue.date)} · ${issue.title}`),btn=el('button','reopen','Reopen');
-      btn.disabled=!canSave;btn.onclick=()=>setApproval(issue.id,false);item.append(t,btn);details.append(item);
-    }
-    wrap.append(details);
-  }
-}
 function render(){
   $('weekLabel').textContent=formatWeek();
-  const events=model.events.filter(visible),issues=currentIssues();
-  const stats=[['Games',events.filter(e=>e.type==='game').length],['Practices',events.filter(e=>e.type==='practice').length],
-    isCoachView?['Other activities',events.filter(e=>!['game','practice'].includes(e.type)).length]:['Potential issues',issues.length]];
+  syncTeamDropdown();
+  const candidateEvents=(mode==='month'?monthModel.events.filter(e=>e.date.slice(0,7)===monthFocus.slice(0,7)):model.events).filter(visible);
+  const activeTeamPlaces=new Set(candidateEvents.filter(e=>!e.syntheticSafety).map(e=>e.date+'|'+e.location));
+  const events=candidateEvents.filter(e=>!e.syntheticSafety||activeTeamPlaces.has(e.date+'|'+e.location));
+  $('todayBtn').textContent=mode==='month'?'This month':'This week';
+  $('prev').setAttribute('aria-label',mode==='month'?'Previous month':'Previous week');
+  $('next').setAttribute('aria-label',mode==='month'?'Next month':'Next week');
+  const stats=[['Games',events.filter(e=>e.type==='game').length],
+    ['Practices',events.filter(e=>e.type==='practice').length],
+    ['Other activities',events.filter(e=>!['game','practice'].includes(e.type)).length]];
   $('stats').replaceChildren(...stats.map(([label,value])=>{const box=el('div','stat');box.append(el('div','stat-number',value),el('div','stat-label',label));return box;}));
-  $('issueCounter').textContent=issues.length?`(${issues.length})`:'';
-  for(const name of ['overview','week','timeline','issues']){
-    const allowed=!isCoachView||!['overview','issues'].includes(name);
-    const active=allowed&&mode===name;
+  for(const name of ['overview','month','timeline']){
+    const active=mode===name;
     $(`${name}View`).hidden=!active;
     const tab=$(`${name}Tab`);tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));
   }
-  if(!isCoachView)$('approvalStatus').textContent=canSave?'Approvals saved only in this browser · never shared between devices':'Local approvals unavailable in this browser';
-  if(mode==='overview'&&!isCoachView)renderOverview(events,issues);
-  if(mode==='week')renderWeek(events,issues);
-  if(mode==='timeline')renderTimeline(events,issues);
-  if(mode==='issues'&&!isCoachView)renderIssues(issues);
+  if(mode==='overview')renderOverview(events);
+  if(mode==='month')renderMonth(events);
+  if(mode==='timeline')renderTimeline(events);
 }
-function setMode(next){mode=isCoachView&&!['week','timeline'].includes(next)?'week':next;render();}
-function setApproval(id,approve){
-  if(!canSave||!saveApproval(localStorage,id,monday,approve)){setNotice('This device could not save the change. Check Safari storage.');return;}
-  if(approve)approved.add(id);else approved.delete(id);
-  setNotice('');render();
+function setMode(next){
+  const target=next;
+  const previous=mode;mode=target;
+  if(target==='overview'&&previous==='month'){
+    followToday=true;selected=todayIso();monday=mondayFor();monthFocus=monthStart(selected);load();return;
+  }
+  if(target==='timeline'&&previous==='month'){
+    followToday=false;monday=mondayFor(new Date(selected+'T12:00:00'));load();return;
+  }
+  if(target==='month'&&previous!=='month'){
+    monthFocus=monthStart(selected);load();return;
+  }
+  render();
 }
-for(const name of ['overview','week','timeline','issues'])$(`${name}Tab`).onclick=()=>setMode(name);
+for(const name of ['overview','month','timeline'])$(`${name}Tab`).onclick=()=>setMode(name);
 $('filter').onchange=e=>{filter=e.target.value;render();};
-function shift(n){followToday=false;monday=dayOffset(monday,n);selected=monday;load();}
-$('prev').onclick=()=>shift(-7);
-$('next').onclick=()=>shift(7);
-$('todayBtn').onclick=()=>{followToday=true;monday=mondayFor();selected=todayIso();load();};
+function shift(n){
+  followToday=false;
+  if(mode==='month'){
+    monthFocus=moveMonth(monthFocus,n);selected=monthStart(monthFocus);
+  }else{
+    monday=dayOffset(monday,n*7);selected=monday;monthFocus=monthStart(selected);
+  }
+  load();
+}
+$('prev').onclick=()=>shift(-1);
+$('next').onclick=()=>shift(1);
+$('todayBtn').onclick=()=>{followToday=true;monday=mondayFor();selected=todayIso();monthFocus=monthStart(selected);load();};
 $('refresh').onclick=()=>load();
-window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY){approved=new Set(readApprovals(localStorage).map(x=>x.id));render();}});
+$('teamFilter').onchange=e=>{teamFilter=e.target.value;render();};
+
 load();
 setInterval(()=>{
-  if(followToday){monday=mondayFor();selected=todayIso();}
+  if(followToday){monday=mondayFor();selected=todayIso();monthFocus=monthStart(selected);}
   load();
 },5*60*1000);

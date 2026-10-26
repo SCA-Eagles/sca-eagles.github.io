@@ -38,7 +38,6 @@
     <button id="overviewTab" class="tab active" role="tab" aria-selected="true">Today</button>
     <button id="monthTab" class="tab" role="tab" aria-selected="false">Month</button>
     <button id="timelineTab" class="tab" role="tab" aria-selected="false">Timeline</button>
-    <button id="issuesTab" class="tab" role="tab" aria-selected="false">Issues <span id="issueCounter"></span></button>
   </div><div class="team-filters">
     <label class="filterlabel">School <select id="filter"><option value="all">All levels</option><option value="HS">High school</option><option value="MS">Middle / 5th</option></select></label>
     <label class="filterlabel">Team <select id="teamFilter"><option value="all">All teams</option></select></label>
@@ -51,10 +50,9 @@
   <section id="overviewView" aria-label="Today at a glance"><div id="overviewDays" class="days"></div><div id="overviewDetails"></div></section>
   <section id="monthView" aria-label="Monthly calendar" hidden><div id="monthDetails" class="month-view"></div></section>
   <section id="timelineView" aria-label="Facility timeline" hidden><div id="timelineDays" class="days"></div><div id="timelineDetails" class="day-details"></div></section>
-  <section id="issuesView" aria-label="Potential scheduling issues" hidden><div class="section-heading"><h2>Potential Issues</h2><p>Items to review, not necessarily mistakes. Approving an exception hides it only on your device. Source schedules are never changed.</p></div><div id="issuesList"></div></section>
 </main>
-<footer><div>Read-only view of SCA's existing Excel schedules.</div><div id="approvalStatus">Approvals stay on this device.</div><div>Schedules generally update after each successful 30-minute GitHub refresh.</div></footer>
+<footer><div>Read-only view of SCA's existing Excel schedules.</div><div>Schedules generally update after each successful 30-minute GitHub refresh.</div></footer>
 </div>
-<script type="module" src="./app-plus.js"></script>
+<script type="module" src="./app.js"></script>
 <script type="module" src="./calendar-subscribe.js"></script>
 </body></html>

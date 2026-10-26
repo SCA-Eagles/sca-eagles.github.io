@@ -119,11 +119,11 @@ export function tagEvents(events,catalog){
 }
 export function buildMonthModel(fac,tran,first,catalog){
   const d=local(monthStart(first)),last=new Date(d.getFullYear(),d.getMonth()+1,0,12);
-  const firstMonday=mondayFor(d),lastIso=iso(last),events=[],issues=[];
+  const firstMonday=mondayFor(d),lastIso=iso(last),events=[];
   for(let monday=firstMonday;monday<=lastIso;monday=dayOffset(monday,7)){
-    const w=processSchedules(fac,tran,monday);events.push(...w.events);issues.push(...w.issues);
+    const w=processSchedules(fac,tran,monday);events.push(...w.events);
   }
-  return {events:tagEvents(events,catalog),issues};
+  return {events:tagEvents(events,catalog)};
 }
 export function availableTeams(catalog,month,events){
   const first=monthStart(month),last=iso(new Date(local(first).getFullYear(),local(first).getMonth()+1,0,12));
@@ -149,7 +149,7 @@ export function filtered(e,level,teamId){
   if(teamId!=='all'&&(!e.teamId||e.teamId!==teamId))return false;
   return level==='all'||e.group===level||(level==='MS'&&e.group==='ELEMENTARY');
 }
-export function drawMonth(container,{focus,selected,events,issues,onDay,onTimeline}){
+export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
   container.replaceChildren();const first=local(monthStart(focus)),count=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();
   const dow=(first.getDay()+6)%7;
   const create=(tag,klass,text)=>{const e=document.createElement(tag);if(klass)e.className=klass;if(text!==undefined)e.textContent=String(text);return e;};
@@ -171,7 +171,6 @@ export function drawMonth(container,{focus,selected,events,issues,onDay,onTimeli
         if(dayEvents.some(e=>(e.type==='game'?'game':e.type==='practice'?'practice':'other')===type))dots.append(create('i',`month-dot ${type}`));
       }button.append(dots);
     }
-    if(issues.some(x=>x.date===date))button.classList.add('has-review');
     button.onclick=()=>onDay(date);grid.append(button);
   }
   container.append(grid);
@@ -208,14 +207,3 @@ export function drawMonth(container,{focus,selected,events,issues,onDay,onTimeli
   const footer=create('div','month-action'),go=create('button','subtle-button','View selected day in Timeline →');go.onclick=()=>onTimeline(picked);footer.append(go);container.append(footer);
 }
 
-// The original dashboard app sets this subtitle asynchronously. Observe only
-// this one label so it always reads Master Schedule in AD mode (coach mode
-// retains its existing 'Coach schedules' label).
-const headerSubtitle=typeof document==='undefined'?null:document.querySelector('.brand-subtitle');
-if(headerSubtitle){
-  const setTitle=()=>{
-    if(!document.body.classList.contains('coach-view')&&headerSubtitle.textContent!=='Master Schedule')headerSubtitle.textContent='Master Schedule';
-  };
-  new MutationObserver(setTitle).observe(headerSubtitle,{childList:true,characterData:true,subtree:true});
-  setTitle();
-}

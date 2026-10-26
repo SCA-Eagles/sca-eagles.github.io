@@ -24,7 +24,6 @@ function detectFacilityColumns(sheet) {
   if(!field.length&&!gym.length)throw new Error(`${sheet.name}: no team columns found`);
   return {field,gym,fieldNotes,gymNotes,labels:notesRow-1,firstRow:notesRow+1};
 }
-const blank = v => !String(v ?? '').trim();
 const norm = v => String(v ?? '').replace(/\s+/g,' ').trim();
 export function isoFromCell(value) {
   const v=norm(value);
@@ -136,7 +135,7 @@ function combineSameGames(events) {
 }
 export function processSchedules(facilities,transportation,monday){
   const dates=new Set(weekDays(monday));
-  const events=[],issues=[],gym=[];
+  const events=[];
   if(!facilities?.ok||!transportation?.ok)throw new Error('Schedule source did not report successful data');
   for(const sheet of facilities.sheets||[]){
     if(!SUPPORTED_SHEETS.has(sheet.name))continue;
@@ -155,8 +154,6 @@ export function processSchedules(facilities,transportation,monday){
           const type=isGame(detail)?'game':ranges.length||timeOnly?'practice':'event';
           const ev={date,team,detail,type,location:location==='gym'?'Gym':'Field',source:'facilities',group:groupOf(team),start:ranges[0]?.start??parseTime(detail),ranges};
           events.push(ev);
-          if(location==='gym')for(const range of ranges)gym.push({...ev,range});
-          if(location==='gym'&&type==='game'&&ranges.length===0&&ev.start!==null)gym.push({...ev,range:{start:ev.start,end:ev.start+1},point:true});
         }
         const notes=norm(row[location==='gym'?cfg.gymNotes:cfg.fieldNotes]);
         if(validCell(notes))events.push({date,team:location==='gym'?'Gym notes':'Field notes',detail:notes,type:'note',location:location==='gym'?'Gym':'Field',source:'facilities',group:'Other',start:parseTime(notes)});
@@ -172,30 +169,10 @@ export function processSchedules(facilities,transportation,monday){
     if(!team||(!opponent&&!norm(row[3])))continue;
     const dismissal=norm(row[2]),time=norm(row[3]),venue=norm(row[6]),transport=norm(row[7]);
     events.push({date,team,detail:[opponent?`vs ${opponent}`:'',side==='A'?'Away':side==='H'?'Home':'',venue].filter(Boolean).join(' · '),type:'game',location:venue||'Venue TBD',source:'transportation',group:groupOf(team),start:parseTime(time),time,dismissal,transport,side,opponent});
-    if(side==='A'&&opponent){
-      const missing=[];
-      if(blank(dismissal)||/^tbd$/i.test(dismissal))missing.push('dismissal');
-      if(blank(transport)||/^tbd$/i.test(transport))missing.push('transportation');
-      if(missing.length)issues.push({date,type:'transport',title:`${team}: ${missing.join(' and ')} needs confirmation`,details:`Away event vs ${opponent}. ${missing.map(m=>m[0].toUpperCase()+m.slice(1)).join(' and ')} is blank or TBD.`,signature:`transport|${date}|${team.toLowerCase()}|${opponent.toLowerCase()}|${time.toLowerCase()}|${missing.join(',')}`,group:groupOf(team),severity:'review'});
-    }
   }
-  // Alert for high-school gym overlaps or two confirmed games; MS practices are intentionally shareable.
-  for(let i=0;i<gym.length;i++)for(let j=i+1;j<gym.length;j++){
-    const a=gym[i],b=gym[j];
-    if(a.date!==b.date||a.team===b.team)continue;
-    const bothGames=a.type==='game'&&b.type==='game';
-    if(!bothGames&&!(highSchool(a.team)&&highSchool(b.team)))continue;
-    const overlap=a.range.start<b.range.end&&b.range.start<a.range.end;
-    if(!overlap)continue;
-    const names=[a.team,b.team].sort();
-    const start=Math.max(a.range.start,b.range.start),end=Math.min(a.range.end,b.range.end);
-    issues.push({date:a.date,type:'gym',title:'Possible gym overlap',details:`${names.join(' and ')} overlap near ${clock(start)} in the gym. Verify whether the shared time is intentional.`,signature:`gym|${a.date}|${names.map(s=>s.toLowerCase()).join('|')}|${[a,b].map(item=>item.team.toLowerCase()+':'+item.range.start+'-'+item.range.end).sort().join('|')}`,group:highSchool(a.team)&&highSchool(b.team)?'HS':'Other',severity:'review'});
-  }
-  const unique=new Map();for(const issue of issues)unique.set(issue.signature,issue);
   const rank={game:0,practice:1,event:2,note:3};
   const combined=combineSameGames(events);
   combined.sort((a,b)=>a.date.localeCompare(b.date)||(a.start??9999)-(b.start??9999)||(rank[a.type]??4)-(rank[b.type]??4));
-  return {events:combined,issues:[...unique.values()].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title)),monday};
+  return {events:combined,monday};
 }
-export async function fingerprint(signature){const input=new TextEncoder().encode(`sca-v1|${signature}`);const buf=await crypto.subtle.digest('SHA-256',input);return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');}
 export {FACILITY_COLS};
