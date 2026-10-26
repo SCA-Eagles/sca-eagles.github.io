@@ -1,0 +1,72 @@
+name: Refresh SCA schedules
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+      timezone: 'America/Phoenix'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: sca-schedules
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Fetch and convert schedules
+        env:
+          SCA_FACILITIES_URL: ${{ secrets.SCA_FACILITIES_URL }}
+          SCA_TRANSPORTATION_URL: ${{ secrets.SCA_TRANSPORTATION_URL }}
+        run: |
+          npm run refresh
+          cp -R dashboard/. _site/
+      - name: Save refreshed schedule data to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git reset --mixed "origin/$GITHUB_REF_NAME"
+            git add data/
+            if git diff --cached --quiet; then
+              echo "No schedule-data changes to commit."
+              break
+            fi
+            git commit -m "Update SCA schedule data"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Schedule data pushed successfully."
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+          done
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
