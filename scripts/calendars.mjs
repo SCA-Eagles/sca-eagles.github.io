@@ -62,7 +62,21 @@ function subteamOf(s) {
     /\bGold\b/i.test(s) ? 'Gold' : /\bRed\b/i.test(s) ? 'Red' : '';
 }
 function isFixture(e) {
-  return e.type === 'game' || /\b(?:vs\.?|versus)\b|(?:^|\s)@\s*|\d{1,2}(?::\d{2})?\s*(?:am|pm)\s+at\s+/i.test(asText(e.detail));
+  // The dashboard may classify 'Tournament' or 'Playoff Game' as a game,
+  // but a subscribed calendar must keep that wording as an all-day entry
+  // until an actual opponent is supplied using vs, at or @.
+  if (e.source === 'transportation') return e.type === 'game';
+  return /\bvs\.?(?=\s|$)|\bversus\b|(?:^|\s)@\s*\S|(?:^|\s)at\s+\S/i.test(asText(e.detail));
+}
+// A practice is ONLY a cell containing a clock time or time range, with no
+// other wording. Playoff, Tournament, TBD, or '3-5pm If Necessary' are events.
+// Game entries with vs/at/@ are identified separately by isFixture().
+function isTimeOnly(raw) {
+  const s = asText(raw);
+  const point = String.raw`\d{1,2}(?::\d{2})?\s*(?:am|pm)?`;
+  const oneTime = /^\d{1,2}(?::\d{2})?\s*(?:am|pm)$/i;
+  const range = new RegExp(`^${point}\s*(?:-|–|—|to)\s*${point}$`, 'i');
+  return oneTime.test(s) || range.test(s);
 }
 function programEvent(e, team, index) {
   const sourceText = asText(e.detail);
@@ -73,6 +87,7 @@ function programEvent(e, team, index) {
   const side = e.source === 'transportation' ? (e.side === 'H' ? 'Home' : e.side === 'A' ? 'Away' : '') : sideOf(sourceText);
   const subteam = subteamOf(e.team) || (isGame ? subteamOf(sourceText) : '');
   const prefix = team.label + (isGame && subteam ? ` — ${subteam}` : '');
+  const isPractice = !isGame && isTimeOnly(sourceText);
   let summary, detail;
   if (isGame) {
     summary = `${prefix} ${opponent ? (side === 'Away' ? '@' : 'vs') + ' ' + opponent : 'Game'}`;
@@ -80,13 +95,18 @@ function programEvent(e, team, index) {
       opponent ? `Opponent: ${opponent}` : '', e.dismissal ? `Dismissal: ${e.dismissal}` : '',
       e.transport ? `Transportation: ${e.transport}` : '',e.time ? `Game time: ${e.time}` : '',
       e.facilityDetail && e.source==='transportation' ? `Master schedule: ${asText(e.facilityDetail)}` : ''].filter(Boolean).join('\n');
+  } else if (isPractice) {
+    summary = `${team.label} — Practice`;
+    detail = `${team.label} practice\nMaster Schedule entry: ${sourceText}`;
   } else {
-    summary = `${team.label} — ${/^tbd$/i.test(sourceText) ? 'Schedule TBD' : 'Practice'}`;
-    detail = `${team.label} practice${/^tbd$/i.test(sourceText) ? ' (details TBD)' : ''}\nMaster Schedule entry: ${sourceText}`;
+    // Preserve the Excel wording exactly; without an opponent this is not a
+    // game or a practice. Publish it as an all-day calendar event.
+    summary = `${team.label} — ${sourceText}`;
+    detail = `Master Schedule entry: ${sourceText}`;
   }
   const ranges = e.ranges || parseRanges(sourceText);
-  const start = e.start ?? parseTime(sourceText);
-  const end = !isGame && ranges.length ? ranges[0].end : null;
+  const start = (isGame || isPractice) ? (e.start ?? parseTime(sourceText)) : null;
+  const end = isPractice && ranges.length ? ranges[0].end : null;
   const sourceName = e.source === 'transportation' ? 'transportation' : 'master';
   // Time changes preserve the same UID. Date movements recreate the event;
   // this is reliable for subscriptions but not a substitute for event IDs.
@@ -237,7 +257,8 @@ function calendarICS(name,items,fetchedAt) {
 export async function generateCalendars(fac,tran,siteDir,fetchedAt) {
   const {events,teams}=collectEvents(fac,tran);
   const folder=path.join(siteDir,'calendars');await fs.mkdir(folder,{recursive:true});
-  const all=events.filter(x=>x.isGame||x.title.includes('Practice')||x.title.includes('TBD'));
+  // All Athletics includes named all-day items (e.g. Playoff), too.
+  const all=events;
   await fs.writeFile(path.join(folder,'all.ics'),calendarICS('SCA All Athletics',all,fetchedAt));
   const manifest={fetchedAt,all:{label:'All Athletics',url:`${BASE}/calendars/all.ics`},teams:[]};
   for(const t of teams){
