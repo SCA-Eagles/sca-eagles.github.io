@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-10-26T16:10:57.782Z",
+  "fetchedAt": "2026-10-26T16:54:21.152Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1479,6 +1479,16 @@
           "A",
           "Arete Prep",
           "Van K, Bus 2"
+        ],
+        [
+          "Tuesday, October 27, 2026",
+          "HS-Varsity Swim",
+          "x",
+          "4:30pm",
+          "PCDS ",
+          "A",
+          "PCDS ",
+          "X"
         ],
         [
           "Thursday, October 29, 2026",
