@@ -1,11 +1,29 @@
 // Pure calendar and validation logic. No spreadsheet or exception records are changed.
 const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const FACILITY_COLS = {
-  Fall: {field:[1,2,3,4,5], gym:[8,9,10,11,12,13], fieldNotes:6, gymNotes:14, labels:1, firstRow:3},
-  Winter: {field:[1,2,3,4,5,6], gym:[9,10,11,12,13], fieldNotes:7, gymNotes:14, labels:1, firstRow:3},
-  Spring: {field:[1,2,3,4], gym:[7,8,9,10,11,12,13,14,15], fieldNotes:5, gymNotes:16, labels:0, firstRow:2},
-  Summer: {field:[1,2], gym:[4], fieldNotes:3, gymNotes:5, labels:1, firstRow:3}
-};
+// Rebuilt from the headers on each workbook refresh. The older fixed column
+// numbers could assign teams incorrectly after Excel columns were deleted.
+const FACILITY_COLS = {};
+const SUPPORTED_SHEETS = new Set(['Fall', 'Winter', 'Spring', 'Summer']);
+function detectFacilityColumns(sheet) {
+  const top=(sheet.rows||[]).slice(0,5);
+  const notesRow=top.findIndex(row => {
+    const vals=(row||[]).map(x=>String(x??'').replace(/\s+/g,' ').trim());
+    return vals.some(x=>/^FIELD NOTES$/i.test(x)) &&
+      vals.some(x=>/^GYM(?:NASIUM)? NOTES$/i.test(x));
+  });
+  if(notesRow<1)throw new Error(`${sheet.name}: cannot find the Field Notes / Gym Notes header row; check the Master AD sheet layout`);
+  const names=sheet.rows[notesRow-1]||[],timeHeaders=sheet.rows[notesRow]||[];
+  const labelAt=c=>String(names[c]??'').replace(/\s+/g,' ').trim();
+  const fieldNotes=timeHeaders.findIndex(x=>/^FIELD NOTES$/i.test(String(x??'').replace(/\s+/g,' ').trim()));
+  const gymNotes=timeHeaders.findIndex(x=>/^GYM(?:NASIUM)? NOTES$/i.test(String(x??'').replace(/\s+/g,' ').trim()));
+  if(fieldNotes<1 || gymNotes<=fieldNotes)throw new Error(`${sheet.name}: invalid Field / Gym notes positions`);
+  const hasTeam=c=>Boolean(labelAt(c))&&!/^(?:TIME|DAY|NOTES|SCHEDULE|FIELD|GYM)$/i.test(labelAt(c));
+  const field=[],gym=[];
+  for(let c=1;c<fieldNotes;c++)if(hasTeam(c))field.push(c);
+  for(let c=fieldNotes+1;c<gymNotes;c++)if(hasTeam(c))gym.push(c);
+  if(!field.length&&!gym.length)throw new Error(`${sheet.name}: no team columns found`);
+  return {field,gym,fieldNotes,gymNotes,labels:notesRow-1,firstRow:notesRow+1};
+}
 const blank = v => !String(v ?? '').trim();
 const norm = v => String(v ?? '').replace(/\s+/g,' ').trim();
 export function isoFromCell(value) {
@@ -43,7 +61,7 @@ export function parseRanges(raw){
 }
 export function parseTime(raw){const m=String(raw||'').match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);return m?mins(m[1],m[2],m[3].toLowerCase()):null;}
 export function clock(n){if(n===null||n===undefined)return 'Time TBD';const h=Math.floor(n/60);return `${(h%12)||12}:${String(n%60).padStart(2,'0')}${h>=12?'pm':'am'}`;}
-function isGame(s){return /\b(?:vs\.?|versus|game|tournament|scrimmage)\b|\s@\s*|^at\s/i.test(s);}
+function isGame(s){return /\b(?:vs\.?|versus|game|tournament|scrimmage)\b|(?:^|\s)@\s*\S|(?:^|\s)at\s+\S/i.test(s);}
 function highSchool(team){return /\bHS\b|HIGH SCHOOL|\bVARSITY\b|\bJV\b|FROSH/i.test(team)&&!/\bMS\b|MIDDLE SCHOOL|5\/6|5TH|6TH/i.test(team);}
 function groupOf(team){return highSchool(team)?'HS':/\bMS\b|MIDDLE|5\/6|5TH|6TH/i.test(team)?'MS':'Other';}
 function validCell(s){return s&&!/^(?:x|n\/a|na|none|-)$/i.test(s);}
@@ -121,7 +139,10 @@ export function processSchedules(facilities,transportation,monday){
   const events=[],issues=[],gym=[];
   if(!facilities?.ok||!transportation?.ok)throw new Error('Schedule source did not report successful data');
   for(const sheet of facilities.sheets||[]){
-    const cfg=FACILITY_COLS[sheet.name];if(!cfg)continue;
+    if(!SUPPORTED_SHEETS.has(sheet.name))continue;
+    const cfg=detectFacilityColumns(sheet);
+    // The calendar publisher uses these same detected note columns.
+    FACILITY_COLS[sheet.name]=cfg;
     const labels=sheet.rows?.[cfg.labels]||[];
     for(const row of (sheet.rows||[]).slice(cfg.firstRow)){
       const date=isoFromCell(row[0]);if(!dates.has(date))continue;
@@ -130,7 +151,8 @@ export function processSchedules(facilities,transportation,monday){
           const detail=norm(row[c]);if(!validCell(detail))continue;
           const team=norm(labels[c])||`Column ${c+1}`;
           const ranges=parseRanges(detail);
-          const type=isGame(detail)?'game':ranges.length?'practice':'event';
+          const timeOnly=/^\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)\s*$/i.test(detail);
+          const type=isGame(detail)?'game':ranges.length||timeOnly?'practice':'event';
           const ev={date,team,detail,type,location:location==='gym'?'Gym':'Field',source:'facilities',group:groupOf(team),start:ranges[0]?.start??parseTime(detail),ranges};
           events.push(ev);
           if(location==='gym')for(const range of ranges)gym.push({...ev,range});
