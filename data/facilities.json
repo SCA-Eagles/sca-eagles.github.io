@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-10-26T20:45:35.044Z",
+  "fetchedAt": "2026-10-26T21:15:54.111Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -5510,7 +5510,7 @@
         [
           "Tuesday, November 24, 2026",
           "",
-          "3:00PM-4:30PM",
+          "",
           "",
           "",
           "",
@@ -5531,7 +5531,7 @@
         [
           "Wednesday, November 25, 2026",
           "",
-          "3:00PM-4:30PM",
+          "",
           "",
           "",
           "",
@@ -5552,7 +5552,7 @@
         [
           "Thursday, November 26, 2026",
           "",
-          "3:00PM-4:30PM",
+          "",
           "",
           "",
           "",
@@ -5722,7 +5722,7 @@
           "",
           "",
           "3:00PM-4:30PM",
-          "3:00PM-4:30PM",
+          "Game",
           "",
           "3:00PM-5:00PM",
           "3:00PM-5:00PM",
