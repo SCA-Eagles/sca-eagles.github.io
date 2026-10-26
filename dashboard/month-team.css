@@ -1,0 +1,41 @@
+/* Calendar additions use SCA's existing red, navy and neutral palette. */
+.team-filters{display:flex;gap:10px;align-items:end;flex-wrap:wrap}
+.team-filters .filterlabel{min-width:138px}
+#teamFilter{min-width:180px;max-width:min(100%,320px)}
+.month-view{padding-top:16px}
+.month-intro{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:14px}
+.month-intro h2{font-size:21px;font-weight:850;color:var(--navy);margin:0}
+.month-intro p{font-size:13px;color:var(--muted);margin:0}
+.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.month-weekday{text-align:center;font-size:11px;font-weight:850;color:var(--muted);padding:8px 2px;text-transform:uppercase}
+.month-day,.month-blank{min-width:0;min-height:83px;border-radius:10px}
+.month-day{position:relative;text-align:left;background:#f7f9fb;border:1px solid var(--line);padding:8px 7px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;color:var(--ink)}
+.month-day:hover{background:#edf3f8}
+.month-day.is-selected{background:#fff0f2;border:2px solid var(--red);padding:7px 6px}
+.month-day.is-today .month-date{background:var(--navy);color:#fff;padding:0 5px;border-radius:5px}
+.month-day.has-review::after{content:' ';position:absolute;right:6px;top:7px;width:5px;height:5px;border-radius:50%;background:#c97c20}
+.month-date{font-weight:900;font-size:15px;line-height:1.15}
+.month-count{font-size:11px;font-weight:650;color:var(--muted)}
+.month-dots{display:flex;gap:3px;align-items:center;margin-top:auto}
+.month-dot{display:block;width:7px;height:7px;border-radius:50%;background:#96a0ab}
+.month-dot.game{background:var(--red)}.month-dot.practice{background:var(--navy)}
+.month-selected-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:19px 0 10px}
+.month-selected-header h2{font-size:19px;color:var(--navy);margin:0}
+.month-count-summary{font-size:12px;color:var(--muted);white-space:nowrap}
+.month-action{display:flex;justify-content:flex-end;padding-top:12px}
+.month-view .facility-grid{margin-top:8px}
+.month-view .event{min-width:0}
+@media(max-width:650px){
+ .toolbar{align-items:stretch;flex-direction:column}
+ .team-filters{display:grid;grid-template-columns:1fr 1.2fr;gap:7px}
+ .team-filters .filterlabel{min-width:0}
+ .team-filters select{min-width:0;max-width:100%;width:100%}
+ .month-grid{gap:3px}
+ .month-day,.month-blank{min-height:61px;border-radius:7px}
+ .month-day{padding:5px 3px;gap:3px}
+ .month-day.is-selected{padding:4px 2px}
+ .month-date{font-size:13px}
+ .month-count{font-size:9px;line-height:1.2}
+ .month-dots{gap:2px}.month-dot{width:5px;height:5px}
+ .month-intro h2{font-size:19px}
+}
