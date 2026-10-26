@@ -3,6 +3,7 @@ import path from 'node:path';
 import XLSX from 'xlsx';
 import makeFetchCookie from 'fetch-cookie';
 import { CookieJar } from 'tough-cookie';
+import { generateCalendars } from './calendars.mjs';
 
 // SharePoint links are stored as GitHub Actions repository secrets, not in code.
 const sources = {
@@ -71,3 +72,6 @@ await fs.writeFile(path.join(siteDir,'status.json'),JSON.stringify({fetchedAt,sc
 await fs.writeFile(path.join(dataDir,'status.json'),JSON.stringify({fetchedAt,schedules:statuses},null,2));
 await fs.writeFile(path.join(siteDir,'.nojekyll'),'');
 if(statuses.some(s=>!s.ok))throw new Error('One or more athletic workbooks could not be refreshed');
+const fac=JSON.parse(await fs.readFile(path.join(dataDir,'facilities.json'),'utf8'));
+const tran=JSON.parse(await fs.readFile(path.join(dataDir,'transportation.json'),'utf8'));
+await generateCalendars(fac,tran,siteDir,fetchedAt);
