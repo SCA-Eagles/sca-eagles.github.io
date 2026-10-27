@@ -147,7 +147,9 @@ export function processSchedules(facilities,transportation,monday){
       const date=isoFromCell(row[0]);if(!dates.has(date))continue;
       for(const location of ['field','gym']){
         for(const c of cfg[location]){
-          const detail=norm(row[c]);if(!validCell(detail))continue;
+          // Normalize a missing space before an away-game @, e.g. "5:00pm@Heritage".
+          // Both the venue classifier and the transportation deduper depend on this.
+          const detail=norm(row[c]).replace(/(am|pm)\s*@\s*(?=\S)/gi, '$1 @');if(!validCell(detail))continue;
           const team=norm(labels[c])||`Column ${c+1}`;
           const ranges=parseRanges(detail);
           const timeOnly=/^\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)\s*$/i.test(detail);
