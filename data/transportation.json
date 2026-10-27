@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-10-27T15:28:36.357Z",
+  "fetchedAt": "2026-10-27T16:28:29.209Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1468,7 +1468,7 @@
           "Chandler Prep",
           "A",
           "Chandler Prep",
-          "Bus 1"
+          "Bus 5"
         ],
         [
           "Tuesday, October 27, 2026",
@@ -1478,7 +1478,7 @@
           "Arete Prep",
           "A",
           "Arete Prep",
-          "Van K, Bus 2"
+          "Van K, Bus 1"
         ],
         [
           "Tuesday, October 27, 2026",
