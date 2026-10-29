@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-10-29T07:05:15.998Z",
+  "fetchedAt": "2026-10-29T13:22:01.962Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1544,17 +1544,7 @@
           "Thursday, November 05, 2026",
           "HS-Varsity Flag Football",
           "",
-          "7:00pm",
-          "Ben Franklin",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, November 05, 2026",
-          "HS-JV Flag Football",
-          "",
-          "5:00pm",
+          "6:00pm",
           "Ben Franklin",
           "H ",
           "SCA",
