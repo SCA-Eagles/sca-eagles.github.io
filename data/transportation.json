@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-10-29T14:18:37.928Z",
+  "fetchedAt": "2026-10-29T19:52:10.813Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1508,7 +1508,7 @@
           "Heritage Academy Mesa",
           "A",
           "Family Life Center",
-          "Bus 1"
+          "Bus 5"
         ],
         [
           "Thursday, October 29, 2026",
@@ -1518,7 +1518,7 @@
           "Horizon Honors",
           "A",
           "Chandler Prep",
-          "Van K, Bus 2"
+          "Van K, Bus 1"
         ],
         [
           "Saturday, October 31, 2026",
@@ -1538,7 +1538,7 @@
           "Gilbert Christian",
           "A",
           "Gilbert Christian",
-          ""
+          "Van K, Van D"
         ],
         [
           "Thursday, November 05, 2026",
@@ -1548,7 +1548,7 @@
           "Ben Franklin",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Thursday, November 05, 2026",
@@ -1558,7 +1558,7 @@
           "AIA Sectional-Crossroads",
           "A",
           "TBD",
-          ""
+          "Bus 1"
         ],
         [
           "Friday, November 06, 2026",
@@ -1568,20 +1568,20 @@
           "Playoffs",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Saturday, November 07, 2026",
           "MS Football",
-          "",
-          "TBD",
-          "Playoffs",
-          "",
-          "TBD",
-          ""
+          "x",
+          "8:00AM",
+          "Northwest Christian",
+          "H",
+          "SCA",
+          "x"
         ],
         [
-          "Sunday, November 15, 2026",
+          "Saturday, November 14, 2026",
           "HS-Cross Country",
           "",
           "TBD",
