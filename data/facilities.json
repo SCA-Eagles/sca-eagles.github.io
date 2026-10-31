@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-10-31T14:46:02.627Z",
+  "fetchedAt": "2026-10-31T18:49:42.318Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -4574,9 +4574,9 @@
         ],
         [
           "Thursday, November 05, 2026",
-          "AM Practice",
+          "3:00PM-4:30PM",
           "\r\n Varsity Vs. Ben Franklin 6pm",
-          "x",
+          "3:00PM-4:45PM",
           "x",
           "x",
           "Overseeding\r\nHS Girls Soccer 3:00pm-4:45pm",
@@ -4621,7 +4621,7 @@
         ],
         [
           "Friday, November 06, 2026",
-          " Playoff",
+          "AM Practice",
           "",
           "3:00PM-4:15PM",
           "x",
