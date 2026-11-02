@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-02T09:58:51.747Z",
+  "fetchedAt": "2026-11-02T20:22:06.377Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1553,12 +1553,12 @@
         [
           "Thursday, November 05, 2026",
           "HS-Cross Country",
-          "",
-          "TBD",
+          "8:00am",
+          "9:00am",
           "AIA Sectional-Crossroads",
           "A",
-          "TBD",
-          "Bus 1"
+          "Crossroads District Park ",
+          "Van D"
         ],
         [
           "Friday, November 06, 2026",
@@ -1574,11 +1574,11 @@
           "Saturday, November 07, 2026",
           "HS- Varsity Volleyball",
           "X",
-          "",
+          "TBD",
           "First Round and Quarters",
           "A",
-          "",
-          ""
+          "Millenium HS",
+          "Van K"
         ],
         [
           "Saturday, November 07, 2026",
