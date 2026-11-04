@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-04T11:35:47.364Z",
+  "fetchedAt": "2026-11-04T18:52:36.669Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1554,7 +1554,7 @@
           "Thursday, November 05, 2026",
           "HS-Cross Country",
           "8:00am",
-          "9:00am",
+          "10:00AM",
           "AIA Sectional-Crossroads",
           "A",
           "Crossroads District Park ",
@@ -1565,7 +1565,7 @@
           "HS Swim",
           "12:00PM",
           "4:30PM",
-          "Swim State Finals",
+          "Swim State Prelims",
           "A",
           "PCDS ",
           "x"
@@ -1621,8 +1621,488 @@
           ""
         ],
         [
-          "",
+          "Tuesday, November 17, 2026",
           "HS-Varsity Boys Basketball ",
+          "",
+          "5:00pm",
+          "Fountai Hills",
+          "A",
+          "Fountain Hills",
+          ""
+        ],
+        [
+          "Friday, November 20, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Highland Prep West ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, November 23, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "TBD",
+          "PXU Coyote Classic ",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
+          "Thursday, December 03, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:30pm",
+          "Arizoana Lutheran ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Pima ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Phoenix Christian",
+          "A",
+          "Phoenix Christian ",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Highland Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "ALA Ironwood",
+          "A",
+          "ALA Ironwood",
+          ""
+        ],
+        [
+          "Tuesday, December 29, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "TBD",
+          "New Year Classic ",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "North Valley Christian ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "PCDS ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Northland Prep",
+          "A",
+          "Northland Prep",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Heritage Academy Mesa",
+          "A",
+          "Heritage Academy Mesa",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Gilbert Christian ",
+          "A",
+          "Gilbert Christian ",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, January 22, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "ALA-Mesa North",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Chandler Prep ",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Friday, November 20, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Thursday, December 03, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Friday, January 22, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Thursday, December 03, 2026",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Frosh Boys Basketball ",
           "",
           "",
           "",
