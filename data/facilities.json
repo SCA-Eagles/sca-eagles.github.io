@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-06T23:01:10.826Z",
+  "fetchedAt": "2026-11-06T23:31:11.460Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -4763,7 +4763,7 @@
         [
           "Monday, November 09, 2026",
           "5:30PM-7:30PM",
-          "6-8pm",
+          "7:00PM-8:30PM",
           "3:00PM-4:45PM If Necessary",
           "x",
           "x",
@@ -4857,7 +4857,7 @@
         [
           "Wednesday, November 11, 2026",
           "?",
-          "?",
+          "3:00PM-5:00PM",
           "?",
           "x",
           "x",
@@ -4951,7 +4951,7 @@
         [
           "Friday, November 13, 2026",
           " Playoff",
-          "",
+          "3:00PM-4:30PM",
           "",
           "x",
           "x",
