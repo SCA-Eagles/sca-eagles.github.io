@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-06T09:54:12.420Z",
+  "fetchedAt": "2026-11-06T17:29:11.394Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1584,8 +1584,8 @@
           "Saturday, November 07, 2026",
           "HS- Varsity Volleyball",
           "X",
-          "TBD",
-          "First Round and Quarters",
+          "9:00AM",
+          "First Round: Benson",
           "A",
           "Millenium HS",
           "Van K"
@@ -1601,21 +1601,41 @@
           "x"
         ],
         [
+          "Tuesday, November 10, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "6:00PM",
+          "First Round",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, November 14, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "2:00PM",
+          "Second Round",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
           "Saturday, November 14, 2026",
           "HS-Cross Country",
-          "X",
-          "TBD",
-          "State",
+          "x",
+          "9:20AM",
+          "State Meet",
           "A",
-          "TBD",
-          ""
+          "Cave Creek Golf Course",
+          "x"
         ],
         [
           "Monday, November 16, 2026",
           "HS-Varsity Girls Basketball",
           "",
           "6:00pm ",
-          "Gilbert Christian ",
+          "Scrimmage: Gilbert Christian ",
           "A",
           "Gilbert Christian ",
           ""
@@ -1625,7 +1645,7 @@
           "HS-Varsity Boys Basketball ",
           "",
           "5:00pm",
-          "Fountai Hills",
+          "Scrimmage: Fountain Hills",
           "A",
           "Fountain Hills",
           ""
