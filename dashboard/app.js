@@ -297,7 +297,11 @@ function shift(n){
 $('prev').onclick=()=>shift(-1);
 $('next').onclick=()=>shift(1);
 $('todayBtn').onclick=()=>{followToday=true;monday=mondayFor();selected=todayIso();monthFocus=monthStart(selected);load();};
-$('refresh').onclick=()=>load();
+$('refresh').onclick=()=>{
+  const url=new URL(window.location.href);
+  url.searchParams.set('_refresh',Date.now().toString());
+  window.location.replace(url.href);
+};
 $('teamFilter').onchange=e=>{teamFilter=e.target.value;render();};
 
 load();
