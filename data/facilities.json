@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-09T02:01:11.076Z",
+  "fetchedAt": "2026-11-09T02:31:09.976Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -4764,7 +4764,7 @@
           "Monday, November 09, 2026",
           "3:00PM-5:15PM",
           "7:00PM-8:30PM",
-          "3:00PM-4:45PM",
+          "",
           "x",
           "x",
           "HS Girls Soccer\r\n3:15PM-5:15PM\r\nBoys Soccer\r\n7:30PM-9:00PM",
@@ -4950,7 +4950,7 @@
         ],
         [
           "Friday, November 13, 2026",
-          " Playoff",
+          "vs. Camp Verde 7pm",
           "3:00PM-4:30PM",
           "",
           "x",
