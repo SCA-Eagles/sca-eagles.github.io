@@ -1,3 +1,4 @@
+import {generateGameLocations} from './game-locations.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import XLSX from 'xlsx';
@@ -75,3 +76,5 @@ if(statuses.some(s=>!s.ok))throw new Error('One or more athletic workbooks could
 const fac=JSON.parse(await fs.readFile(path.join(dataDir,'facilities.json'),'utf8'));
 const tran=JSON.parse(await fs.readFile(path.join(dataDir,'transportation.json'),'utf8'));
 await generateCalendars(fac,tran,siteDir,fetchedAt);
+
+await generateGameLocations(siteDir);

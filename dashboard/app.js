@@ -1,3 +1,4 @@
+import {enableGameDetails} from './game-details.js';
 import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js';
 
@@ -101,7 +102,7 @@ function eventCard(e){
     if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(el('span','tag',`Dismissal: ${e.dismissal}`));
     if(e.transport&&!/^x$/i.test(e.transport))meta.append(el('span','tag',`Vehicle: ${e.transport}`));
   }
-  body.append(meta);card.append(body,when);return card;
+  body.append(meta);card.append(body,when);enableGameDetails(card,e);return card;
 }
 function laneSection(lane,entries){
   const section=el('section',`facility-lane lane-${lane.id}`);
@@ -230,7 +231,7 @@ function renderTimeline(events){
         const team=el('div','bar-title',e.type==='note'?(e.detail||e.team):e.team);
         const time=el('div','time-small',item.point?`${clock(item.start)} · start only`:`${clock(item.start)}–${clock(item.end)}`);
         block.append(team,time);block.title=`${e.team} — ${time.textContent}. ${e.detail||''}`;
-        track.append(block);
+        enableGameDetails(block,e,{hint:false});track.append(block);
       }
       body.append(track);
     }

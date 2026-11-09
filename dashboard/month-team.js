@@ -1,3 +1,4 @@
+import {enableGameDetails} from './game-details.js';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
@@ -198,7 +199,7 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
         if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(create('span','tag',`Dismissal: ${e.dismissal}`));
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }
-      body.append(meta);card.append(body,create('div','when',e.source==='transportation'?(e.time||clock(e.start)):(e.start==null?'TBD':clock(e.start))));items.append(card);
+      body.append(meta);card.append(body,create('div','when',e.source==='transportation'?(e.time||clock(e.start)):(e.start==null?'TBD':clock(e.start))));enableGameDetails(card,e);items.append(card);
     }
     if(!entries.length)items.append(create('div','lane-empty','Nothing scheduled'));
     lane.append(items);gridDetails.append(lane);

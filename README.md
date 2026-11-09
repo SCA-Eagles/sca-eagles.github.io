@@ -30,3 +30,23 @@ Only athletics transportation rows from the current 2026–2027 sheet are includ
 ## Operations
 
 Do not retire the original site until the new site and its automatic refresh have been verified. Update any coach/parent shortcuts to the new website only after testing.
+
+## Official game locations
+
+Game cards in Today, Month and Timeline open accessible details dialogs. The
+build runs `scripts/game-locations.mjs` to publish `game-locations.json` from
+AZPreps365's SCA team schedules and the CCSL QuickScores schedule list. Only
+explicit game venues and QuickScores venue-directory addresses are published;
+no spreadsheet, opponent-school or home/away location is used as a fallback.
+An exact venue-name match may supply an address from QuickScores for an
+AZPreps365 game. Each detail links to its official schedule and address source.
+
+Matching requires the same date, team category and, when specified, opponent.
+Duplicate matches require a unique start time. Conditional playoff placeholders,
+unknown team categories and unmatched games show missing details rather than a
+predicted venue. New sources/league categories must be explicitly supported by
+the parser. Source fetch failures omit affected results, and the UI rejects
+location data older than 36 hours. A missing address never gets a directions link.
+
+Validation: `node --test tests/game-locations.test.mjs`. To inspect a standalone
+refresh without spreadsheet credentials: `node scripts/game-locations.mjs /tmp/sca-locations`.
