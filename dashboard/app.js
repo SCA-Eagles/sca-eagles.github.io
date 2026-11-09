@@ -91,7 +91,28 @@ function sortEvents(events){return [...events].sort((a,b)=>(a.start??9999)-(b.st
 function eventCard(e){
   const card=el('article',`event ${e.type}`),body=el('div','body');card.append(el('span','marker'));
   const away=laneFor(e)==='away';
-  const time=e.source==='transportation'?(e.time||(e.start!=null?clock(e.start):'TBD')):(e.start==null?'TBD':clock(e.start));
+  
+const shortClock = n => clock(n).replace(':00', '');
+
+const rangeLabel = ({start, end}) => {
+  const a = shortClock(start);
+  const b = shortClock(end);
+  return `${a.slice(-2) === b.slice(-2) ? a.slice(0, -2) : a}–${b}`;
+};
+
+const details = String(e.detail || '')
+  .replace(/(\d{1,2}(?::\d{2})?)\s*ppm\b/gi, '$1pm');
+
+const ranges = e.type === 'note'
+  ? parseRanges(details)
+  : (e.ranges || []);
+
+const time = e.source === 'transportation'
+  ? (e.time || (e.start != null ? clock(e.start) : 'TBD'))
+  : ranges.length
+    ? ranges.map(rangeLabel).join(' · ')
+    : (e.start == null ? 'TBD' : shortClock(e.start));
+
   const when=el('div','when',time);
   body.append(el('div','name',e.team),el('div','description',e.detail||'No details'));
   const meta=el('div','meta');
