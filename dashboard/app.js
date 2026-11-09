@@ -1,5 +1,5 @@
 import {enableGameDetails} from './game-details.js';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261109-game-details';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js';
 
 const $ = id => document.getElementById(id);
