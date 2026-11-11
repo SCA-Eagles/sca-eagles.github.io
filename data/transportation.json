@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-11T17:31:11.973Z",
+  "fetchedAt": "2026-11-11T17:55:03.499Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1644,7 +1644,7 @@
           "Saturday, November 14, 2026",
           "MS Football",
           "x",
-          "6:30pm",
+          "7:00PM",
           "Championship: Gilbert Christian",
           "A",
           "Gilbert Christian",
