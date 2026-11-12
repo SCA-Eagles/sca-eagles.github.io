@@ -44,6 +44,22 @@ function athleticsOnly(sheets){
   const [head,...rows]=t.rows;
   return [{name:t.name,rows:[head,...rows.filter(row=>sports.test(String(row[1]||'')))]}];
 }
+// Sanity guard: refuse to publish a workbook that downloaded but looks gutted
+// (wrong file, renamed/missing tab, mostly emptied). Keeps the last good data instead.
+const REQUIRED_TABS={facilities:['Fall','Winter','Spring','Summer'],transportation:['2026-2027 Transportation']};
+function filledRows(sheets){return sheets.reduce((n,s)=>n+s.rows.filter(r=>r.some(c=>String(c).trim()!=='')).length,0);}
+async function sanityCheck(key,sheets){
+  const names=sheets.map(s=>s.name);
+  const missing=(REQUIRED_TABS[key]||[]).filter(t=>!names.includes(t));
+  if(missing.length)throw new Error(`Expected tab(s) missing: ${missing.join(', ')}`);
+  const now=filledRows(sheets);
+  if(now<10)throw new Error(`Only ${now} filled rows found; workbook looks empty`);
+  try{
+    const prev=JSON.parse(await fs.readFile(path.join(dataDir,`${key}.json`),'utf8'));
+    const before=prev?.ok&&Array.isArray(prev.sheets)?filledRows(prev.sheets):0;
+    if(before>=40&&now<before*0.5)throw new Error(`Filled rows dropped from ${before} to ${now} (over 50%); not publishing`);
+  }catch(err){if(err?.code!=='ENOENT'&&!(err instanceof SyntaxError))throw err;}
+}
 const fetchedAt=new Date().toISOString();
 await fs.rm(siteDir,{recursive:true,force:true});
 await fs.mkdir(siteDir,{recursive:true});
@@ -54,6 +70,7 @@ for(const [key,source] of Object.entries(sources)){
     const bytes=await fetchWorkbook(source.url);
     const allSheets=workbookToData(bytes);
     const sheets=key==='transportation'?athleticsOnly(allSheets):allSheets;
+    await sanityCheck(key,sheets);
     const payload={ok:true,source:key,label:source.label,fetchedAt,sheetNames:sheets.map(s=>s.name),sheets};
     const data=JSON.stringify(payload,null,2);
     await fs.writeFile(path.join(siteDir,`${key}.json`),data);
