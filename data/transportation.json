@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-13T15:01:11.012Z",
+  "fetchedAt": "2026-11-13T15:31:14.388Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1635,7 +1635,7 @@
           "HS-Varsity Volleyball ",
           "x",
           "10:00AM",
-          "If Neccessary: State Championship",
+          "State Championship: PCDS",
           "A",
           "AZ Veterans Memorial Coloseum",
           "Van K"
@@ -1655,7 +1655,7 @@
           "HS- Varsity Flag Football",
           "x",
           "2:00PM",
-          "Second Round",
+          "Heritage Gateway",
           "H",
           "SCA",
           "x"
