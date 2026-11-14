@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-14T02:31:11.669Z",
+  "fetchedAt": "2026-11-14T03:01:11.452Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -6689,8 +6689,8 @@
           "",
           "at Christ Greenfield\r\n3:30pm",
           "",
-          "at Gilbert Christian Val Vista\r\n6pm",
           "at Gilbert Christian Val Vista\r\n4pm",
+          "",
           "vs. Northwest Christian\r\n3:30pm",
           "",
           "",
