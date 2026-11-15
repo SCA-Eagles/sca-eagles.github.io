@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-15T19:31:19.346Z",
+  "fetchedAt": "2026-11-15T20:01:12.474Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1691,9 +1691,19 @@
           ""
         ],
         [
+          "Wednesday, November 18, 2026",
+          "HS- Varsity Flag Football",
+          "X",
+          "6:00PM",
+          "Semifinal: Highland Prep",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
           "Friday, November 20, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Highland Prep West ",
           "H ",
@@ -1704,11 +1714,41 @@
           "Friday, November 20, 2026",
           "HS-JV Boys Basketball ",
           "",
-          "",
-          "",
-          "",
+          "4:00pm ",
+          "Highland Prep West ",
+          "H ",
           "",
           ""
+        ],
+        [
+          "Friday, November 20, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Highland Prep West ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Saturday, November 21, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "11:00AM",
+          "State Final If Neccessary",
+          "A",
+          "Coronado Del Sol HS",
+          "x"
+        ],
+        [
+          "Saturday, November 21, 2026",
+          "HS- Varsity Football",
+          "x",
+          "6:00PM",
+          "Semifinal: Chandler Prep",
+          "A",
+          "Marcos De Niza HS",
+          "x"
         ],
         [
           "Monday, November 23, 2026",
