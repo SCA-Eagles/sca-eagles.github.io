@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-16T02:03:17.823Z",
+  "fetchedAt": "2026-11-16T02:31:12.649Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1678,7 +1678,7 @@
           "Scrimmage: Gilbert Christian ",
           "A",
           "Gilbert Christian ",
-          ""
+          "Van K"
         ],
         [
           "Tuesday, November 17, 2026",
@@ -1688,7 +1688,7 @@
           "Scrimmage: Fountain Hills",
           "A",
           "Fountain Hills",
-          ""
+          "Van K"
         ],
         [
           "Wednesday, November 18, 2026",
@@ -1708,17 +1708,17 @@
           "Highland Prep West ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, November 20, 2026",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "Highland Prep West ",
           "H ",
-          "",
-          ""
+          "SCA",
+          "x"
         ],
         [
           "Friday, November 20, 2026",
@@ -1728,7 +1728,7 @@
           "Highland Prep West ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Saturday, November 21, 2026",
