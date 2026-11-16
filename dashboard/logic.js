@@ -22,7 +22,19 @@ function detectFacilityColumns(sheet) {
   for(let c=1;c<fieldNotes;c++)if(hasTeam(c))field.push(c);
   for(let c=fieldNotes+1;c<gymNotes;c++)if(hasTeam(c))gym.push(c);
   if(!field.length&&!gym.length)throw new Error(`${sheet.name}: no team columns found`);
-  return {field,gym,fieldNotes,gymNotes,labels:notesRow-1,firstRow:notesRow+1};
+  // Section headers above the team names ("Field Schedule", "Baseball Field
+  // Schedule", "Gym Schedule") say which field a column uses. Only an explicit
+  // baseball header moves a column off the main field.
+  const baseball=new Set();
+  for(let r=0;r<notesRow-1;r++){
+    const header=sheet.rows[r]||[];let section='';
+    for(let c=1;c<fieldNotes;c++){
+      const h=String(header[c]??'').replace(/\s+/g,' ').trim();
+      if(h)section=h;
+      if(/baseball/i.test(section)&&field.includes(c))baseball.add(c);
+    }
+  }
+  return {field,gym,fieldNotes,gymNotes,baseball,labels:notesRow-1,firstRow:notesRow+1};
 }
 const norm = v => String(v ?? '').replace(/\s+/g,' ').trim();
 export function isoFromCell(value) {
@@ -128,6 +140,7 @@ function combineSameGames(events) {
     // Keep the transportation card (opponent, venue, dismissal, vehicles) and
     // attach useful facility context without publishing duplicate cards.
     edge.t.facilityLocation=edge.f.location;
+    if(edge.f.fieldArea)edge.t.fieldArea=edge.f.fieldArea;
     edge.t.facilityDetail=edge.f.detail;
     matched.add(edge.f);
   }
@@ -155,6 +168,7 @@ export function processSchedules(facilities,transportation,monday){
           const timeOnly=/^\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)\s*$/i.test(detail);
           const type=isGame(detail)?'game':ranges.length||timeOnly?'practice':'event';
           const ev={date,team,detail,type,location:location==='gym'?'Gym':'Field',source:'facilities',group:groupOf(team),start:ranges[0]?.start??parseTime(detail),ranges};
+          if(location==='field')ev.fieldArea=cfg.baseball.has(c)?'baseball':'main';
           events.push(ev);
         }
         const notes=norm(row[location==='gym'?cfg.gymNotes:cfg.fieldNotes]);

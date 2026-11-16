@@ -54,3 +54,17 @@
   #overviewView .event{padding:12px 8px;min-height:0}
   #overviewView .event .meta .tag.badge{position:static}
 }
+
+/* Baseball has its own field (Winter sheet's "Baseball Field Schedule" header). */
+#overviewView .lane-baseball .lane-title{background:linear-gradient(115deg,#1d5b3c,#2b7a51)}
+.timeline-head>div:nth-child(3){color:inherit}
+.timeline-head>.head-field{color:var(--navy,#102c50)}
+.timeline-head>.head-baseball{color:#1f6b45}
+.timeline-head>.head-gym{color:var(--red-dark,#a7092c)}
+.time-track.baseball-track{background-color:#f6fbf7}
+.time-track.baseball-track .timeline-bar{border-color:#c5e2cf;border-left:4px solid #2b7a51;background:#eef8f1;color:#174d33}
+.lane-chip[data-lane="field"] .chip-count{background:#102e51 !important}
+.lane-chip[data-lane="baseball"] .chip-count{background:#2b7a51 !important}
+.lane-chip[data-lane="gym"] .chip-count{background:#c51232 !important}
+.lane-chip[data-lane="away"] .chip-count{background:#a67423 !important}
+@media(min-width:901px){#overviewView .facility-grid:has(.lane-baseball){grid-template-columns:repeat(3,minmax(0,1fr))}}

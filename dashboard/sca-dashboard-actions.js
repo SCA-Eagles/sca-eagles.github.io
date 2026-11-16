@@ -14,6 +14,7 @@
       reload: '<path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.3 9a7 7 0 0 1 12.4-1.6L20 12M4 12l1.3 4.6A7 7 0 0 0 17.7 15"/>',
       field: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14M3 9h4v6H3M21 9h-4v6h4M8 12h8"/>',
       gym: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M6 6c4 2 4 10 0 12M18 6c-4 2-4 10 0 12"/>',
+      baseball: '<path d="M12 3 21 12 12 21 3 12Z"/><path d="M12 8.5 15.5 12 12 15.5 8.5 12Z"/>',
       away: '<rect x="5" y="3" width="14" height="17" rx="3"/><path d="M5 14h14M8 20v2M16 20v2M8 7h8M8 17h.01M16 17h.01"/>',
       chevron: '<path d="m9 18 6-6-6-6"/>'
     };
@@ -68,7 +69,7 @@
   function addFacilityIcons() {
     const overview = $('overviewDetails');
     if (!overview) return;
-    const types = [['field','field'],['gym','gym'],['away','away']];
+    const types = [['field','field'],['baseball','baseball'],['gym','gym'],['away','away']];
     for (const [cssClass, symbol] of types) {
       overview.querySelectorAll(`.lane-${cssClass} .lane-icon:not([data-sca-svg])`).forEach(el => {
         el.innerHTML = icon(symbol, 21); // Static, bundled SVG; no schedule text is interpreted as HTML.

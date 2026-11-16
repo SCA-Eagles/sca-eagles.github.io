@@ -4,7 +4,7 @@ import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
 // when an existing master column already represents the program.
-import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js';
+import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261115-baseball';
 
 const sports=/flag\s*football|cross\s*country|volleyball|basketball|football|baseball|softball|soccer|golf|swim(?:ming)?|wrestling|tennis|track/i;
 const tidy=x=>String(x??'').replace(/\s+/g,' ').trim();
@@ -180,14 +180,17 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
   const head=create('div','month-selected-header');head.append(create('h2','',niceDate(picked,{weekday:'long',month:'long',day:'numeric'})),create('span','month-count-summary',`${daily.length} calendar ${daily.length===1?'item':'items'}`));
   container.append(head);
   if(!daily.length){container.append(create('div','empty','No activities listed for the selected date and filters.'));return;}
-  const lanes=[['field','Field & Outdoor'],['gym','Gym & Indoor'],['away','Away Games & Transportation']],gridDetails=create('div','facility-grid');
+  const lanes=[['field','Field & Outdoor'],['baseball','Baseball Field'],['gym','Gym & Indoor'],['away','Away Games & Transportation']],gridDetails=create('div','facility-grid');
   for(const [key,label] of lanes){
     const entries=daily.filter(e=>{
       if(e.side==='A')return key==='away';
       if(e.source==='facilities'&&e.type!=='note'&&/\s@\s*|\b(?:away|at\s+\w+)/i.test(e.detail)&&e.type==='game')return key==='away';
       if(e.source==='transportation'&&e.location&&!/^(?:SCA|Scottsdale Christian(?: Academy)?|Home)\b/i.test(e.location))return key==='away';
-      const lane=e.location==='Gym'||(e.source==='transportation'&&/volleyball|basketball/i.test(e.team))?'gym':'field';return key===lane;
+      let lane=e.location==='Gym'||(e.source==='transportation'&&/volleyball|basketball/i.test(e.team))?'gym':'field';
+      if(lane==='field'&&(e.fieldArea?e.fieldArea==='baseball':/baseball/i.test(e.team||'')))lane='baseball';
+      return key===lane;
     }).sort((a,b)=>(a.start??9999)-(b.start??9999));
+    if(key==='baseball'&&!entries.length)continue;
     const lane=create('section',`facility-lane lane-${key}`),bar=create('div','lane-title'),title=create('div','lane-label');
     title.append(create('h3','',label));bar.append(title,create('span','lane-count',`${entries.length} ${entries.length===1?'item':'items'}`));lane.append(bar);
     const items=create('div','lane-items');

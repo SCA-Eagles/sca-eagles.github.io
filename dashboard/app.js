@@ -1,7 +1,7 @@
 import {enableGameDetails} from './game-details.js';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261115-ux';
-import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261115-baseball';
+import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261115-baseball';
 
 const $ = id => document.getElementById(id);
 const todayIso = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
@@ -78,18 +78,26 @@ function laneFor(e){
   if(e.side==='A')return 'away';
   if(e.source==='facilities'){
     if(e.type!=='note'&&isAwayDescription(e.detail))return 'away';
-    return e.location==='Gym'?'gym':'field';
+    if(e.location==='Gym')return 'gym';
+    return fieldLane(e);
   }
   if(e.source==='transportation'){
     if(e.location&&!ON_CAMPUS.test(e.location))return 'away';
     if(e.facilityLocation==='Gym')return 'gym';
-    if(e.facilityLocation==='Field')return 'field';
-    return INDOOR_SPORTS.test(e.team)?'gym':'field';
+    if(e.facilityLocation==='Field')return fieldLane(e);
+    return INDOOR_SPORTS.test(e.team)?'gym':fieldLane(e);
   }
-  return e.location==='Gym'?'gym':'field';
+  return e.location==='Gym'?'gym':fieldLane(e);
+}
+// Baseball has its own field: the sheet's "Baseball Field Schedule" header, or a
+// home baseball game the sheet doesn't list. Softball shares the main field.
+function fieldLane(e){
+  if(e.fieldArea)return e.fieldArea==='baseball'?'baseball':'field';
+  return /baseball/i.test(e.team||'')?'baseball':'field';
 }
 const LANES=[
   {id:'field',name:'Field & Outdoor',icon:'◌'},
+  {id:'baseball',name:'Baseball Field',icon:'◇'},
   {id:'gym',name:'Gym & Indoor',icon:'▤'},
   {id:'away',name:'Away Games & Transportation',icon:'↗'}
 ];
@@ -143,7 +151,7 @@ function laneSection(lane,entries){
   else items.append(el('div','lane-empty','Nothing scheduled'));
   section.append(items);return section;
 }
-function groupedGrid(list){const grid=el('div','facility-grid');for(const lane of LANES)grid.append(laneSection(lane,list.filter(e=>laneFor(e)===lane.id)));return grid;}
+function groupedGrid(list){const grid=el('div','facility-grid');for(const lane of LANES){const entries=list.filter(e=>laneFor(e)===lane.id);if(lane.id==='baseball'&&!entries.length)continue;grid.append(laneSection(lane,entries));}return grid;}
 function dayStrip(target,events){
   const dates=weekDays(monday);
   $(target).replaceChildren(...dates.map((date,i)=>{
@@ -176,7 +184,7 @@ function renderOverview(events){
   top.append(heading);
   const timelineBtn=el('button','subtle-button','View timeline →');timelineBtn.onclick=()=>jumpTo('timeline');top.append(timelineBtn);container.append(top);
   const pills=el('div','overview-pills');
-  for(const [value,label] of [[counts[0],'Field'],[counts[1],'Gym'],[counts[2],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
+  for(const [value,label] of [[counts[0]+counts[1],'Field'],[counts[2],'Gym'],[counts[3],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
     const p=el('div','overview-pill');p.append(el('div','overview-value',value),el('div','overview-caption',label));pills.append(p);
   }
   container.append(pills);
@@ -185,15 +193,20 @@ function renderOverview(events){
   if(!list.length){container.append(el('div','empty','No events are listed for this day. Use Month to browse other dates.'));return;}
   const jump=el('nav','lane-jump');jump.setAttribute('aria-label','Jump to a section');
   LANES.forEach((lane,i)=>{
+    if(lane.id==='baseball'&&!counts[i])return;
     const chip=el('button','lane-chip');chip.type='button';chip.disabled=!counts[i];
-    chip.append(el('span','chip-label',lane.id==='away'?'Away':lane.id==='gym'?'Gym':'Field'),el('span','chip-count',counts[i]));
+    chip.dataset.lane=lane.id;chip.append(el('span','chip-label',{away:'Away',gym:'Gym',baseball:'Baseball',field:'Field'}[lane.id]),el('span','chip-count',counts[i]));
     chip.onclick=()=>container.querySelector(`.facility-lane[data-lane="${lane.id}"]`)?.scrollIntoView({behavior:'smooth',block:'start'});
     jump.append(chip);
   });
   container.append(jump);
   const compact=el('div','facility-grid');
   // Show every item: a per-lane cap hid whole teams (e.g. MS Varsity Baseball, Nov 16, 2026).
-  for(const lane of LANES)compact.append(laneSection(lane,sortEvents(list.filter(e=>laneFor(e)===lane.id))));
+  for(const lane of LANES){
+    const entries=list.filter(e=>laneFor(e)===lane.id);
+    if(lane.id==='baseball'&&!entries.length)continue;
+    compact.append(laneSection(lane,sortEvents(entries)));
+  }
   container.append(compact);
 }
 
@@ -231,7 +244,7 @@ function renderTimeline(events){
   dayStrip('timelineDays',events);
   const list=events.filter(e=>e.date===selected),container=$('timelineDetails');container.replaceChildren(dayHeading(selected,list.length));
   container.append(el('p','timeline-intro','The vertical scale shows actual facility time ranges. Dashed markers mean start time only; the end time is unknown. Away games are listed separately.'));
-  const plotted={field:[],gym:[]},extras=[];
+  const plotted={field:[],baseball:[],gym:[]},extras=[];
   for(const e of list){
     const lane=laneFor(e);
     if(lane==='away'){extras.push(e);continue;}
@@ -240,7 +253,7 @@ function renderTimeline(events){
     // Notes remain readable below even when one of their stated ranges is plotted.
     if(!ranges.length||e.type==='note')extras.push(e);
   }
-  const all=[...plotted.field,...plotted.gym];
+  const all=[...plotted.field,...plotted.baseball,...plotted.gym];
   if(!all.length){container.append(el('div','empty','No timed on-campus facility activities found for this day.'));}
   else{
     const min=Math.min(...all.map(e=>e.start)),max=Math.max(...all.map(e=>e.point?e.start:e.end));
@@ -250,15 +263,16 @@ function renderTimeline(events){
     const wrap=el('div','timeline-scroller');
     // Give each overlapping activity a readable column; the timeline scrolls sideways when needed.
     const laneCols=lane=>Math.max(1,...arrangeTracks(plotted[lane]).map(i=>i.columns));
-    const fieldMin=Math.max(155,laneCols('field')*96),gymMin=Math.max(155,laneCols('gym')*96);
-    const template=`53px minmax(${fieldMin}px,1fr) minmax(${gymMin}px,1fr)`,minWidth=`${53+fieldMin+gymMin}px`;
-    const head=el('div','timeline-head');head.style.gridTemplateColumns=template;head.style.minWidth=minWidth;head.append(el('div','','Time'),el('div','','◌ Field & Outdoor'),el('div','','▤ Gym & Indoor'));wrap.append(head);
+    const tracks=[{id:'field',label:'◌ Field & Outdoor'},...(plotted.baseball.length?[{id:'baseball',label:'◇ Baseball Field'}]:[]),{id:'gym',label:'▤ Gym & Indoor'}];
+    const mins=tracks.map(t=>Math.max(t.id==='baseball'?130:155,laneCols(t.id)*96));
+    const template=`53px ${mins.map(m=>`minmax(${m}px,1fr)`).join(' ')}`,minWidth=`${53+mins.reduce((a,b)=>a+b,0)}px`;
+    const head=el('div','timeline-head');head.style.gridTemplateColumns=template;head.style.minWidth=minWidth;head.append(el('div','','Time'),...tracks.map(t=>el('div',`head-${t.id}`,t.label)));wrap.append(head);
     const body=el('div','timeline-main');body.style.height=`${height}px`;body.style.gridTemplateColumns=template;body.style.minWidth=minWidth;
     const axis=el('div','time-axis');
     for(let time=first;time<=last;time+=60){const mark=el('div','time-label',clock(time));mark.style.top=`${(time-first)}px`;axis.append(mark);}
     body.append(axis);
-    for(const lane of ['field','gym']){
-      const track=el('div',`time-track ${lane==='gym'?'gym-track':''}`);
+    for(const lane of tracks.map(t=>t.id)){
+      const track=el('div',`time-track ${lane==='gym'?'gym-track':lane==='baseball'?'baseball-track':''}`);
       for(const item of arrangeTracks(plotted[lane])){
         const e=item.event,top=item.start-first;
         const block=el('div',`${item.point?'timeline-point':'timeline-bar'} ${e.type}`);
