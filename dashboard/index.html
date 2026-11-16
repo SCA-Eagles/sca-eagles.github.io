@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./styles.css?v=20261110-hark">
 <link rel="stylesheet" href="./month-team.css?v=20261110-hark">
 <link rel="stylesheet" href="./sca-homepage.css?v=20261110-hark">
+<link rel="stylesheet" href="./ux.css?v=20261115-ux">
 <style>
 .calendar-subscribe{margin:5px 0 17px;background:linear-gradient(125deg,#f2f6fb,#fff);border:1px solid #cbd9e7;border-radius:14px;padding:15px 18px;display:grid;gap:11px;color:#102e51}
 .subscribe-heading{font-size:10px;letter-spacing:.09em;font-weight:850;color:#516982;text-transform:uppercase}
@@ -39,7 +40,7 @@
     <button id="overviewTab" class="tab active" role="tab" aria-selected="true">Today</button>
     <button id="monthTab" class="tab" role="tab" aria-selected="false">Month</button>
     <button id="timelineTab" class="tab" role="tab" aria-selected="false">Timeline</button>
-  </div><div class="team-filters">
+  </div><button id="filterToggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="teamFilters">Filters</button><div class="team-filters" id="teamFilters">
     <label class="filterlabel">School <select id="filter"><option value="all">All levels</option><option value="HS">High school</option><option value="MS">Middle / 5th</option></select></label>
     <label class="filterlabel">Team <select id="teamFilter"><option value="all">All teams</option></select></label>
   </div></div>
@@ -55,7 +56,7 @@
 <footer><div>Read-only view of SCA's existing Excel schedules.</div><div>Schedules generally update after each successful 30-minute GitHub refresh.</div></footer>
 </div>
 
-<script type="module" src="./app.js?v=20261115-no-lane-cap"></script>
+<script type="module" src="./app.js?v=20261115-ux"></script>
 <script type="module" src="./calendar-subscribe.js?v=20261110-hark"></script>
 <script src="./sca-dashboard-actions.js?v=20261110-hark" defer></script>
 </body></html>

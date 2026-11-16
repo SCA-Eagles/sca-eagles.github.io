@@ -1,0 +1,56 @@
+/* Nov 15, 2026 UX pass: game emphasis, cleaner cards, jump chips,
+   readable mobile timeline and a compact mobile header. Display only. */
+
+/* Header: the school name already sits in the logo bar. */
+.heading .eyebrow{display:none}
+
+/* Badges: only games, events and notes carry one; practices are the default. */
+#overviewView .event .meta .tag:first-child,#monthView .event .meta .tag:first-child{position:static;text-transform:none;letter-spacing:0;font-weight:750;color:#4e657d;background:#eff3f8}
+#overviewView .event .meta .tag.badge{position:absolute;right:10px;top:15px;text-transform:uppercase;letter-spacing:.02em;font-weight:900;color:#143a62;background:#e2ecf9}
+#overviewView .event .meta .tag.badge-game,#monthView .event .meta .tag.badge-game{color:#fff !important;background:var(--red,#c51232) !important}
+#overviewView .event .meta:empty{display:none}
+#overviewView .event.game{background:#fff7f8;box-shadow:inset 4px 0 0 var(--red,#c51232)}
+#overviewView .event.game .name{color:#8f0a26;font-weight:900}
+#monthView .event.game{border-color:#f0c4cf;background:#fff7f8}
+#monthView .event.game .name{color:#8f0a26;font-weight:900}
+#overviewView .event{padding-right:110px;min-height:0}
+
+/* Jump chips (phones only, where lanes stack). */
+.lane-jump{display:none}
+.filter-toggle{display:none}
+
+/* Timeline: words wrap at word breaks, the time axis stays put while swiping. */
+.timeline-bar .bar-title,.timeline-point .bar-title{overflow-wrap:break-word;word-break:normal;hyphens:auto}
+.timeline-head>div:first-child{position:sticky;left:0;z-index:4;background:#f4f6fa}
+.time-axis{position:sticky;left:0;z-index:4}
+.timeline-swipe{font-size:11px;font-weight:750;color:#5d7389;margin:0 0 7px;text-align:right}
+
+@media(max-width:650px){
+  /* Tabs and a single Filters button share one row; filters open on tap. */
+  .toolbar{flex-direction:row !important;flex-wrap:nowrap;align-items:center}
+  .toolbar.filters-open{flex-wrap:wrap}
+  .toolbar .tabs{width:auto !important;flex:1 1 0;min-width:0}
+  .toolbar .tabs .tab{flex:1}
+  .filter-toggle{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:12px;font-weight:850;
+    color:#fff;background:#ffffff1f;border:1px solid #ffffff55;border-radius:9px;padding:0 12px;min-height:38px;cursor:pointer;white-space:nowrap}
+  .filter-toggle.has-filters{background:#fff;color:#a90c2b;border-color:#fff}
+  .toolbar .team-filters{display:none}
+  .toolbar.filters-open .team-filters{display:flex;width:100%;flex:1 1 100%}
+  .toolbar .filterlabel select{max-width:none}
+  .toolbar .team-filters{gap:8px;flex-wrap:nowrap}
+  .toolbar .team-filters .filterlabel{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:6px;margin:0}
+  .toolbar .team-filters select,.toolbar #teamFilter{flex:1 1 auto;width:100%;min-width:0 !important;max-width:100% !important}
+
+  .lane-jump{display:flex;gap:7px;position:sticky;top:0;z-index:5;margin:0 -14px 12px;padding:9px 14px;
+    background:#f8fafcf2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid #e3e9f0}
+  .lane-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-size:12px;font-weight:850;
+    color:#102e51;background:#fff;border:1px solid #d3deea;border-radius:999px;padding:8px 6px;cursor:pointer}
+  .lane-chip .chip-count{display:inline-grid;place-items:center;min-width:21px;height:21px;padding:0 5px;border-radius:999px;background:#102e51;color:#fff;font-size:11px}
+  .lane-chip:nth-child(2) .chip-count{background:#c51232}
+  .lane-chip:nth-child(3) .chip-count{background:#a67423}
+  .lane-chip:disabled{opacity:.45;cursor:default}
+  #overviewView .facility-lane{scroll-margin-top:62px}
+
+  #overviewView .event{padding:12px 8px;min-height:0}
+  #overviewView .event .meta .tag.badge{position:static}
+}

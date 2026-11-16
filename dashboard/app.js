@@ -1,5 +1,6 @@
 import {enableGameDetails} from './game-details.js';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261109-game-details';
+import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261115-ux';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js';
 
 const $ = id => document.getElementById(id);
@@ -32,6 +33,11 @@ function syncTeamDropdown(){
   control.value=teamFilter;
 }
 
+function syncFilterToggle(){
+  const btn=$('filterToggle');if(!btn)return;
+  const active=(filter!=='all'?1:0)+(teamFilter!=='all'?1:0);
+  btn.textContent=active?`Filters · ${active}`:'Filters';btn.classList.toggle('has-filters',!!active);
+}
 function setNotice(text){$('notice').textContent=text;$('notice').hidden=!text;}
 function weekHasDay(date){return weekDays(monday).includes(date);}
 async function load(){
@@ -108,15 +114,17 @@ const ranges = e.type === 'note'
   : (e.ranges || []);
 
 const time = e.source === 'transportation'
-  ? (e.time || (e.start != null ? clock(e.start) : 'TBD'))
+  ? (e.start != null ? shortClock(e.start) : (e.time || 'TBD'))
   : ranges.length
     ? ranges.map(rangeLabel).join(' · ')
     : (e.start == null ? 'TBD' : shortClock(e.start));
 
   const when=el('div','when',time);
-  body.append(el('div','name',e.team),el('div','description',e.detail||'No details'));
+  const lane=laneFor(e),detailText=displayDetail(e),badge=badgeFor(e,lane);
+  body.append(el('div','name',displayTeam(e.team)));
+  if(detailText)body.append(el('div','description',detailText));
   const meta=el('div','meta');
-  meta.append(el('span','tag',e.type==='note'?'Facility note':e.type[0].toUpperCase()+e.type.slice(1)));
+  if(badge)meta.append(el('span',`tag badge${e.type==='game'?' badge-game':''}`,badge));
   if(e.source==='transportation'){
     if(!away&&e.facilityLocation)meta.append(el('span','tag',e.facilityLocation));
     if(away&&e.location&&!/Venue TBD/i.test(e.location))meta.append(el('span','tag',e.location));
@@ -126,7 +134,7 @@ const time = e.source === 'transportation'
   body.append(meta);card.append(body,when);enableGameDetails(card,e);return card;
 }
 function laneSection(lane,entries){
-  const section=el('section',`facility-lane lane-${lane.id}`);
+  const section=el('section',`facility-lane lane-${lane.id}`);section.dataset.lane=lane.id;
   const title=el('div','lane-title'),label=el('div','lane-label');
   label.append(el('span','lane-icon',lane.icon),el('h3','',lane.name));
   title.append(label,el('span','lane-count',`${entries.length} ${entries.length===1?'item':'items'}`));section.append(title);
@@ -175,6 +183,14 @@ function renderOverview(events){
   const section=el('div','overview-section');section.append(el('h3','','Today’s schedule'.replace('Today',selected===todayIso()?'Today':'Selected day')));
   const openWeek=el('button','subtle-button','Full schedule →');openWeek.onclick=()=>jumpTo('month');section.append(openWeek);container.append(section);
   if(!list.length){container.append(el('div','empty','No events are listed for this day. Use Month to browse other dates.'));return;}
+  const jump=el('nav','lane-jump');jump.setAttribute('aria-label','Jump to a section');
+  LANES.forEach((lane,i)=>{
+    const chip=el('button','lane-chip');chip.type='button';chip.disabled=!counts[i];
+    chip.append(el('span','chip-label',lane.id==='away'?'Away':lane.id==='gym'?'Gym':'Field'),el('span','chip-count',counts[i]));
+    chip.onclick=()=>container.querySelector(`.facility-lane[data-lane="${lane.id}"]`)?.scrollIntoView({behavior:'smooth',block:'start'});
+    jump.append(chip);
+  });
+  container.append(jump);
   const compact=el('div','facility-grid');
   // Show every item: a per-lane cap hid whole teams (e.g. MS Varsity Baseball, Nov 16, 2026).
   for(const lane of LANES)compact.append(laneSection(lane,sortEvents(list.filter(e=>laneFor(e)===lane.id))));
@@ -232,8 +248,12 @@ function renderTimeline(events){
     const last=Math.min(1440,Math.max(first+180,Math.ceil(max/60)*60+60));
     const height=(last-first)/60*60;
     const wrap=el('div','timeline-scroller');
-    const head=el('div','timeline-head');head.append(el('div','','Time'),el('div','','◌ Field & Outdoor'),el('div','','▤ Gym & Indoor'));wrap.append(head);
-    const body=el('div','timeline-main');body.style.height=`${height}px`;
+    // Give each overlapping activity a readable column; the timeline scrolls sideways when needed.
+    const laneCols=lane=>Math.max(1,...arrangeTracks(plotted[lane]).map(i=>i.columns));
+    const fieldMin=Math.max(155,laneCols('field')*96),gymMin=Math.max(155,laneCols('gym')*96);
+    const template=`53px minmax(${fieldMin}px,1fr) minmax(${gymMin}px,1fr)`,minWidth=`${53+fieldMin+gymMin}px`;
+    const head=el('div','timeline-head');head.style.gridTemplateColumns=template;head.style.minWidth=minWidth;head.append(el('div','','Time'),el('div','','◌ Field & Outdoor'),el('div','','▤ Gym & Indoor'));wrap.append(head);
+    const body=el('div','timeline-main');body.style.height=`${height}px`;body.style.gridTemplateColumns=template;body.style.minWidth=minWidth;
     const axis=el('div','time-axis');
     for(let time=first;time<=last;time+=60){const mark=el('div','time-label',clock(time));mark.style.top=`${(time-first)}px`;axis.append(mark);}
     body.append(axis);
@@ -247,14 +267,17 @@ function renderTimeline(events){
         block.style.width=`calc(${100/item.columns}% - 8px)`;
         block.style.left=`calc(${item.col*100/item.columns}% + 4px)`;
         block.style.right='auto';
-        const team=el('div','bar-title',e.type==='note'?(e.detail||e.team):e.team);
+        const team=el('div','bar-title',e.type==='note'?(e.detail||e.team):displayTeam(e.team));
         const time=el('div','time-small',item.point?`${clock(item.start)} · start only`:`${clock(item.start)}–${clock(item.end)}`);
-        block.append(team,time);block.title=`${e.team} — ${time.textContent}. ${e.detail||''}`;
+        block.append(team,time);block.title=`${displayTeam(e.team)} — ${time.textContent}. ${displayDetail(e)}`;
         enableGameDetails(block,e,{hint:false});track.append(block);
       }
       body.append(track);
     }
-    wrap.append(body);container.append(wrap);
+    wrap.append(body);
+    const hint=el('div','timeline-swipe','Swipe sideways to see every activity →');hint.hidden=true;
+    container.append(hint,wrap);
+    requestAnimationFrame(()=>{hint.hidden=wrap.scrollWidth<=wrap.clientWidth+4;});
     const legend=el('div','timeline-legend');legend.append(el('span','legend-block','Known time range'),el('span','legend-point','Start time only'));container.append(legend);
   }
   // Notes and no-time activities remain visible rather than being discarded.
@@ -269,8 +292,8 @@ function renderTimeline(events){
 }
 function render(){
   $('weekLabel').textContent=formatWeek();
-  syncTeamDropdown();
-  const candidateEvents=(mode==='month'?monthModel.events.filter(e=>e.date.slice(0,7)===monthFocus.slice(0,7)):model.events).filter(visible);
+  syncTeamDropdown();syncFilterToggle();
+  const candidateEvents=(mode==='month'?monthModel.events.filter(e=>e.date.slice(0,7)===monthFocus.slice(0,7)):model.events).filter(e=>visible(e)&&!isHiddenNote(e));
   const activeTeamPlaces=new Set(candidateEvents.filter(e=>!e.syntheticSafety).map(e=>e.date+'|'+e.location));
   const events=candidateEvents.filter(e=>!e.syntheticSafety||activeTeamPlaces.has(e.date+'|'+e.location));
   $('todayBtn').textContent=mode==='month'?'This month':'This week';
@@ -323,6 +346,10 @@ $('refresh').onclick=()=>{
   window.location.replace(url.href);
 };
 $('teamFilter').onchange=e=>{teamFilter=e.target.value;render();};
+if($('filterToggle'))$('filterToggle').onclick=()=>{
+  const bar=document.querySelector('.toolbar'),open=!bar.classList.contains('filters-open');
+  bar.classList.toggle('filters-open',open);$('filterToggle').setAttribute('aria-expanded',String(open));
+};
 
 load();
 setInterval(()=>{

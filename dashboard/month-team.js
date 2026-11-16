@@ -1,4 +1,5 @@
 import {enableGameDetails} from './game-details.js';
+import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
@@ -192,14 +193,15 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
     const items=create('div','lane-items');
     for(const e of entries){
       const card=create('article',`event ${e.type}`),body=create('div','body');card.append(create('span','marker'));
-      body.append(create('div','name',e.team),create('div','description',e.detail||'No details'));
-      const meta=create('div','meta');meta.append(create('span','tag',e.syntheticNote?'From facility notes':e.type==='note'?'Facility note':e.type[0].toUpperCase()+e.type.slice(1)));
+      const detailText=displayDetail(e),badge=badgeFor(e,key);
+      body.append(create('div','name',displayTeam(e.team)));if(detailText)body.append(create('div','description',detailText));
+      const meta=create('div','meta');if(badge)meta.append(create('span',`tag badge${e.type==='game'?' badge-game':''}`,badge));
       if(e.source==='transportation'){
         if(key==='away'&&e.location)meta.append(create('span','tag',e.location));
         if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(create('span','tag',`Dismissal: ${e.dismissal}`));
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }
-      body.append(meta);card.append(body,create('div','when',e.source==='transportation'?(e.time||clock(e.start)):(e.start==null?'TBD':clock(e.start))));enableGameDetails(card,e);items.append(card);
+      body.append(meta);card.append(body,create('div','when',e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','')));enableGameDetails(card,e);items.append(card);
     }
     if(!entries.length)items.append(create('div','lane-empty','Nothing scheduled'));
     lane.append(items);gridDetails.append(lane);
