@@ -176,11 +176,9 @@ function renderOverview(events){
   const openWeek=el('button','subtle-button','Full schedule →');openWeek.onclick=()=>jumpTo('month');section.append(openWeek);container.append(section);
   if(!list.length){container.append(el('div','empty','No events are listed for this day. Use Month to browse other dates.'));return;}
   const compact=el('div','facility-grid');
-  for(const lane of LANES)compact.append(laneSection(lane,sortEvents(list.filter(e=>laneFor(e)===lane.id)).slice(0,4)));
+  // Show every item: a per-lane cap hid whole teams (e.g. MS Varsity Baseball, Nov 16, 2026).
+  for(const lane of LANES)compact.append(laneSection(lane,sortEvents(list.filter(e=>laneFor(e)===lane.id))));
   container.append(compact);
-  if(counts.some(n=>n>4)){
-    const action=el('div','overview-shortcut');const btn=el('button','subtle-button','See all events →');btn.onclick=()=>jumpTo('month');action.append(btn);container.append(action);
-  }
 }
 
 // Use only actual stated time ranges to show occupied duration. A game
