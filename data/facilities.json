@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-17T20:01:12.333Z",
+  "fetchedAt": "2026-11-17T20:31:11.457Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -5488,7 +5488,7 @@
         ],
         [
           "Monday, November 16, 2026",
-          "7:30PM-9:00PM",
+          "8:00pm-9:30pm",
           "3:15PM-4:45PM ",
           "3:00PM-4:15PM (Cages)",
           "3:00PM-4:30PM",
@@ -5509,7 +5509,7 @@
         ],
         [
           "Tuesday, November 17, 2026",
-          "",
+          "8:00pm-9:30pm",
           "3:15PM-4:45PM ",
           "",
           "3:00PM-4:30PM",
@@ -5530,7 +5530,7 @@
         ],
         [
           "Wednesday, November 18, 2026",
-          "",
+          "8:00pm-9:30pm",
           "",
           "3:00PM-4:45PM",
           "",
@@ -5551,7 +5551,7 @@
         ],
         [
           "Thursday, November 19, 2026",
-          "",
+          "8:00pm-9:30pm",
           "3:15PM-4:45PM ",
           "3:00PM-4:45PM",
           "",
