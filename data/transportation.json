@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-19T18:01:23.079Z",
+  "fetchedAt": "2026-11-19T18:31:10.824Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1911,51 +1911,11 @@
           ""
         ],
         [
-          "Monday, December 14, 2026",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Highland Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
           "Friday, December 11, 2026",
           "HS-JV Boys Basketball ",
           "",
           "4:30pm",
           "Arizona Lutheran ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "MS Cross-Country",
-          "",
-          "3:00PM",
-          "North Valley Christian Meet",
-          "A",
-          "Anthem Community Park",
-          ""
-        ],
-        [
-          "Wednesday, December 16, 2026",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "ALA Ironwood",
-          "A",
-          "ALA Ironwood",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Highland Prep",
           "H ",
           "SCA",
           ""
@@ -1971,23 +1931,43 @@
           ""
         ],
         [
-          "Tuesday, December 29, 2026",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "TBD",
-          "New Year Classic ",
-          "A",
-          "TBD",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
+          "Monday, December 14, 2026",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "North Valley Christian ",
+          "Highland Prep",
           "H ",
           "SCA",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "MS Cross-Country",
+          "",
+          "3:00PM",
+          "North Valley Christian Meet",
+          "A",
+          "Anthem Community Park",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Highland Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "ALA Ironwood",
+          "A",
+          "ALA Ironwood",
           ""
         ],
         [
@@ -2011,11 +1991,21 @@
           ""
         ],
         [
-          "Friday, January 08, 2027",
+          "Tuesday, December 29, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "TBD",
+          "New Year Classic ",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "PCDS ",
+          "North Valley Christian ",
           "H ",
           "SCA",
           ""
@@ -2028,26 +2018,6 @@
           "North Valley Christian ",
           "H ",
           "SCA",
-          ""
-        ],
-        [
-          "Saturday, January 09, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Northland Prep",
-          "A",
-          "Northland Prep",
-          ""
-        ],
-        [
-          "Friday, January 08, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "PCDS",
-          "",
-          "",
           ""
         ],
         [
@@ -2061,13 +2031,33 @@
           ""
         ],
         [
-          "Monday, January 11, 2027",
+          "Friday, January 08, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Heritage Academy Mesa",
+          "PCDS ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "PCDS",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Northland Prep",
           "A",
-          "Heritage Academy Mesa",
+          "Northland Prep",
           ""
         ],
         [
@@ -2075,29 +2065,9 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
-          "",
-          "",
-          "",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Gilbert Christian ",
+          "Northland Prep ",
           "A",
-          "Gilbert Christian ",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "",
-          "",
-          "",
+          "Northland Prep",
           ""
         ],
         [
@@ -2111,13 +2081,33 @@
           ""
         ],
         [
-          "Thursday, January 14, 2027",
+          "Monday, January 11, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Scottsdale Prep",
-          "H ",
-          "SCA",
+          "Heritage Academy Mesa",
+          "A",
+          "Heritage Academy Mesa",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Heritage Academy Messa ",
+          "A",
+          "Family Life Center ",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Gilbert Christian ",
+          "A",
+          "Gilbert Christian ",
           ""
         ],
         [
@@ -2125,29 +2115,9 @@
           "HS-JV Boys Basketball ",
           "",
           "5:30pm",
-          "",
-          "",
-          "",
-          ""
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "San Tan Charter ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "",
-          "",
-          "",
+          "Gilbert Christian",
+          "A",
+          "Gilbert Christian ",
           ""
         ],
         [
@@ -2161,6 +2131,56 @@
           ""
         ],
         [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "2:30pm",
+          "San Tan Charter ",
+          "A",
+          "San Tan Charter ",
+          ""
+        ],
+        [
           "Friday, January 22, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2171,51 +2191,21 @@
           ""
         ],
         [
-          "Wednesday, January 20, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "",
-          "",
-          "",
-          ""
-        ],
-        [
-          "Tuesday, January 26, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "ALA-Mesa North",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
           "Friday, January 22, 2027",
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
-          "",
-          "",
-          "",
-          ""
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "2:30pm",
-          "San Tan Charter ",
+          "Rancho Solano Prep",
           "A",
-          "San Tan Charter ",
+          "Rancho Solano ",
           ""
         ],
         [
-          "Friday, January 29, 2027",
+          "Tuesday, January 26, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Fountain Hills ",
+          "ALA-Mesa North",
           "H ",
           "SCA",
           ""
@@ -2225,9 +2215,9 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
-          "",
-          "",
-          "",
+          "ALA-Mesa North",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -2241,13 +2231,13 @@
           ""
         ],
         [
-          "Thursday, February 04, 2027",
+          "Friday, January 29, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Chandler Prep ",
-          "A",
-          "Chandler Prep ",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -2255,9 +2245,9 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
-          "",
-          "",
-          "",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -2272,12 +2262,22 @@
         ],
         [
           "Thursday, February 04, 2027",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:00pm",
+          "Chandler Prep ",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Thursday, February 04, 2027",
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
-          "",
-          "",
-          "",
+          "Chandler Prep ",
+          "A",
+          "Chandler Prep",
           ""
         ]
       ]
