@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-19T15:01:11.364Z",
+  "fetchedAt": "2026-11-19T15:31:21.545Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1775,10 +1775,10 @@
           "HS- Varsity Flag Football",
           "x",
           "11:00AM",
-          "State Final If Neccessary",
+          "State Final: Ben Franklin",
           "A",
           "Coronado Del Sol HS",
-          "x"
+          "Van K, Van D"
         ],
         [
           "Saturday, November 21, 2026",
