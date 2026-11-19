@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-19T20:01:12.304Z",
+  "fetchedAt": "2026-11-19T20:31:12.051Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1801,6 +1801,16 @@
           ""
         ],
         [
+          "Friday, November 27, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "TBD",
+          "Black Friday Basketball Classic ",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
           "Wednesday, December 02, 2026",
           "MS Cross-Country",
           "",
@@ -1851,6 +1861,26 @@
           ""
         ],
         [
+          "Saturday, December 05, 2026",
+          "HS-JV Girls Basketball ",
+          "2:30pm",
+          "",
+          "Pima ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Pima",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
           "Monday, December 07, 2026",
           "HS-Varsity Boys Basketball ",
           "",
@@ -1875,6 +1905,26 @@
           "HS-Frosh Boys Basketball ",
           "",
           "1:00pm",
+          "Phoenix Christian ",
+          "A",
+          "Phoenix Christian",
+          ""
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Phoenix Christian",
+          "A",
+          "Phoenix Christian",
+          ""
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-JV Girls Basketball ",
+          "2:30pm",
+          "",
           "Phoenix Christian ",
           "A",
           "Phoenix Christian",
@@ -1911,6 +1961,16 @@
           ""
         ],
         [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
+          ""
+        ],
+        [
           "Friday, December 11, 2026",
           "HS-JV Boys Basketball ",
           "",
@@ -1926,6 +1986,26 @@
           "",
           "1:30pm ",
           "Arizona Lutheran",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "6:00pm ",
+          "Arizona Lutheran",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-JV Girls Basketball ",
+          "3:00pm",
+          "",
+          "Arizona Lutheran ",
           "H",
           "SCA",
           ""
@@ -1955,6 +2035,16 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
+          "Highland Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
           "Highland Prep",
           "H ",
           "SCA",
@@ -2031,6 +2121,16 @@
           ""
         ],
         [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Northland Valley",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
           "Friday, January 08, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2045,6 +2145,16 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
+          "PCDS",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
           "PCDS",
           "H ",
           "SCA",
@@ -2081,6 +2191,16 @@
           ""
         ],
         [
+          "Saturday, January 09, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Northland Prep ",
+          "A",
+          "Northland Prep",
+          ""
+        ],
+        [
           "Monday, January 11, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2098,6 +2218,16 @@
           "Heritage Academy Messa ",
           "A",
           "Family Life Center ",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Heritage Academy Mesa",
+          "A",
+          "Family Life Center",
           ""
         ],
         [
@@ -2131,6 +2261,26 @@
           ""
         ],
         [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Gilbert Christian",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-JV Girls Basketball ",
+          "4:00pm",
+          "",
+          "Gilbert Christian ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
           "Thursday, January 14, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2145,6 +2295,16 @@
           "HS-JV Boys Basketball ",
           "",
           "4:00pm ",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
           "Scottsdale Prep",
           "H ",
           "SCA",
@@ -2178,6 +2338,16 @@
           "San Tan Charter ",
           "A",
           "San Tan Charter ",
+          ""
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -2201,6 +2371,16 @@
           ""
         ],
         [
+          "Friday, January 22, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          ""
+        ],
+        [
           "Tuesday, January 26, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2231,6 +2411,16 @@
           ""
         ],
         [
+          "Tuesday, January 26, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "ALA-Mesa North ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
           "Friday, January 29, 2027",
           "HS-Varsity Boys Basketball ",
           "",
@@ -2258,6 +2448,36 @@
           "Fountain Hills ",
           "H",
           "SCA",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, February 01, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Horizon Honors ",
+          "A",
+          "Horizon Honors ",
+          ""
+        ],
+        [
+          "Monday, February 01, 2027",
+          "HS-JV Girls Basketball ",
+          "2:30pm",
+          "",
+          "Horizon Honors",
+          "A",
+          "Horizon Honors ",
           ""
         ],
         [
@@ -2278,6 +2498,26 @@
           "Chandler Prep ",
           "A",
           "Chandler Prep",
+          ""
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-Varsity Girls Basketball",
+          "",
+          "5:30pm",
+          "Chandler Prep",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "",
+          "HS-Varsity Boys Soccer ",
+          "",
+          "",
+          "",
+          "",
+          "",
           ""
         ]
       ]
