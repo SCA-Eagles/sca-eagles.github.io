@@ -30,13 +30,13 @@ test('facility headers put both baseball columns in the Baseball Field lane', ()
   ]);
 });
 
-test('the main field header keeps softball, soccer, flag football and a baseball practice on turf', () => {
-  const events = schedules([[sheetDate, '3–4 pm', '4–5 pm', '5–6 pm', '6–7 pm']]);
+test('the main field header keeps turf sports separate from a simultaneous baseball practice', () => {
+  const events = schedules([[sheetDate, '3–4 pm', '4–5 pm', '5–6 pm', '3–4 pm']]);
   assert.deepEqual(events.map(event => [event.team, event.type, event.fieldArea, laneFor(event)]), [
     ['MS Softball', 'practice', 'main', 'field'],
+    ['HS JV Baseball', 'practice', 'main', 'baseball'],
     ['MS Boys Soccer', 'practice', 'main', 'field'],
     ['HS Varsity Flag Football', 'practice', 'main', 'field'],
-    ['HS JV Baseball', 'practice', 'main', 'field'],
   ]);
 });
 
@@ -64,12 +64,12 @@ test('baseball games listed away or at an off-campus site use the Away lane', ()
   ]);
 });
 
-test('a merged home baseball game keeps the explicit facility assignment', () => {
+test('a merged home baseball game uses the baseball lane despite a main field column', () => {
   const events = schedules([[sheetDate, '', '', '', '4 pm vs Fixture Opponent']], [
     [sheetDate, 'HS JV Baseball', '', '4 pm', 'Fixture Opponent', 'H', 'SCA'],
   ]);
   assert.equal(events.length, 1);
   assert.equal(events[0].source, 'transportation');
   assert.equal(events[0].fieldArea, 'main');
-  assert.equal(laneFor(events[0]), 'field');
+  assert.equal(laneFor(events[0]), 'baseball');
 });
