@@ -1,3 +1,4 @@
+import {fieldLane} from './lanes.js';
 import {enableGameDetails} from './game-details.js?v=20261119-brackets';
 import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // SCA Master Schedule: month calendar and season-aware team categories.
@@ -186,8 +187,7 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
       if(e.side==='A')return key==='away';
       if(e.source==='facilities'&&e.type!=='note'&&/\s@\s*|\b(?:away|at\s+\w+)/i.test(e.detail)&&e.type==='game')return key==='away';
       if(e.source==='transportation'&&e.location&&!/^(?:SCA|Scottsdale Christian(?: Academy)?|Home)\b/i.test(e.location))return key==='away';
-      let lane=e.location==='Gym'||(e.source==='transportation'&&/volleyball|basketball/i.test(e.team))?'gym':'field';
-      if(lane==='field'&&(e.fieldArea?e.fieldArea==='baseball':/baseball/i.test(e.team||'')))lane='baseball';
+      const lane=e.location==='Gym'||(e.source==='transportation'&&/volleyball|basketball/i.test(e.team))?'gym':fieldLane(e);
       return key===lane;
     }).sort((a,b)=>(a.start??9999)-(b.start??9999));
     if(key==='baseball'&&!entries.length)continue;

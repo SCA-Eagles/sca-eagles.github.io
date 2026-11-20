@@ -1,7 +1,8 @@
 import {enableGameDetails} from './game-details.js?v=20261119-brackets';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261119-brackets';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=field-lanes';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261115-baseball';
+import {laneFor} from './lanes.js';
 
 const $ = id => document.getElementById(id);
 const todayIso = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
@@ -69,32 +70,6 @@ async function load(){
   }finally{loading=false;$('refresh').disabled=false;render();}
 }
 
-// Preserve the existing lane classification, including the source's inferred
-// home-game sport lane. Off-campus events never reserve an on-campus facility.
-const ON_CAMPUS=/^(?:sca|scottsdale christian(?: academy)?|home)(?:\b|$)/i;
-const INDOOR_SPORTS=/volleyball|basketball|wrestling|cheer|gymnastics/i;
-function isAwayDescription(detail){return /(?:^|[\s\n])(?:at\s+[a-z]|@\s*[a-z])/i.test(detail||'')&&!/(?:^|[\s\n])(?:at\s+sca|@\s*sca)\b/i.test(detail||'');}
-function laneFor(e){
-  if(e.side==='A')return 'away';
-  if(e.source==='facilities'){
-    if(e.type!=='note'&&isAwayDescription(e.detail))return 'away';
-    if(e.location==='Gym')return 'gym';
-    return fieldLane(e);
-  }
-  if(e.source==='transportation'){
-    if(e.location&&!ON_CAMPUS.test(e.location))return 'away';
-    if(e.facilityLocation==='Gym')return 'gym';
-    if(e.facilityLocation==='Field')return fieldLane(e);
-    return INDOOR_SPORTS.test(e.team)?'gym':fieldLane(e);
-  }
-  return e.location==='Gym'?'gym':fieldLane(e);
-}
-// Baseball has its own field: the sheet's "Baseball Field Schedule" header, or a
-// home baseball game the sheet doesn't list. Softball shares the main field.
-function fieldLane(e){
-  if(e.fieldArea)return e.fieldArea==='baseball'?'baseball':'field';
-  return /baseball/i.test(e.team||'')?'baseball':'field';
-}
 const LANES=[
   {id:'field',name:'Field & Outdoor',icon:'◌'},
   {id:'baseball',name:'Baseball Field',icon:'◇'},
@@ -184,7 +159,7 @@ function renderOverview(events){
   top.append(heading);
   const timelineBtn=el('button','subtle-button','View timeline →');timelineBtn.onclick=()=>jumpTo('timeline');top.append(timelineBtn);container.append(top);
   const pills=el('div','overview-pills');
-  for(const [value,label] of [[counts[0]+counts[1],'Field'],[counts[2],'Gym'],[counts[3],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
+  for(const [value,label] of [[counts[0],'Field'],[counts[2],'Gym'],[counts[3],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
     const p=el('div','overview-pill');p.append(el('div','overview-value',value),el('div','overview-caption',label));pills.append(p);
   }
   container.append(pills);
