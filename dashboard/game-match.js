@@ -12,17 +12,22 @@ export function teamKey(raw){
  const color=s.match(/\b(red|blue|white|gold)\b/)?.[0]||'';
  return [school,sport,gender,level,color].join('|');
 }
+function schoolName(value){
+ const key=normalize(value);
+ return key==='benfranklin'?'benjaminfranklin':key;
+}
 function opponentName(e){
  let s=e.opponent||e.detail?.match(/(?:\bvs\.?|\bat|@)\s+(.+)/i)?.[1]||'';
- s=s.split('·')[0].replace(/^(?:first round|second round|quarterfinals?|semifinals?|championship)\s*:\s*/i,'');
+ s=s.split('·')[0].replace(/^(?:first round|second round|(?:state\s+)?(?:quarterfinals?|semifinals?|finals?|championship))\s*:\s*/i,'');
  s=s.replace(/\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b/ig,'').trim();
- return normalize(s);
+ return schoolName(s);
 }
 export function matchGame(e,records){
  if(e.type!=='game')return null;
  const key=teamKey(e.team);let list=records.filter(r=>r.teamKey===key&&r.date===e.date);
  const opponent=opponentName(e);
- if(opponent)list=list.filter(r=>normalize(r.opponent)===opponent);
+ if(!opponent)list=list.filter(r=>r.source!=='AIA bracket');
+ if(opponent)list=list.filter(r=>schoolName(r.opponent)===opponent);
  if(list.length>1&&Number.isFinite(e.start))list=list.filter(r=>r.start===e.start);
  return list.length===1?list[0]:null;
 }

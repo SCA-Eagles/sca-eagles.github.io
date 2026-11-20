@@ -200,7 +200,7 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
       body.append(create('div','name',displayTeam(e.team)));if(detailText)body.append(create('div','description',detailText));
       const meta=create('div','meta');if(badge)meta.append(create('span',`tag badge${e.type==='game'?' badge-game':''}`,badge));
       if(e.source==='transportation'){
-        if(key==='away'&&e.location)meta.append(create('span','tag',e.location));
+        if(key==='away'&&e.location)meta.append(create('span','tag game-venue',e.location));
         if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(create('span','tag',`Dismissal: ${e.dismissal}`));
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }

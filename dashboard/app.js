@@ -135,7 +135,7 @@ const time = e.source === 'transportation'
   if(badge)meta.append(el('span',`tag badge${e.type==='game'?' badge-game':''}`,badge));
   if(e.source==='transportation'){
     if(!away&&e.facilityLocation)meta.append(el('span','tag',e.facilityLocation));
-    if(away&&e.location&&!/Venue TBD/i.test(e.location))meta.append(el('span','tag',e.location));
+    if(away&&e.location&&!/Venue TBD/i.test(e.location))meta.append(el('span','tag game-venue',e.location));
     if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(el('span','tag',`Dismissal: ${e.dismissal}`));
     if(e.transport&&!/^x$/i.test(e.transport))meta.append(el('span','tag',`Vehicle: ${e.transport}`));
   }

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {load} from 'cheerio';
 import {teamKey,matchGame} from '../dashboard/game-match.js';
-import {parseAZ,parseQS} from '../scripts/game-locations.mjs';
+import {parseAZ,parseBracket,parseQS} from '../scripts/game-locations.mjs';
 const event={type:'game',team:'HS-Varsity Volleyball',date:'2026-11-12',opponent:'Semifinal: San Tan Charter',start:1140,location:'Wrong spreadsheet location'};
 const record={teamKey:teamKey(event.team),date:event.date,opponent:'San Tan Charter',start:1140,venue:'Mountain Pointe High School',address:''};
 test('neutral venue uses official listing and never the home or spreadsheet venue',()=>{assert.equal(matchGame(event,[record]).venue,'Mountain Pointe High School');assert.equal(matchGame(event,[record]).address,'');});
@@ -23,4 +23,21 @@ test('AZ parser preserves explicit neutral venue, school year, and blank address
 test('QuickScores parser uses the game venue even when it differs from either team',()=>{
  const $=load(`<li class="event" id="7"><time datetime="2026-09-11T17:30"></time><span class="team-name">Fountain Hills</span><span class="team-name">Scottsdale Christian Academy</span><span class="e-local"><a href="/Orgs/LocationDetails.php?OrgDir=ccsl&LocationID=434884">VCHS</a></span></li>`);
  const [r]=parseQS($,'https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ccsl&LeagueID=1736276','Boys Tackle Football- 11 man');assert.equal(r.venue,'VCHS');assert.equal(r.teamKey,teamKey('MS Football'));assert.equal(r.address,'');assert.equal(r.date,'2026-09-11');
+});
+
+test('AIA final matches a school alias and ignores unconfirmed bracket venues',()=>{
+ const url='https://azpreps365.com/brackets/football-flag/3a/test-final';
+ const $=load(`<div id="bracket"><ul><li data-contest-id="42">
+ <div class="details"><time datetime="2026-11-21T11:00:00-07:00"></time><span class="location">Corona del Sol HS</span></div>
+ <div class="participant" data-team-id="1"><span class="team">Benjamin Franklin</span></div>
+ <div class="participant" data-team-id="2"><span class="team">Scottsdale Christian</span></div></li></ul></div>`);
+ const event={type:'game',team:'HS Varsity Flag Football',date:'2026-11-21',opponent:'State Final: Ben Franklin'};
+ const records=parseBracket($,url,'football-flag');
+ const match=matchGame(event,records);
+ assert.equal(match.venue,'Corona del Sol HS');
+ assert.equal(match.sourceUrl,url);
+ assert.equal(match.address,'');
+ assert.equal(matchGame({...event,opponent:''},records),null);
+ $('.location').text('High Seed');
+ assert.deepEqual(parseBracket($,url,'football-flag'),[]);
 });

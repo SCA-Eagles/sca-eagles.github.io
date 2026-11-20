@@ -21,17 +21,20 @@ function setup(){
  dialog.addEventListener('close',()=>{request++;});
  dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 }
+function staleLocations(data){
+ return !data||!Number.isFinite(Date.parse(data.checkedAt))||Date.now()-Date.parse(data.checkedAt)>36*60*60*1000;
+}
 export async function showGame(e){
  setup();const current=++request;heading.textContent=e.team;content.replaceChildren(node('p','Checking official game details…'));if(!dialog.open)dialog.showModal();
  const data=await loadLocations();if(current!==request||!dialog.open)return;
  content.replaceChildren(node('p',new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})));
- const stale=data&&(!Number.isFinite(Date.parse(data.checkedAt))||Date.now()-Date.parse(data.checkedAt)>36*60*60*1000);
+ const stale=staleLocations(data);
  const match=data&&!stale?matchGame(e,data.records||[]):null;
  const dl=node('dl');for(const [label,value]of [['Location',match?.venue||'Location not listed'],['Address',match?.address||'Address not listed']]){dl.append(node('dt',label),node('dd',value));}content.append(dl);
  if(match){
   if(match.opponent)content.prepend(node('p','vs '+match.opponent));
   if(match.address){const a=node('a','Get Directions');a.className='directions';a.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(match.address);a.target='_blank';a.rel='noopener noreferrer';content.append(a);}
-  for(const [label,url]of [[`View on ${match.source}`,match.sourceUrl],['Address source',match.addressSourceUrl]]){const href=officialLink(url);if(href){const a=node('a',label);a.href=href;a.target='_blank';a.rel='noopener noreferrer';content.append(a);}}
+  for(const [label,url]of [[match.source==='AIA bracket'?'View AIA bracket':`View on ${match.source}`,match.sourceUrl],['Address source',match.addressSourceUrl]]){const href=officialLink(url);if(href){const a=node('a',label);a.href=href;a.target='_blank';a.rel='noopener noreferrer';content.append(a);}}
  }else{
   content.append(node('p',!data||stale?'Official game details are temporarily unavailable.':'No unique official listing matched this game.'));
   const a=node('a',/\bHS\b/i.test(e.team)?'Check AZPreps365':'Check QuickScores');a.href=/\bHS\b/i.test(e.team)?'https://azpreps365.com/schools/scottsdalechristian':'https://www.quickscores.com/ccsl';a.target='_blank';a.rel='noopener noreferrer';content.append(a);
@@ -42,6 +45,15 @@ export function enableGameDetails(element,event,{hint=true}={}){
  if(event.type!=='game')return;
  element.classList.add('game-clickable');element.tabIndex=0;element.setAttribute('role','button');element.setAttribute('aria-haspopup','dialog');element.setAttribute('aria-label',`Game details: ${event.team}, ${event.date}`);
  element.addEventListener('click',()=>showGame(event));element.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGame(event);}});
+ const meta=element.querySelector('.meta');
+ if(meta)loadLocations().then(data=>{
+  if(staleLocations(data))return;
+  const match=matchGame(event,data.records||[]);
+  if(!match?.venue)return;
+  let venue=meta.querySelector('.game-venue');
+  if(!venue){venue=node('span');venue.className='tag game-venue';meta.append(venue);}
+  venue.textContent=match.venue;
+ });
  if(hint){const label=node('span','View game details →');label.className='game-open-hint';(element.querySelector('.body')||element).append(label);}
  setup();
 }

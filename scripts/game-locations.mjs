@@ -10,9 +10,10 @@ const locationURL=QS+'/Orgs/LocationsList.php?OrgDir=ccsl';
 const sports={football:'Boys Football','football-flag':'Girls Flag Football','volleyball-girls':'Girls Volleyball','volleyball-boys':'Boys Volleyball','basketball-boys':'Boys Basketball','basketball-girls':'Girls Basketball','soccer-winter-boys':'Boys Soccer','soccer-winter-girls':'Girls Soccer',baseball:'Boys Baseball',softball:'Girls Softball','tennis-boys':'Boys Tennis','tennis-girls':'Girls Tennis','crosscountry-boys':'Boys Cross Country','crosscountry-girls':'Girls Cross Country','swimming-boys':'Boys Swim','swimming-girls':'Girls Swim','golf-spring':'Golf','track-boys':'Boys Track','track-girls':'Girls Track', 'beach-girls':'Girls Beach Volleyball'};
 const months={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
 const cache=new Map();
+const finalURL=new WeakMap();
 async function page(url){
  const u=new URL(url);if(!['azpreps365.com','www.quickscores.com'].includes(u.hostname))throw Error('Unapproved location source');
- if(!cache.has(url))cache.set(url,(async()=>{const r=await fetch(url,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('Source HTTP '+r.status);return load(await r.text());})());return cache.get(url);
+ if(!cache.has(url))cache.set(url,(async()=>{const r=await fetch(url,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('Source HTTP '+r.status);const $=load(await r.text());finalURL.set($,r.url);return $;})());return cache.get(url);
 }
 async function pool(items,fn){let i=0;await Promise.all(Array.from({length:3},async()=>{while(i<items.length)await fn(items[i++]);}));}
 export function parseAZ($,url){
@@ -26,6 +27,21 @@ export function parseAZ($,url){
   const op=e.find('.opponent').clone();op.find('.mascot,figure').remove();
   rows.push({id:'az-'+e.attr('data-contest-id'),teamKey:key,date:`${year}-${String(month).padStart(2,'0')}-${parts[1].padStart(2,'0')}`,start:parseTime(e.find('.time').text()),opponent:tidy(op.text()),venue:tidy(e.find('.location').text()),address:'',source:'AZPreps365',sourceUrl:url});
  });return rows;
+}
+export function parseBracket($,url,sport){
+ const rows=[];
+ $('#bracket li[data-contest-id]').each((_,el)=>{
+  const game=$(el);
+  const teams=game.find('.participant[data-team-id] .team').map((_,team)=>tidy($(team).text())).get();
+  const own=teams.findIndex(team=>/^Scottsdale Christian(?: Academy)?$/i.test(team));
+  if(teams.length!==2||own<0)return;
+  const stamp=game.find('time[datetime]').attr('datetime')?.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/);
+  const venue=tidy(game.find('.details .location').text());
+  if(!stamp||!venue||/^(?:@\s*)?(?:high(?:er)? seed|tbd|tba)$/i.test(venue))return;
+  rows.push({id:'az-'+game.attr('data-contest-id'),teamKey:teamKey('HS '+sports[sport]+' Varsity'),date:stamp[1],
+   start:Number(stamp[2])*60+Number(stamp[3]),opponent:teams[1-own],venue,address:'',source:'AIA bracket',sourceUrl:url});
+ });
+ return rows;
 }
 export function qsTeam(label,own){
  let team='';
@@ -66,7 +82,20 @@ export async function generateGameLocations(siteDir){
   await pool([...roots.values()],async root=>attempt(root,async()=>{
    const $=await page(root),urls=new Set([root]);const prefix=new URL(root).pathname.split('/').slice(0,4).join('/')+'/';
    $('a[href]').each((i,e)=>{const h=$(e).attr('href');if(h.startsWith(prefix)&&/\/\d+-(?:varsity|jv|jv-2|frso)$/.test(h))urls.add(AZ+h);});
-   for(const url of urls)await attempt(url,async()=>records.push(...parseAZ(await page(url),url)));
+   for(const url of urls)await attempt(url,async()=>{
+    const schedule=await page(url);
+    records.push(...parseAZ(schedule,url));
+    if(!url.endsWith('-varsity'))return;
+    const sport=new URL(url).pathname.split('/')[2];
+    const standings=schedule('a[href^="/standings/"]').map((_,a)=>schedule(a).attr('href').split('#')[0]).get()
+     .find(h=>h.startsWith('/standings/'+sport+'/')&&/\/[1-6]a$/.test(h));
+    if(!standings)return;
+    const bracketURL=AZ+standings.replace('/standings/','/brackets/');
+    await attempt(bracketURL,async()=>{
+     const bracket=await page(bracketURL);
+     records.push(...parseBracket(bracket,finalURL.get(bracket),sport));
+    });
+   });
   }));
  });
  await attempt('QuickScores',async()=>{
@@ -79,6 +108,7 @@ export async function generateGameLocations(siteDir){
  const venues=new Map();
  await attempt('QuickScores venue directory',async()=>{const $=await page(locationURL);$('a[href*="LocationDetails.php"]').each((i,e)=>venues.set(normalize($(e).text()),new URL($(e).attr('href'),QS).href));});
  await pool(records,async r=>{
+  if(r.source==='AIA bracket')return;
   const url=r.venueUrl||venues.get(normalize(r.venue));if(!url)return;
   await attempt(url,async()=>{const $=await page(url);const address=$('#main-content > p.notranslate').clone();address.find('br').replaceWith(', ');r.address=tidy(address.text());if(r.address)r.addressSourceUrl=url;});
  });
