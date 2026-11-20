@@ -1,6 +1,6 @@
 import {enableGameDetails} from './game-details.js?v=20261119-brackets';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261119-brackets';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=field-lanes';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261115-baseball';
 import {laneFor} from './lanes.js';
 
@@ -159,7 +159,7 @@ function renderOverview(events){
   top.append(heading);
   const timelineBtn=el('button','subtle-button','View timeline →');timelineBtn.onclick=()=>jumpTo('timeline');top.append(timelineBtn);container.append(top);
   const pills=el('div','overview-pills');
-  for(const [value,label] of [[counts[0]+counts[1],'Field'],[counts[2],'Gym'],[counts[3],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
+  for(const [value,label] of [[counts[0],'Field'],[counts[2],'Gym'],[counts[3],'Away'],[list.filter(e=>e.type==='game').length,'Games']]){
     const p=el('div','overview-pill');p.append(el('div','overview-value',value),el('div','overview-caption',label));pills.append(p);
   }
   container.append(pills);
