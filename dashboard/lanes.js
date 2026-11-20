@@ -18,9 +18,7 @@ export function laneFor(e){
   }
   return e.location==='Gym'?'gym':fieldLane(e);
 }
-// Baseball has its own field: the sheet's "Baseball Field Schedule" header, or a
-// home baseball game the sheet doesn't list. Softball shares the main field.
-function fieldLane(e){
-  if(e.fieldArea)return e.fieldArea==='baseball'?'baseball':'field';
-  return /baseball/i.test(e.team||'')?'baseball':'field';
+// Baseball uses its own field even when its column is under the main field header.
+export function fieldLane(e){
+  return e.fieldArea==='baseball'||/baseball/i.test(e.team||'')?'baseball':'field';
 }
