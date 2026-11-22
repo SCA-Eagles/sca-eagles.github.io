@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-22T20:01:14.671Z",
+  "fetchedAt": "2026-11-22T20:31:11.651Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -19,46 +19,6 @@
           "H/A",
           "Venue",
           "Transportation"
-        ],
-        [
-          "Tuesday, January 06, 2026",
-          "MS Cross-Country",
-          "",
-          "4:00PM",
-          "Valley Christian Meet",
-          "A",
-          "Kiwanis Park",
-          ""
-        ],
-        [
-          "Saturday, January 10, 2026",
-          "MS Cross-Country",
-          "",
-          "",
-          "League Championship",
-          "A",
-          "",
-          ""
-        ],
-        [
-          "Wednesday, January 14, 2026",
-          "MS Cross-Country",
-          "",
-          "",
-          "Gilbert Christian Meet",
-          "A",
-          "Gilbert Youth Soccer Association",
-          ""
-        ],
-        [
-          "Monday, January 19, 2026",
-          "MS Cross-Country",
-          "",
-          "",
-          "Christ Greenfield Host",
-          "A",
-          "",
-          ""
         ],
         [
           "Wednesday, June 24, 2026",
@@ -1793,12 +1753,12 @@
         [
           "Monday, November 23, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
-          "TBD",
-          "PXU Coyote Classic ",
+          "1:52PM",
+          "3:30pm",
+          "PXU Coyote Classic: vs. Independence ",
           "A",
-          "TBD",
-          ""
+          "Alhambra HS",
+          "Van K"
         ],
         [
           "Friday, November 27, 2026",
@@ -1821,16 +1781,6 @@
           ""
         ],
         [
-          "Saturday, December 05, 2026",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Pima ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
           "Friday, December 04, 2026",
           "HS-Varsity Boys Soccer ",
           "",
@@ -1841,13 +1791,13 @@
           ""
         ],
         [
-          "Monday, December 07, 2026",
+          "Saturday, December 05, 2026",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Phoenix Christian",
-          "A",
-          "Phoenix Christian ",
+          "Pima ",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -1891,13 +1841,13 @@
           ""
         ],
         [
-          "Wednesday, December 09, 2026",
+          "Monday, December 07, 2026",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
-          "Veritas Prep",
+          "Phoenix Christian",
           "A",
-          "Veritas Prep",
+          "Phoenix Christian ",
           ""
         ],
         [
@@ -1961,13 +1911,13 @@
           ""
         ],
         [
-          "Friday, December 11, 2026",
+          "Wednesday, December 09, 2026",
           "HS-Varsity Boys Basketball ",
           "",
-          "7:30pm",
-          "Arizoana Lutheran ",
-          "H ",
-          "SCA",
+          "7:00pm",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
           ""
         ],
         [
@@ -2018,6 +1968,16 @@
           "Arete prep",
           "A",
           "Arete Prep",
+          ""
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "7:30pm",
+          "Arizoana Lutheran ",
+          "H ",
+          "SCA",
           ""
         ],
         [
@@ -2201,6 +2161,16 @@
           ""
         ],
         [
+          "Wednesday, January 06, 2027",
+          "MS Cross-Country",
+          "",
+          "4:00PM",
+          "Valley Christian Meet",
+          "A",
+          "Kiwanis Park",
+          ""
+        ],
+        [
           "Thursday, January 07, 2027",
           "HS-Varsity Girls Soccer ",
           "",
@@ -2278,6 +2248,16 @@
           "Northland Prep ",
           "A",
           "Northland Prep",
+          ""
+        ],
+        [
+          "Sunday, January 10, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "League Championship",
+          "A",
+          "",
           ""
         ],
         [
@@ -2402,6 +2382,16 @@
         ],
         [
           "Thursday, January 14, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "Gilbert Christian Meet",
+          "A",
+          "Gilbert Youth Soccer Association",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
           "HS-Varsity Boys Basketball ",
           "",
           "7:00pm",
@@ -2448,6 +2438,16 @@
           "Tempe Prep",
           "H",
           "SCA",
+          ""
+        ],
+        [
+          "Tuesday, January 19, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "Christ Greenfield Host",
+          "A",
+          "",
           ""
         ],
         [
