@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-22T20:31:11.651Z",
+  "fetchedAt": "2026-11-22T21:01:16.178Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1763,12 +1763,22 @@
         [
           "Friday, November 27, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "TBD",
           "Black Friday Basketball Classic ",
           "A",
-          "TBD",
-          ""
+          "Higley High School",
+          "Van K"
+        ],
+        [
+          "Saturday, November 28, 2026",
+          "HS- Varsity Football",
+          "x",
+          "3:00PM",
+          "State Championship: San Tan Charter",
+          "A",
+          "Mountain Point HS",
+          "x"
         ],
         [
           "Wednesday, December 02, 2026",
