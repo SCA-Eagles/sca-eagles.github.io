@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-22T18:01:11.908Z",
+  "fetchedAt": "2026-11-22T18:31:12.453Z",
   "sheetNames": [
     "Fall",
     "Winter",
@@ -5637,7 +5637,7 @@
           "Monday, November 23, 2026",
           "",
           "3:00PM-4:30PM",
-          "",
+          "3:00PM-4:15PM (Cages)",
           "3:00PM-4:30PM",
           "3:00PM-5:00PM",
           "3:00PM-5:00PM",
