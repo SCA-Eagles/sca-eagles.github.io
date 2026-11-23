@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-23T16:13:23.893Z",
+  "fetchedAt": "2026-11-23T16:31:11.837Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -21,204 +21,584 @@
           "Transportation"
         ],
         [
-          "Wednesday, June 24, 2026",
-          "Spiritline",
-          "TBD",
-          "TBD",
-          "TSC Camp",
-          "A",
-          "Tempe ",
-          "Van K"
-        ],
-        [
-          "Thursday, June 25, 2026",
-          "Spiritline",
-          "TBD",
-          "TBD",
-          "TSC Camp",
-          "A",
-          "Tempe ",
-          "Van K"
-        ],
-        [
-          "Friday, June 26, 2026",
-          "Spiritline",
-          "TBD",
-          "TBD",
-          "TSC Camp",
-          "A",
-          "Tempe ",
-          "2 Vans"
-        ],
-        [
-          "Tuesday, August 04, 2026",
-          "Spiritline",
-          "TBD",
-          "",
-          "TBD",
-          "A",
-          "",
-          ""
-        ],
-        [
-          "Wednesday, August 12, 2026",
-          "Varsity Football",
+          "Saturday, October 24, 2026",
+          "MS Golf",
           "x",
-          "6:00pm",
-          "ALA Ironwood and Gilbert Christian",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, August 18, 2026",
-          "HS-JV Football",
-          "2:00pm ",
-          "6:00pm",
-          "Chino Valley ",
+          "1:00PM",
+          "Championship",
           "A",
-          "Chino Valley",
-          "Charter"
+          "The Futures Course",
+          "X"
         ],
         [
-          "Friday, August 21, 2026",
-          "Varsity Football",
+          "Saturday, December 05, 2026",
+          "HS-Frosh Boys Basketball ",
+          "x",
           "1:00pm",
-          "7:00pm",
           "Pima",
-          "A",
-          "Pima HS",
-          "Charter"
-        ],
-        [
-          "Monday, August 24, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm",
-          "Gilbert Christian-Scrimmage ",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
-          "Wednesday, August 26, 2026",
-          "HS-JV Football",
+          "Friday, December 11, 2026",
+          "HS-Frosh Boys Basketball ",
           "x",
-          "6:00pm",
-          "St.John Paull II",
+          "1:30pm ",
+          "Arizona Lutheran",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
-          "Wednesday, August 26, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm",
-          "Kingman Academy ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, August 26, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Kingman Academy ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, August 28, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Tonopah",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, August 31, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm",
-          "Vertias Prep",
-          "A",
-          "Veritas ",
-          ""
-        ],
-        [
-          "Monday, August 31, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Veritas Prep",
-          "A",
-          "Veritas ",
-          ""
-        ],
-        [
-          "Wednesday, September 02, 2026",
-          "HS-JV Football",
-          "x",
-          "6:00pm",
-          "San Tan ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, September 02, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm",
-          "Gilbert Christian ",
+          "Saturday, October 24, 2026",
+          "MS Football",
+          "X",
+          "10:00AM",
+          "Northwest Christian White",
           "A",
           "Gilbert Christian",
-          ""
+          "X"
         ],
         [
-          "Wednesday, September 02, 2026",
-          "HS-JV Volleyball ",
+          "Saturday, October 31, 2026",
+          "MS Football",
           "x",
-          "5:00pm",
-          "Gilbert Christian",
+          "10:00AM",
+          "Pusch Ridge Christian",
           "A",
-          "Gilbert Christian",
+          "Pusch Ridge Christian",
+          "x"
+        ],
+        [
+          "Thursday, November 05, 2026",
+          "HS-Cross Country",
+          "8:00am",
+          "10:00AM",
+          "AIA Sectional-Crossroads",
+          "A",
+          "Crossroads District Park ",
+          "Van D"
+        ],
+        [
+          "Saturday, November 14, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "10:00AM",
+          "State Championship: PCDS",
+          "A",
+          "AZ Veterans Memorial Coloseum",
+          "Van K"
+        ],
+        [
+          "Saturday, September 26, 2026",
+          "HS-JV Flag Football",
+          "x",
+          "11:00am",
+          "St.John Paul II",
+          "A",
+          "St.John Paul II",
+          "x"
+        ],
+        [
+          "Saturday, November 21, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "11:00AM",
+          "State Final: Ben Franklin",
+          "A",
+          "Coronado Del Sol HS",
+          "Van K, Van D"
+        ],
+        [
+          "Saturday, October 24, 2026",
+          "HS-Varsity Volleyball ",
+          "X",
+          "2:00pm",
+          "North Valley Christian ",
+          "A",
+          "NVCA",
+          "Bus 1"
+        ],
+        [
+          "Saturday, November 14, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "2:00PM",
+          "Heritage Gateway",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 09, 2026",
+          "MS Golf",
+          "1:03PM",
+          "2:30PM",
+          "Glendale Prep",
+          "A",
+          "Union Hills CC",
+          "x"
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-JV Girls Basketball ",
+          "x",
+          "2:30pm",
+          "Pima ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Frosh Boys Basketball ",
+          "x",
+          "2:30pm",
+          "North Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Frosh Boys Basketball ",
+          "x",
+          "2:30pm",
+          "Northalnd Prep ",
+          "A",
+          "Northaland Prep",
           ""
         ],
         [
-          "Wednesday, September 02, 2026",
-          "MS Girls Varsity Volleyball",
+          "Wednesday, January 20, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "2:30pm",
+          "San Tan Charter ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "2:30pm",
+          "ALA-Mesa North",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "2:30pm",
+          "Fountain Hills ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, February 01, 2027",
+          "HS-JV Girls Basketball ",
+          "",
+          "2:30pm",
+          "Horizon Honors",
+          "A",
+          "Horizon Honors ",
+          ""
+        ],
+        [
+          "Wednesday, September 16, 2026",
+          "MS Golf",
+          "1:45pm",
+          "3:00PM",
+          "Annunciation",
+          "A",
+          "Orange Tree Golf Course",
+          "Van D"
+        ],
+        [
+          "Thursday, September 24, 2026",
+          "MS Soccer",
+          "12:52pm",
+          "3:00PM",
+          "Northwest Christian ",
+          "A",
+          "CCV Peoria",
+          "Van K"
+        ],
+        [
+          "Thursday, September 24, 2026",
+          "MS Golf",
+          "1:45PM",
+          "3:00PM",
+          "Tempe Prep",
+          "A",
+          "Orange Tree Golf Course",
+          "Van D"
+        ],
+        [
+          "Wednesday, October 21, 2026",
+          "MS Golf",
+          "1:45pm",
+          "3:00PM",
+          "Chandler Prep/Ben Franklin",
+          "A",
+          "Orange Tree Golf Course",
+          "x"
+        ],
+        [
+          "Friday, October 23, 2026",
+          "HS-JV Volleyball ",
+          "X",
+          "3:00pm",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Saturday, October 24, 2026",
+          "HS-JV Volleyball ",
+          "X",
+          "3:00pm",
+          "North Valley Christian ",
+          "A",
+          "North Valley Christian",
+          "Van K"
+        ],
+        [
+          "Saturday, November 28, 2026",
+          "HS- Varsity Football",
           "x",
-          "6:15PM",
+          "3:00PM",
+          "State Championship: San Tan Charter",
+          "A",
+          "Mountain Point HS",
+          "x"
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-JV Girls Basketball ",
+          "x",
+          "3:00pm",
+          "Arizona Lutheran",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, December 14, 2026",
+          "MS Cross-Country",
+          "",
+          "3:00PM",
+          "North Valley Christian Meet",
+          "A",
+          "Anthem Community Park",
+          ""
+        ],
+        [
+          "Monday, September 28, 2026",
+          "5/6 White Girls Volleyball",
+          "2:00pm ",
+          "3:15PM",
+          "Northwest Christian ",
+          "A",
+          "Northwest Christian ",
+          "x"
+        ],
+        [
+          "Thursday, October 01, 2026",
+          "MS Golf",
+          "1:45pm",
+          "3:15PM",
+          "Scottsdale Prep",
+          "A",
+          "McCormick Ranch GC",
+          "Van D"
+        ],
+        [
+          "Monday, November 23, 2026",
+          "HS-Varsity Boys Basketball ",
+          "1:30PM",
+          "3:30pm",
+          "PXU Coyote Classic: vs. Independence ",
+          "A",
+          "Alhambra HS",
+          "Van K"
+        ],
+        [
+          "Tuesday, December 01, 2026",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "Gilbert Christian Greenfield",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 02, 2026",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Fountain Hills",
+          "A",
+          "Fountain Hills",
+          ""
+        ],
+        [
+          "Wednesday, December 02, 2026",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, December 03, 2026",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "Valley Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, December 03, 2026",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "A",
+          "Victory Lanes",
+          ""
+        ],
+        [
+          "Tuesday, December 08, 2026",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "A",
+          "Northwest Christian",
+          ""
+        ],
+        [
+          "Tuesday, December 08, 2026",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "A",
+          "Victory Lanes",
+          ""
+        ],
+        [
+          "Tuesday, December 08, 2026",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "Gilbert Christian Greenfield",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, December 08, 2026",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "A",
+          "Victory Lanes",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Gilbert Christian Val Vista",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, December 14, 2026",
+          "MS Softball",
+          "",
+          "3:30PM",
           "Horizon Honors",
           "H",
           "SCA",
           "x"
         ],
         [
-          "Wednesday, September 02, 2026",
-          "MS Girls JV Volleyball",
-          "x",
-          "5:30PM",
+          "Tuesday, December 15, 2026",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "SCA JV Blue",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, December 15, 2026",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "SCA JV Red",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "North Valley Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 06, 2027",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "SCA JV Blue",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 06, 2027",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "SCA JV Red",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 07, 2027",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Christ Greenfield",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 07, 2027",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
           "Horizon Honors",
           "H",
           "SCA",
           "x"
         ],
         [
-          "Wednesday, September 02, 2026",
-          "5/6 Red Girls Volleyball",
-          "x",
-          "4:45PM",
-          "Horizon Honors",
+          "Monday, January 11, 2027",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Valley Christian",
           "H",
           "SCA",
           "x"
+        ],
+        [
+          "Tuesday, January 12, 2027",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "Christ Greenfield",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
+          "Tuesday, January 12, 2027",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "MS Softball",
+          "",
+          "3:30PM",
+          "North Valley Christian",
+          "A",
+          "Victory Lanes",
+          ""
+        ],
+        [
+          "Friday, January 15, 2027",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "Gilbert Christian Greenfield",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "MS Varsity Baseball",
+          "",
+          "3:30PM",
+          "Gilbert Christian Greenfield",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 21, 2027",
+          "MS JV Red Baseball",
+          "",
+          "3:30PM",
+          "Northwest Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 21, 2027",
+          "MS JV Blue Baseball",
+          "",
+          "3:30PM",
+          "Horizon Honors",
+          "A",
+          "TBD",
+          ""
         ],
         [
           "Wednesday, September 02, 2026",
@@ -231,61 +611,11 @@
           "x"
         ],
         [
-          "Thursday, September 03, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Bourgade Catholic ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, September 04, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "9:30AM",
-          "Tournament ",
-          "A",
-          "Payson High School",
-          ""
-        ],
-        [
           "Tuesday, September 08, 2026",
           "MS Soccer",
           "x",
           "4:00PM",
           "Gilbert Christian Agritopia",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, September 09, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "6:15PM",
-          "Valley Christian ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, September 09, 2026",
-          "MS Girls JV Volleyball",
-          "x",
-          "5:30PM",
-          "Valley Christian ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, September 09, 2026",
-          "5/6 Red Girls Volleyball",
-          "x",
-          "4:45PM",
-          "Valley Christian ",
           "H",
           "SCA",
           "x"
@@ -311,66 +641,6 @@
           "Van D"
         ],
         [
-          "Wednesday, September 09, 2026",
-          "MS Golf",
-          "1:03PM",
-          "2:30PM",
-          "Glendale Prep",
-          "A",
-          "Union Hills CC",
-          "x"
-        ],
-        [
-          "Friday, September 11, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Coolidge",
-          "A",
-          "Coolidge HS",
-          "x"
-        ],
-        [
-          "Friday, September 11, 2026",
-          "MS Football",
-          "x",
-          "5:30PM",
-          "Fountain Hills",
-          "A",
-          "Valley Christian",
-          "x"
-        ],
-        [
-          "Monday, September 14, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm",
-          "San Tan Charter ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 14, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "San Tan Charter ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 14, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "4:45PM",
-          "Gilbert Christian Greenfield",
-          "A",
-          "Gilbert Christian Greenfield",
-          "x"
-        ],
-        [
           "Monday, September 14, 2026",
           "MS Girls JV Volleyball",
           "2:15pm",
@@ -378,26 +648,6 @@
           "Gilbert Christian Greenfield",
           "A",
           "Gilbert Christian Greenfield",
-          "x"
-        ],
-        [
-          "Tuesday, September 15, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Arcadia High School",
-          "A",
-          "Arcadia HS",
-          "Van K, Van D"
-        ],
-        [
-          "Wednesday, September 16, 2026",
-          "HS-JV Football",
-          "x",
-          "6:00pm",
-          "Northwest Christian ",
-          "A",
-          "Northwest Christian",
           "x"
         ],
         [
@@ -411,16 +661,6 @@
           "x"
         ],
         [
-          "Wednesday, September 16, 2026",
-          "MS Golf",
-          "1:45pm",
-          "3:00PM",
-          "Annunciation",
-          "A",
-          "Orange Tree Golf Course",
-          "Van D"
-        ],
-        [
           "Thursday, September 17, 2026",
           "5/6 Gold Girls Volleyball",
           "2:30pm",
@@ -429,66 +669,6 @@
           "A",
           "Christ Greenfield",
           "x"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "5/6 Red Girls Volleyball",
-          "x",
-          "4:45PM",
-          "Christ Greenfield",
-          "A",
-          "Christ Greenfield",
-          "x"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "San Tan Foothills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "San Tan Foothills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "HS-Cross Country",
-          "2:30pm",
-          "4:45pm",
-          "Valley Christian ",
-          "A",
-          "Desert Foothills Park",
-          "Bus 2"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "HS Swim",
-          "12:00pm",
-          "4:00pm ",
-          "Sedona ",
-          "A",
-          "Sedona Community Pool",
-          "Van D"
-        ],
-        [
-          "Thursday, September 17, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Seton Catholic ",
-          "A",
-          "Seton Catholic",
-          "Van K, Bus 1"
         ],
         [
           "Thursday, September 17, 2026",
@@ -501,91 +681,11 @@
           "x"
         ],
         [
-          "Friday, September 18, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Fountain Hills",
-          "A",
-          "Fountain Hills",
-          "x"
-        ],
-        [
-          "Saturday, September 19, 2026",
-          "MS Football",
-          "x",
-          "8:00AM",
-          "Gilbert Christian",
-          "A",
-          "Gilbert Christian",
-          "x"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "HS-JV Football",
-          "x",
-          "6:00pm",
-          "NFL Yet ",
-          "A",
-          "NFL Yet ",
-          "x"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "NFL Yet ",
-          "A",
-          "NFL Yet ",
-          "Van D"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "NFL Yet ",
-          "A",
-          "NFL Yet ",
-          "Van K"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "4:45PM",
-          "Gilbert Christian Agritopia",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
           "Monday, September 21, 2026",
           "MS Girls JV Volleyball",
           "x",
           "4:00PM",
           "Gilbert Christian Agritopia",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "5/6 Red Girls Volleyball",
-          "x",
-          "6:15PM",
-          "Arcadia Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 21, 2026",
-          "5/6 White Girls Volleyball",
-          "x",
-          "5:30PM",
-          "Arcadia Christian",
           "H",
           "SCA",
           "x"
@@ -622,16 +722,6 @@
         ],
         [
           "Tuesday, September 22, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Thunderbird",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, September 22, 2026",
           "HS-JV Flag Football",
           "x",
           "4:00pm",
@@ -641,170 +731,10 @@
           "x"
         ],
         [
-          "Wednesday, September 23, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "Arizona lutheran ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, September 23, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Arizona Lutheran ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, September 24, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Highland Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, September 24, 2026",
-          "MS Soccer",
-          "12:52pm",
-          "3:00PM",
-          "Northwest Christian ",
-          "A",
-          "CCV Peoria",
-          "Van K"
-        ],
-        [
-          "Thursday, September 24, 2026",
-          "MS Golf",
-          "1:45PM",
-          "3:00PM",
-          "Tempe Prep",
-          "A",
-          "Orange Tree Golf Course",
-          "Van D"
-        ],
-        [
-          "Thursday, September 24, 2026",
-          "HS-JV Flag Football",
-          "x",
-          "4:00pm ",
-          "Deer Valley",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, September 25, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Chino Valley ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, September 25, 2026",
-          "HS-Varsity Volleyball ",
-          "All Day",
-          "9:00am",
-          "Tournament ",
-          "A",
-          "TBD",
-          "Van K"
-        ],
-        [
-          "Friday, September 25, 2026",
-          "HS-Cross Country",
-          "x",
-          "TBD",
-          "Desert Twilight Festival",
-          "A",
-          "TBD",
-          "Van D"
-        ],
-        [
-          "Saturday, September 26, 2026",
-          "HS Swim",
-          "x",
-          "TBD",
-          "PCDS ",
-          "A",
-          "PCDS",
-          "x"
-        ],
-        [
-          "Saturday, September 26, 2026",
-          "HS-JV Flag Football",
-          "x",
-          "11:00am",
-          "St.John Paul II",
-          "A",
-          "St.John Paul II",
-          "x"
-        ],
-        [
-          "Saturday, September 26, 2026",
-          "MS Football",
-          "x",
-          "8:00AM",
-          "Valley Christian ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 28, 2026",
-          "HS-JV Flag Football",
-          "x",
-          "6:00pm ",
-          "Centennial",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, September 28, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "5:30PM",
-          "Northwest Christian ",
-          "A",
-          "Northwest Christian ",
-          "x"
-        ],
-        [
-          "Monday, September 28, 2026",
-          "MS Girls JV Volleyball",
-          "x",
-          "4:45PM",
-          "Northwest Christian ",
-          "A",
-          "Northwest Christian ",
-          "Bus 1"
-        ],
-        [
           "Monday, September 28, 2026",
           "5/6 Red Girls Volleyball",
           "x",
           "4:00PM",
-          "Northwest Christian ",
-          "A",
-          "Northwest Christian ",
-          "x"
-        ],
-        [
-          "Monday, September 28, 2026",
-          "5/6 White Girls Volleyball",
-          "2:00pm ",
-          "3:15PM",
           "Northwest Christian ",
           "A",
           "Northwest Christian ",
@@ -822,26 +752,6 @@
         ],
         [
           "Tuesday, September 29, 2026",
-          "HS-JV Football",
-          "x",
-          "6:00pm",
-          "Arizona lutheran ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, September 29, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "4:45PM",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, September 29, 2026",
           "MS Girls JV Volleyball",
           "x",
           "4:00PM",
@@ -849,36 +759,6 @@
           "H",
           "SCA",
           "x"
-        ],
-        [
-          "Tuesday, September 29, 2026",
-          "5/6 White Girls Volleyball",
-          "x",
-          "5:30PM",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, September 29, 2026",
-          "5/6 Gold Girls Volleyball",
-          "x",
-          "5:30PM",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, September 30, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "5:00pm",
-          "PCDS ",
-          "A",
-          "PCDS",
-          "Van D"
         ],
         [
           "Wednesday, September 30, 2026",
@@ -902,110 +782,10 @@
         ],
         [
           "Thursday, October 01, 2026",
-          "MS Golf",
-          "1:45pm",
-          "3:15PM",
-          "Scottsdale Prep",
-          "A",
-          "McCormick Ranch GC",
-          "Van D"
-        ],
-        [
-          "Thursday, October 01, 2026",
           "MS Soccer",
           "x",
           "4:00PM",
           "Gilbert Christian Val Vista",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, October 02, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Cortez",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Saturday, October 03, 2026",
-          "MS Football",
-          "x",
-          "8:00AM",
-          "Northwest Christian Purple",
-          "A",
-          "Northwest Christian",
-          "x"
-        ],
-        [
-          "Monday, October 05, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "Mountainside ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, October 05, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Mountainside ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Monday, October 05, 2026",
-          "HS-JV Flag Football",
-          "x",
-          "6:00pm ",
-          "Sandra Day O'Connor",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano",
-          "Van D"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano",
-          "Van K"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Cactus Shawdows",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "4:45PM",
-          "North Valley Christian ",
           "H",
           "SCA",
           "x"
@@ -1016,26 +796,6 @@
           "x",
           "4:00PM",
           "North Valley Christian ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "5/6 White Girls Volleyball",
-          "x",
-          "5:30PM",
-          "5/6 Gold Girls Volleyball",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, October 06, 2026",
-          "5/6 Gold Girls Volleyball",
-          "x",
-          "5:30PM",
-          "5/6 White Girls Volleyball",
           "H",
           "SCA",
           "x"
@@ -1049,46 +809,6 @@
           "A",
           "Rancho Solano Prep",
           "Bus 1"
-        ],
-        [
-          "Wednesday, October 07, 2026",
-          "HS-JV Football",
-          "x",
-          "6:00pm ",
-          "Glendale Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, October 07, 2026",
-          "MS Girls Varsity Volleyball",
-          "x",
-          "6:15PM",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano Prep",
-          "x"
-        ],
-        [
-          "Wednesday, October 07, 2026",
-          "MS Girls JV Volleyball",
-          "x",
-          "5:30PM",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano Prep",
-          "Bus 2"
-        ],
-        [
-          "Wednesday, October 07, 2026",
-          "5/6 Red Girls Volleyball",
-          "x",
-          "4:45PM",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano Prep",
-          "x"
         ],
         [
           "Wednesday, October 07, 2026",
@@ -1111,116 +831,6 @@
           "Van K, Van D"
         ],
         [
-          "Thursday, October 08, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "6:00pm ",
-          "Scottsdale Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, October 08, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Scottsdale Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, October 08, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "6:00pm ",
-          "Madison Highland ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, October 09, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Phoenix Christian ",
-          "A",
-          "Phoenix Christian",
-          "x"
-        ],
-        [
-          "Friday, October 09, 2026",
-          "HS-Varsity Volleyball ",
-          "All Day",
-          "TBD",
-          "Rise N Roar-Tournament ",
-          "A",
-          "TBD",
-          "Van K"
-        ],
-        [
-          "Friday, October 09, 2026",
-          "HS-Cross Country ",
-          "8:30am",
-          "9:00am ",
-          "TBD",
-          "A",
-          "Gilbert CrossRoads Park ",
-          "Van D"
-        ],
-        [
-          "Saturday, October 10, 2026",
-          "MS Football",
-          "x",
-          "8:00AM",
-          "Phoenix Christian ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, October 15, 2026",
-          "HS-Varsity Flag Football",
-          "x",
-          "TBD",
-          "Tournament ",
-          "A",
-          "ASU ",
-          "X"
-        ],
-        [
-          "Friday, October 16, 2026",
-          "HS-Varsity Football",
-          "x",
-          "7:00pm",
-          "Camp Verde ",
-          "A",
-          "Camp Verde ",
-          "Charter"
-        ],
-        [
-          "Monday, October 19, 2026",
-          "HS-Varsity Volleyball ",
-          "X",
-          "6:00pm ",
-          "Northland Prep",
-          "H",
-          "SCA",
-          "X"
-        ],
-        [
-          "Monday, October 19, 2026",
-          "HS-JV Volleyball ",
-          "X",
-          "5:00pm",
-          "Northland Prep",
-          "H",
-          "SCA",
-          "X"
-        ],
-        [
           "Monday, October 19, 2026",
           "5th Grade Flag Football",
           "X",
@@ -1229,26 +839,6 @@
           "A",
           "Pardes",
           "Van K, Van D"
-        ],
-        [
-          "Monday, October 19, 2026",
-          "HS-JV Flag Football",
-          "X",
-          "6:00pm ",
-          "NDP",
-          "H ",
-          "SCA",
-          "X"
-        ],
-        [
-          "Tuesday, October 20, 2026",
-          "5/6 Red Girls Volleyball",
-          "X",
-          "4:45PM",
-          "Northwest Christian ",
-          "A",
-          "Northwest Christian",
-          "X"
         ],
         [
           "Tuesday, October 20, 2026",
@@ -1272,46 +862,6 @@
         ],
         [
           "Wednesday, October 21, 2026",
-          "HS-Varsity Volleyball ",
-          "X",
-          "6:00pm ",
-          "ALA-Mesa North",
-          "H",
-          "SCA",
-          "X"
-        ],
-        [
-          "Wednesday, October 21, 2026",
-          "HS-JV Volleyball ",
-          "X",
-          "5:00pm",
-          "ALA-Mesa North",
-          "H",
-          "SCA",
-          "X"
-        ],
-        [
-          "Wednesday, October 21, 2026",
-          "HS-JV Flag Football",
-          "X",
-          "4:00pm ",
-          "Sandra Day O'Connor",
-          "A",
-          "Sandra Day O'Connor",
-          "x"
-        ],
-        [
-          "Wednesday, October 21, 2026",
-          "MS Girls Varsity Volleyball",
-          "X",
-          "4:45PM",
-          "Gilbert Christian Val Vista",
-          "A",
-          "Gilbert Christian Val Vista",
-          "X"
-        ],
-        [
-          "Wednesday, October 21, 2026",
           "MS Girls JV Volleyball",
           "2:15pm",
           "4:00PM",
@@ -1331,24 +881,274 @@
           "x"
         ],
         [
-          "Wednesday, October 21, 2026",
-          "MS Golf",
-          "1:45pm",
-          "3:00PM",
-          "Chandler Prep/Ben Franklin",
+          "Wednesday, December 02, 2026",
+          "MS Cross-Country",
+          "",
+          "4:00PM",
+          "Fountain Hills Meet",
           "A",
-          "Orange Tree Golf Course",
+          "McDowell Mountain Elementary School",
+          ""
+        ],
+        [
+          "Friday, December 04, 2026",
+          "MS Girls Flag Football",
+          "x",
+          "4:00PM",
+          "Gilbert Christian Agritopia",
+          "H",
+          "SCA",
           "x"
         ],
         [
-          "Thursday, October 22, 2026",
-          "HS-Varsity Flag Football",
-          "X",
-          "6:00pm ",
+          "Monday, December 07, 2026",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
+          "Gilbert Classical ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "MS Cross-Country",
+          "",
+          "4:00PM",
+          "Meet",
+          "A",
+          "Paseo Highlands Park",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "MS JV Red Baseball",
+          "",
+          "4:00PM",
+          "Gilbert Christian Agritopia",
+          "A",
+          "Gilbert Christian Greenfield",
+          ""
+        ],
+        [
+          "Friday, December 11, 2026",
+          "MS Girls Flag Football",
+          "",
+          "4:00PM",
+          "Gilbert Christian Greenfield",
+          "A",
+          "Phoenix Christian Prep",
+          ""
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "4:00pm",
+          "ALA-Ironwood ",
+          "A",
+          "ALA-Ironwood",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
           "Scottsdale Prep",
           "H",
           "SCA",
-          "X"
+          "x"
+        ],
+        [
+          "Wednesday, January 06, 2027",
+          "MS Cross-Country",
+          "",
+          "4:00PM",
+          "Valley Christian Meet",
+          "A",
+          "Kiwanis Park",
+          ""
+        ],
+        [
+          "Wednesday, January 06, 2027",
+          "MS Softball",
+          "",
+          "4:00PM",
+          "Paradise Valley Christian Prep",
+          "A",
+          "Paradise Valley Christian Prep",
+          ""
+        ],
+        [
+          "Thursday, January 07, 2027",
+          "HS-Varsity Girls Soccer ",
+          "",
+          "4:00pm",
+          "Cicero prep",
+          "A",
+          "Scottsdale Prep",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Girls Soccer ",
+          "",
+          "4:00pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          ""
+        ],
+        [
+          "Tuesday, January 12, 2027",
+          "MS Varsity Baseball",
+          "",
+          "4:00PM",
+          "Gilbert Christian Val Vista",
+          "A",
+          "Gilbert Christian Greenfield",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Frosh Boys Basketball ",
+          "",
+          "4:00pm",
+          "Gilbert Christian ",
+          "A",
+          "Gilbert Christian",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-JV Girls Basketball ",
+          "x",
+          "4:00pm",
+          "Gilbert Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
+          "Tempe Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, January 19, 2027",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
+          "Mesa North ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 21, 2027",
+          "HS-Varsity Girls Soccer ",
+          "",
+          "4:00pm",
+          "San Tan Charter ",
+          "A",
+          "San Tan Charter ",
+          ""
+        ],
+        [
+          "Friday, January 22, 2027",
+          "MS Softball",
+          "x",
+          "4:00PM",
+          "Paradise Valley Christian Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 22, 2027",
+          "MS Girls Flag Football",
+          "",
+          "4:00PM",
+          "Northwest Christian",
+          "A",
+          "Northwest Christian",
+          ""
+        ],
+        [
+          "Wednesday, January 27, 2027",
+          "HS-Varsity Girls Soccer ",
+          "",
+          "4:00pm",
+          "Globe ",
+          "A",
+          "Harbison Field",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "4:00pm",
+          "PCDS",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, February 02, 2027",
+          "HS-Varsity Girls Soccer ",
+          "",
+          "4:00pm",
+          "Chandler Prep",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "HS Swim",
+          "12:00pm",
+          "4:00pm ",
+          "Sedona ",
+          "A",
+          "Sedona Community Pool",
+          "Van D"
+        ],
+        [
+          "Thursday, September 24, 2026",
+          "HS-JV Flag Football",
+          "x",
+          "4:00pm ",
+          "Deer Valley",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, October 21, 2026",
+          "HS-JV Flag Football",
+          "X",
+          "4:00pm ",
+          "Sandra Day O'Connor",
+          "A",
+          "Sandra Day O'Connor",
+          "x"
         ],
         [
           "Friday, October 23, 2026",
@@ -1361,73 +1161,1263 @@
           "X"
         ],
         [
-          "Friday, October 23, 2026",
-          "HS-JV Volleyball ",
-          "X",
-          "3:00pm",
-          "Fountain Hills",
-          "H",
+          "Monday, October 26, 2026",
+          "HS-JV Flag Football",
+          "x",
+          "4:00pm ",
+          "Heritage Academy Gateway",
+          "H ",
           "SCA",
-          "X"
+          "x"
         ],
         [
-          "Friday, October 23, 2026",
-          "5th Grade Flag Football",
-          "8:00AM",
-          "9:00AM",
-          "Tournament ",
+          "Friday, November 20, 2026",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Highland Prep West ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Pima ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Phoenix Christian",
           "A",
-          "Rancho Solano",
-          "Van K, Van D"
+          "Phoenix Christian",
+          ""
         ],
         [
-          "Friday, October 23, 2026",
-          "HS-Varsity Football",
-          "X",
-          "7:00PM",
-          "Arizona Lutheran ",
-          "H",
+          "Wednesday, December 09, 2026",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Highland Prep",
+          "H ",
           "SCA",
-          "X"
+          "x"
         ],
         [
-          "Saturday, October 24, 2026",
-          "HS-Varsity Volleyball ",
-          "X",
-          "2:00pm",
+          "Tuesday, January 05, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
           "North Valley Christian ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "PCDS",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Northland Prep ",
           "A",
-          "NVCA",
+          "Northland Prep",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Heritage Academy Messa ",
+          "A",
+          "Family Life Center ",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 22, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano ",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "ALA-Mesa North",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:00pm ",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-JV Boys Basketball ",
+          "",
+          "4:00pm ",
+          "Chandler Prep ",
+          "A",
+          "Chandler Prep",
+          ""
+        ],
+        [
+          "Tuesday, October 27, 2026",
+          "HS-Varsity Swim",
+          "x",
+          "4:30pm",
+          "PCDS ",
+          "A",
+          "PCDS ",
+          "X"
+        ],
+        [
+          "Friday, November 06, 2026",
+          "HS Swim",
+          "12:00PM",
+          "4:30PM",
+          "Swim State Prelims",
+          "A",
+          "PCDS ",
+          "x"
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-JV Boys Basketball ",
+          "x",
+          "4:30pm",
+          "Arizona Lutheran",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "5/6 Red Girls Volleyball",
+          "x",
+          "4:45PM",
+          "Horizon Honors",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 09, 2026",
+          "5/6 Red Girls Volleyball",
+          "x",
+          "4:45PM",
+          "Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 14, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "4:45PM",
+          "Gilbert Christian Greenfield",
+          "A",
+          "Gilbert Christian Greenfield",
+          "x"
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "5/6 Red Girls Volleyball",
+          "x",
+          "4:45PM",
+          "Christ Greenfield",
+          "A",
+          "Christ Greenfield",
+          "x"
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "HS-Cross Country",
+          "2:30pm",
+          "4:45pm",
+          "Valley Christian ",
+          "A",
+          "Desert Foothills Park",
+          "Bus 2"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "4:45PM",
+          "Gilbert Christian Agritopia",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 28, 2026",
+          "MS Girls JV Volleyball",
+          "x",
+          "4:45PM",
+          "Northwest Christian ",
+          "A",
+          "Northwest Christian ",
           "Bus 1"
         ],
         [
-          "Saturday, October 24, 2026",
-          "HS-JV Volleyball ",
-          "X",
-          "3:00pm",
-          "North Valley Christian ",
-          "A",
-          "North Valley Christian",
-          "Van K"
+          "Tuesday, September 29, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "4:45PM",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
         ],
         [
-          "Saturday, October 24, 2026",
-          "MS Football",
-          "X",
-          "10:00AM",
-          "Northwest Christian White",
+          "Tuesday, October 06, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "4:45PM",
+          "North Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, October 07, 2026",
+          "5/6 Red Girls Volleyball",
+          "x",
+          "4:45PM",
+          "Rancho Solano Prep",
           "A",
-          "Gilbert Christian",
+          "Rancho Solano Prep",
+          "x"
+        ],
+        [
+          "Tuesday, October 20, 2026",
+          "5/6 Red Girls Volleyball",
+          "X",
+          "4:45PM",
+          "Northwest Christian ",
+          "A",
+          "Northwest Christian",
           "X"
         ],
         [
-          "Saturday, October 24, 2026",
-          "MS Golf",
-          "x",
-          "1:00PM",
-          "Championship",
+          "Wednesday, October 21, 2026",
+          "MS Girls Varsity Volleyball",
+          "X",
+          "4:45PM",
+          "Gilbert Christian Val Vista",
           "A",
-          "The Futures Course",
+          "Gilbert Christian Val Vista",
+          "X"
+        ],
+        [
+          "Wednesday, August 26, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Kingman Academy ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, August 31, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Veritas Prep",
+          "A",
+          "Veritas ",
+          ""
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Gilbert Christian",
+          "A",
+          "Gilbert Christian",
+          ""
+        ],
+        [
+          "Monday, September 14, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "San Tan Charter ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "San Tan Foothills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "NFL Yet ",
+          "A",
+          "NFL Yet ",
+          "Van K"
+        ],
+        [
+          "Wednesday, September 23, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Arizona Lutheran ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 30, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "5:00pm",
+          "PCDS ",
+          "A",
+          "PCDS",
+          "Van D"
+        ],
+        [
+          "Monday, October 05, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Mountainside ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, October 06, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          "Van K"
+        ],
+        [
+          "Thursday, October 08, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Scottsdale Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, October 19, 2026",
+          "HS-JV Volleyball ",
+          "X",
+          "5:00pm",
+          "Northland Prep",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Wednesday, October 21, 2026",
+          "HS-JV Volleyball ",
+          "X",
+          "5:00pm",
+          "ALA-Mesa North",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Tuesday, October 27, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Chandler Prep",
+          "A",
+          "Chandler Prep",
+          "Bus 5"
+        ],
+        [
+          "Thursday, October 29, 2026",
+          "HS-JV Volleyball ",
+          "x",
+          "5:00pm",
+          "Heritage Academy Mesa",
+          "A",
+          "Family Life Center",
+          "Bus 5"
+        ],
+        [
+          "Tuesday, November 17, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "5:00pm",
+          "Scrimmage: Fountain Hills",
+          "A",
+          "Fountain Hills",
+          "Van K"
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Girls Soccer ",
+          "x",
+          "5:00pm",
+          "Arete prep",
+          "A",
+          "Arete Prep",
+          ""
+        ],
+        [
+          "Friday, January 08, 2027",
+          "MS Girls Flag Football",
+          "x",
+          "5:15PM",
+          "Gilbert Christian Val Vista",
+          "A",
+          "Gilbert Christian Agritopia",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "MS Girls Flag Football",
+          "x",
+          "5:15PM",
+          "Valley Christian",
+          "A",
+          "Gilbert Christian Greenfield",
+          ""
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "MS Girls JV Volleyball",
+          "x",
+          "5:30PM",
+          "Horizon Honors",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 09, 2026",
+          "MS Girls JV Volleyball",
+          "x",
+          "5:30PM",
+          "Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, September 11, 2026",
+          "MS Football",
+          "x",
+          "5:30PM",
+          "Fountain Hills",
+          "A",
+          "Valley Christian",
+          "x"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "5/6 White Girls Volleyball",
+          "x",
+          "5:30PM",
+          "Arcadia Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 28, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "5:30PM",
+          "Northwest Christian ",
+          "A",
+          "Northwest Christian ",
+          "x"
+        ],
+        [
+          "Tuesday, September 29, 2026",
+          "5/6 White Girls Volleyball",
+          "x",
+          "5:30PM",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, September 29, 2026",
+          "5/6 Gold Girls Volleyball",
+          "x",
+          "5:30PM",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, October 06, 2026",
+          "5/6 White Girls Volleyball",
+          "x",
+          "5:30PM",
+          "5/6 Gold Girls Volleyball",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, October 06, 2026",
+          "5/6 Gold Girls Volleyball",
+          "x",
+          "5:30PM",
+          "5/6 White Girls Volleyball",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, October 07, 2026",
+          "MS Girls JV Volleyball",
+          "x",
+          "5:30PM",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano Prep",
+          "Bus 2"
+        ],
+        [
+          "Friday, November 20, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Highland Prep West ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, December 05, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Pima",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Phoenix Christian",
+          "A",
+          "Phoenix Christian",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Highland Prep",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-JV Boys Basketball ",
+          "x",
+          "5:30pm",
+          "ALA-Ironwood",
+          "A",
+          "ALA-Ironwood",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Northland Valley",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "PCDS",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Northland Prep ",
+          "A",
+          "Northland Prep",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Heritage Academy Mesa",
+          "A",
+          "Family Life Center",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-JV Boys Basketball ",
+          "x",
+          "5:30pm",
+          "Gilbert Christian",
+          "A",
+          "Gilbert Christian ",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Gilbert Christian",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 22, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "ALA-Mesa North ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, February 01, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Horizon Honors ",
+          "A",
+          "Horizon Honors ",
+          ""
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "5:30pm",
+          "Chandler Prep",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Wednesday, August 12, 2026",
+          "Varsity Football",
+          "x",
+          "6:00pm",
+          "ALA Ironwood and Gilbert Christian",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Tuesday, August 18, 2026",
+          "HS-JV Football",
+          "2:00pm ",
+          "6:00pm",
+          "Chino Valley ",
+          "A",
+          "Chino Valley",
+          "Charter"
+        ],
+        [
+          "Monday, August 24, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm",
+          "Gilbert Christian-Scrimmage ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, August 26, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm",
+          "St.John Paull II",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, August 26, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm",
+          "Kingman Academy ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Monday, August 31, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm",
+          "Vertias Prep",
+          "A",
+          "Veritas ",
+          ""
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm",
+          "San Tan ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm",
+          "Gilbert Christian ",
+          "A",
+          "Gilbert Christian",
+          ""
+        ],
+        [
+          "Monday, September 14, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm",
+          "San Tan Charter ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 16, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm",
+          "Northwest Christian ",
+          "A",
+          "Northwest Christian",
+          "x"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm",
+          "NFL Yet ",
+          "A",
+          "NFL Yet ",
+          "x"
+        ],
+        [
+          "Tuesday, September 29, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm",
+          "Arizona lutheran ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, November 05, 2026",
+          "HS-Varsity Flag Football",
+          "X",
+          "6:00pm",
+          "Ben Franklin",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, November 10, 2026",
+          "HS- Varsity Flag Football",
+          "x",
+          "6:00PM",
+          "First Round: Bourgade Catholic",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, November 18, 2026",
+          "HS- Varsity Flag Football",
+          "X",
+          "6:00PM",
+          "Semifinal: Highland Prep",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Saturday, November 21, 2026",
+          "HS- Varsity Football",
+          "x",
+          "6:00PM",
+          "Semifinal: Chandler Prep",
+          "A",
+          "Marcos De Niza HS",
+          "x"
+        ],
+        [
+          "Monday, December 07, 2026",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Gilbert Classical ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "MS Varsity Baseball",
+          "x",
+          "6:00PM",
+          "Gilbert Christian Agritopia",
+          "A",
+          "Gilbert Christian Greenfield",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Scottsdale Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Rancho Solano ",
+          "A",
+          "Rancho Solano ",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Fountain Hills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Tempe Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, January 19, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "ALA-Mesa North",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, January 21, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "San Tan Charter ",
+          "A",
+          "San Tan Charter",
+          ""
+        ],
+        [
+          "Monday, January 25, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Lincoln Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 27, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Globe ",
+          "A",
+          "Harbison Field",
+          ""
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "PCDS",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, February 02, 2027",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "6:00pm",
+          "Chandler Prep",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Tuesday, September 15, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Arcadia High School",
+          "A",
+          "Arcadia HS",
+          "Van K, Van D"
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "San Tan Foothills",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, September 17, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Seton Catholic ",
+          "A",
+          "Seton Catholic",
+          "Van K, Bus 1"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "NFL Yet ",
+          "A",
+          "NFL Yet ",
+          "Van D"
+        ],
+        [
+          "Tuesday, September 22, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Thunderbird",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 23, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "Arizona lutheran ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, September 24, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Highland Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 28, 2026",
+          "HS-JV Flag Football",
+          "x",
+          "6:00pm ",
+          "Centennial",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, October 05, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "Mountainside ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, October 05, 2026",
+          "HS-JV Flag Football",
+          "x",
+          "6:00pm ",
+          "Sandra Day O'Connor",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Tuesday, October 06, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          "Van D"
+        ],
+        [
+          "Tuesday, October 06, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Cactus Shawdows",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, October 07, 2026",
+          "HS-JV Football",
+          "x",
+          "6:00pm ",
+          "Glendale Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, October 08, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "6:00pm ",
+          "Scottsdale Prep",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, October 08, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "6:00pm ",
+          "Madison Highland ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, October 19, 2026",
+          "HS-Varsity Volleyball ",
+          "X",
+          "6:00pm ",
+          "Northland Prep",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Monday, October 19, 2026",
+          "HS-JV Flag Football",
+          "X",
+          "6:00pm ",
+          "NDP",
+          "H ",
+          "SCA",
+          "X"
+        ],
+        [
+          "Wednesday, October 21, 2026",
+          "HS-Varsity Volleyball ",
+          "X",
+          "6:00pm ",
+          "ALA-Mesa North",
+          "H",
+          "SCA",
+          "X"
+        ],
+        [
+          "Thursday, October 22, 2026",
+          "HS-Varsity Flag Football",
+          "X",
+          "6:00pm ",
+          "Scottsdale Prep",
+          "H",
+          "SCA",
           "X"
         ],
         [
@@ -1441,16 +2431,6 @@
           "x"
         ],
         [
-          "Monday, October 26, 2026",
-          "HS-JV Flag Football",
-          "x",
-          "4:00pm ",
-          "Heritage Academy Gateway",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
           "Tuesday, October 27, 2026",
           "HS-Varsity Volleyball ",
           "x",
@@ -1462,16 +2442,6 @@
         ],
         [
           "Tuesday, October 27, 2026",
-          "HS-JV Volleyball ",
-          "x",
-          "5:00pm",
-          "Chandler Prep",
-          "A",
-          "Chandler Prep",
-          "Bus 5"
-        ],
-        [
-          "Tuesday, October 27, 2026",
           "HS-Varsity Flag Football",
           "x",
           "6:00pm ",
@@ -1479,16 +2449,6 @@
           "A",
           "Arete Prep",
           "Van K, Bus 1"
-        ],
-        [
-          "Tuesday, October 27, 2026",
-          "HS-Varsity Swim",
-          "x",
-          "4:30pm",
-          "PCDS ",
-          "A",
-          "PCDS ",
-          "X"
         ],
         [
           "Thursday, October 29, 2026",
@@ -1501,34 +2461,174 @@
           "Van D"
         ],
         [
-          "Thursday, October 29, 2026",
-          "HS-JV Volleyball ",
+          "Monday, November 16, 2026",
+          "HS-Varsity Girls Basketball",
           "x",
-          "5:00pm",
-          "Heritage Academy Mesa",
+          "6:00pm ",
+          "Scrimmage: Gilbert Christian ",
           "A",
-          "Family Life Center",
-          "Bus 5"
+          "Gilbert Christian ",
+          "Van K"
         ],
         [
-          "Thursday, October 29, 2026",
-          "HS-Varsity Flag Football",
+          "Friday, December 11, 2026",
+          "HS-Varsity Girls Basketball",
           "x",
-          "7:30pm",
-          "Horizon Honors",
-          "A",
-          "Chandler Prep",
-          "Van K, Bus 1"
-        ],
-        [
-          "Saturday, October 31, 2026",
-          "MS Football",
-          "x",
-          "10:00AM",
-          "Pusch Ridge Christian",
-          "A",
-          "Pusch Ridge Christian",
+          "6:00pm ",
+          "Arizona Lutheran",
+          "H ",
+          "SCA",
           "x"
+        ],
+        [
+          "Wednesday, September 02, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "6:15PM",
+          "Horizon Honors",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, September 09, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "6:15PM",
+          "Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Monday, September 21, 2026",
+          "5/6 Red Girls Volleyball",
+          "x",
+          "6:15PM",
+          "Arcadia Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, October 07, 2026",
+          "MS Girls Varsity Volleyball",
+          "x",
+          "6:15PM",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano Prep",
+          "x"
+        ],
+        [
+          "Friday, January 15, 2027",
+          "MS Girls Flag Football",
+          "x",
+          "6:30PM",
+          "Horizon Honors",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, August 21, 2026",
+          "Varsity Football",
+          "1:00pm",
+          "7:00pm",
+          "Pima",
+          "A",
+          "Pima HS",
+          "Charter"
+        ],
+        [
+          "Friday, August 28, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Tonopah",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Thursday, September 03, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Bourgade Catholic ",
+          "H",
+          "SCA",
+          ""
+        ],
+        [
+          "Friday, September 11, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Coolidge",
+          "A",
+          "Coolidge HS",
+          "x"
+        ],
+        [
+          "Friday, September 18, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Fountain Hills",
+          "A",
+          "Fountain Hills",
+          "x"
+        ],
+        [
+          "Friday, September 25, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Chino Valley ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, October 02, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Cortez",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, October 09, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Phoenix Christian ",
+          "A",
+          "Phoenix Christian",
+          "x"
+        ],
+        [
+          "Friday, October 16, 2026",
+          "HS-Varsity Football",
+          "x",
+          "7:00pm",
+          "Camp Verde ",
+          "A",
+          "Camp Verde ",
+          "Charter"
+        ],
+        [
+          "Friday, October 23, 2026",
+          "HS-Varsity Football",
+          "X",
+          "7:00PM",
+          "Arizona Lutheran ",
+          "H",
+          "SCA",
+          "X"
         ],
         [
           "Tuesday, November 03, 2026",
@@ -1541,72 +2641,12 @@
           "Van K, Van D"
         ],
         [
-          "Thursday, November 05, 2026",
-          "HS-Varsity Flag Football",
-          "X",
-          "6:00pm",
-          "Ben Franklin",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, November 05, 2026",
-          "HS-Cross Country",
-          "8:00am",
-          "10:00AM",
-          "AIA Sectional-Crossroads",
-          "A",
-          "Crossroads District Park ",
-          "Van D"
-        ],
-        [
-          "Friday, November 06, 2026",
-          "HS Swim",
-          "12:00PM",
-          "4:30PM",
-          "Swim State Prelims",
-          "A",
-          "PCDS ",
-          "x"
-        ],
-        [
           "Friday, November 06, 2026",
           "HS-Varsity Football",
           "X",
           "7:00pm",
           "Playoffs",
           "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Saturday, November 07, 2026",
-          "HS- Varsity Volleyball",
-          "X",
-          "9:00AM",
-          "First Round: Benson",
-          "A",
-          "Millenium HS",
-          "Van K"
-        ],
-        [
-          "Saturday, November 07, 2026",
-          "MS Football",
-          "x",
-          "8:00AM",
-          "Northwest Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, November 10, 2026",
-          "HS- Varsity Flag Football",
-          "x",
-          "6:00PM",
-          "First Round: Bourgade Catholic",
-          "H",
           "SCA",
           "x"
         ],
@@ -1632,16 +2672,6 @@
         ],
         [
           "Saturday, November 14, 2026",
-          "HS-Varsity Volleyball ",
-          "x",
-          "10:00AM",
-          "State Championship: PCDS",
-          "A",
-          "AZ Veterans Memorial Coloseum",
-          "Van K"
-        ],
-        [
-          "Saturday, November 14, 2026",
           "MS Football",
           "x",
           "7:00PM",
@@ -1649,56 +2679,6 @@
           "A",
           "Gilbert Christian",
           "x"
-        ],
-        [
-          "Saturday, November 14, 2026",
-          "HS- Varsity Flag Football",
-          "x",
-          "2:00PM",
-          "Heritage Gateway",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Saturday, November 14, 2026",
-          "HS-Cross Country",
-          "x",
-          "9:20AM",
-          "State Meet",
-          "A",
-          "Cave Creek Golf Course",
-          "x"
-        ],
-        [
-          "Monday, November 16, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "6:00pm ",
-          "Scrimmage: Gilbert Christian ",
-          "A",
-          "Gilbert Christian ",
-          "Van K"
-        ],
-        [
-          "Tuesday, November 17, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "5:00pm",
-          "Scrimmage: Fountain Hills",
-          "A",
-          "Fountain Hills",
-          "Van K"
-        ],
-        [
-          "Wednesday, November 18, 2026",
-          "HS- Varsity Flag Football",
-          "X",
-          "6:00PM",
-          "Semifinal: Highland Prep",
-          "H",
-          "SCA",
-          "X"
         ],
         [
           "Friday, November 20, 2026",
@@ -1711,54 +2691,374 @@
           "x"
         ],
         [
-          "Friday, November 20, 2026",
-          "HS-JV Boys Basketball ",
+          "Saturday, December 05, 2026",
+          "HS-Varsity Boys Basketball ",
           "x",
-          "4:00pm ",
-          "Highland Prep West ",
+          "7:00pm",
+          "Pima ",
           "H ",
           "SCA",
           "x"
         ],
         [
-          "Friday, November 20, 2026",
-          "HS-Varsity Girls Basketball",
+          "Monday, December 07, 2026",
+          "HS-Varsity Boys Basketball ",
           "x",
-          "5:30pm",
-          "Highland Prep West ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Saturday, November 21, 2026",
-          "HS- Varsity Flag Football",
-          "x",
-          "11:00AM",
-          "State Final: Ben Franklin",
+          "7:00pm",
+          "Phoenix Christian",
           "A",
-          "Coronado Del Sol HS",
+          "Phoenix Christian ",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Veritas Prep",
+          "A",
+          "Veritas Prep",
+          ""
+        ],
+        [
+          "Wednesday, December 09, 2026",
+          "HS-Varsity Boys Soccer ",
+          "x",
+          "7:00pm",
+          "Arete Prep",
+          "A",
+          "Arete Prep",
+          ""
+        ],
+        [
+          "Monday, December 14, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Highland Prep",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, December 16, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "ALA Ironwood",
+          "A",
+          "ALA Ironwood",
+          ""
+        ],
+        [
+          "Tuesday, January 05, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "North Valley Christian ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 08, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "PCDS ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, January 09, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Northland Prep",
+          "A",
+          "Northland Prep",
+          ""
+        ],
+        [
+          "Monday, January 11, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Heritage Academy Mesa",
+          "A",
+          "Heritage Academy Mesa",
+          ""
+        ],
+        [
+          "Wednesday, January 13, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Gilbert Christian ",
+          "A",
+          "Gilbert Christian ",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Scottsdale Prep",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Wednesday, January 20, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "San Tan Charter ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 22, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Rancho Solano Prep",
+          "A",
+          "Rancho Solano",
+          ""
+        ],
+        [
+          "Tuesday, January 26, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "ALA-Mesa North",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, January 29, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Fountain Hills ",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Thursday, February 04, 2027",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:00pm",
+          "Chandler Prep ",
+          "A",
+          "Chandler Prep ",
+          ""
+        ],
+        [
+          "Thursday, October 29, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "7:30pm",
+          "Horizon Honors",
+          "A",
+          "Chandler Prep",
+          "Van K, Bus 1"
+        ],
+        [
+          "Friday, December 11, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "7:30pm",
+          "Arizona Lutheran",
+          "H ",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, September 19, 2026",
+          "MS Football",
+          "x",
+          "8:00AM",
+          "Gilbert Christian",
+          "A",
+          "Gilbert Christian",
+          "x"
+        ],
+        [
+          "Saturday, September 26, 2026",
+          "MS Football",
+          "x",
+          "8:00AM",
+          "Valley Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, October 03, 2026",
+          "MS Football",
+          "x",
+          "8:00AM",
+          "Northwest Christian Purple",
+          "A",
+          "Northwest Christian",
+          "x"
+        ],
+        [
+          "Saturday, October 10, 2026",
+          "MS Football",
+          "x",
+          "8:00AM",
+          "Phoenix Christian ",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Saturday, November 07, 2026",
+          "MS Football",
+          "x",
+          "8:00AM",
+          "Northwest Christian",
+          "H",
+          "SCA",
+          "x"
+        ],
+        [
+          "Friday, September 25, 2026",
+          "HS-Varsity Volleyball ",
+          "All Day",
+          "9:00am",
+          "Tournament ",
+          "A",
+          "TBD",
+          "Van K"
+        ],
+        [
+          "Friday, October 23, 2026",
+          "5th Grade Flag Football",
+          "8:00AM",
+          "9:00AM",
+          "Tournament ",
+          "A",
+          "Rancho Solano",
           "Van K, Van D"
         ],
         [
-          "Saturday, November 21, 2026",
-          "HS- Varsity Football",
-          "x",
-          "6:00PM",
-          "Semifinal: Chandler Prep",
+          "Saturday, November 07, 2026",
+          "HS- Varsity Volleyball",
+          "X",
+          "9:00AM",
+          "First Round: Benson",
           "A",
-          "Marcos De Niza HS",
+          "Millenium HS",
+          "Van K"
+        ],
+        [
+          "Friday, October 09, 2026",
+          "HS-Cross Country ",
+          "8:30am",
+          "9:00am ",
+          "TBD",
+          "A",
+          "Gilbert CrossRoads Park ",
+          "Van D"
+        ],
+        [
+          "Saturday, November 14, 2026",
+          "HS-Cross Country",
+          "x",
+          "9:20AM",
+          "State Meet",
+          "A",
+          "Cave Creek Golf Course",
           "x"
         ],
         [
-          "Monday, November 23, 2026",
-          "HS-Varsity Boys Basketball ",
-          "1:30PM",
-          "3:30pm",
-          "PXU Coyote Classic: vs. Independence ",
+          "Friday, September 04, 2026",
+          "HS-Varsity Volleyball ",
+          "x",
+          "9:30AM",
+          "Tournament ",
           "A",
-          "Alhambra HS",
+          "Payson High School",
+          ""
+        ],
+        [
+          "Wednesday, June 24, 2026",
+          "Spiritline",
+          "TBD",
+          "TBD",
+          "TSC Camp",
+          "A",
+          "Tempe ",
           "Van K"
+        ],
+        [
+          "Thursday, June 25, 2026",
+          "Spiritline",
+          "TBD",
+          "TBD",
+          "TSC Camp",
+          "A",
+          "Tempe ",
+          "Van K"
+        ],
+        [
+          "Friday, June 26, 2026",
+          "Spiritline",
+          "TBD",
+          "TBD",
+          "TSC Camp",
+          "A",
+          "Tempe ",
+          "2 Vans"
+        ],
+        [
+          "Friday, September 25, 2026",
+          "HS-Cross Country",
+          "x",
+          "TBD",
+          "Desert Twilight Festival",
+          "A",
+          "TBD",
+          "Van D"
+        ],
+        [
+          "Saturday, September 26, 2026",
+          "HS Swim",
+          "x",
+          "TBD",
+          "PCDS ",
+          "A",
+          "PCDS",
+          "x"
+        ],
+        [
+          "Friday, October 09, 2026",
+          "HS-Varsity Volleyball ",
+          "All Day",
+          "TBD",
+          "Rise N Roar-Tournament ",
+          "A",
+          "TBD",
+          "Van K"
+        ],
+        [
+          "Thursday, October 15, 2026",
+          "HS-Varsity Flag Football",
+          "x",
+          "TBD",
+          "Tournament ",
+          "A",
+          "ASU ",
+          "X"
         ],
         [
           "Friday, November 27, 2026",
@@ -1781,76 +3081,6 @@
           "Van K"
         ],
         [
-          "Saturday, November 28, 2026",
-          "HS- Varsity Football",
-          "x",
-          "3:00PM",
-          "State Championship: San Tan Charter",
-          "A",
-          "Mountain Point HS",
-          "x"
-        ],
-        [
-          "Tuesday, December 01, 2026",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "Gilbert Christian Greenfield",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, December 02, 2026",
-          "MS Cross-Country",
-          "",
-          "4:00PM",
-          "Fountain Hills Meet",
-          "A",
-          "McDowell Mountain Elementary School",
-          ""
-        ],
-        [
-          "Wednesday, December 02, 2026",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Fountain Hills",
-          "A",
-          "Fountain Hills",
-          ""
-        ],
-        [
-          "Wednesday, December 02, 2026",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, December 03, 2026",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Valley Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, December 03, 2026",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "A",
-          "Victory Lanes",
-          ""
-        ],
-        [
           "Friday, December 04, 2026",
           "HS-Varsity Boys Soccer ",
           "",
@@ -1859,436 +3089,6 @@
           "A",
           "TBD",
           ""
-        ],
-        [
-          "Friday, December 04, 2026",
-          "MS Girls Flag Football",
-          "",
-          "4:00PM",
-          "Gilbert Christian Agritopia",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Saturday, December 05, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Pima ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Saturday, December 05, 2026",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "Pima ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Saturday, December 05, 2026",
-          "HS-Frosh Boys Basketball ",
-          "x",
-          "1:00pm",
-          "Pima",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Saturday, December 05, 2026",
-          "HS-JV Girls Basketball ",
-          "x",
-          "2:30pm",
-          "Pima ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Saturday, December 05, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Pima",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Phoenix Christian",
-          "A",
-          "Phoenix Christian ",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Phoenix Christian",
-          "A",
-          "Phoenix Christian",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "1:00pm",
-          "Phoenix Christian ",
-          "A",
-          "Phoenix Christian",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Phoenix Christian",
-          "A",
-          "Phoenix Christian",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-JV Girls Basketball ",
-          "2:30pm",
-          "",
-          "Phoenix Christian ",
-          "A",
-          "Phoenix Christian",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-Varsity Girls Soccer ",
-          "x",
-          "4:00pm",
-          "Gilbert Classical ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 07, 2026",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "6:00pm",
-          "Gilbert Classical ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, December 08, 2026",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "A",
-          "Northwest Christian",
-          ""
-        ],
-        [
-          "Tuesday, December 08, 2026",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "A",
-          "Victory Lanes",
-          ""
-        ],
-        [
-          "Tuesday, December 08, 2026",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "Gilbert Christian Greenfield",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, December 08, 2026",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "A",
-          "Victory Lanes",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Veritas Prep",
-          "A",
-          "Veritas Prep",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Veritas Prep",
-          "A",
-          "Veritas Prep",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "MS Cross-Country",
-          "",
-          "4:00PM",
-          "Meet",
-          "A",
-          "Paseo Highlands Park",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Veritas Prep",
-          "A",
-          "Veritas Prep",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "7:00pm",
-          "Arete Prep",
-          "A",
-          "Arete Prep",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "5:00pm",
-          "Arete prep",
-          "A",
-          "Arete Prep",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Gilbert Christian Val Vista",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "MS Varsity Baseball",
-          "",
-          "6:00PM",
-          "Gilbert Christian Agritopia",
-          "A",
-          "Gilbert Christian Greenfield",
-          ""
-        ],
-        [
-          "Wednesday, December 09, 2026",
-          "MS JV Red Baseball",
-          "",
-          "4:00PM",
-          "Gilbert Christian Agritopia",
-          "A",
-          "Gilbert Christian Greenfield",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:30pm",
-          "Arizona Lutheran",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:30pm",
-          "Arizona Lutheran",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "HS-Frosh Boys Basketball ",
-          "x",
-          "1:30pm ",
-          "Arizona Lutheran",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "6:00pm ",
-          "Arizona Lutheran",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "HS-JV Girls Basketball ",
-          "x",
-          "3:00pm",
-          "Arizona Lutheran",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, December 11, 2026",
-          "MS Girls Flag Football",
-          "",
-          "4:00PM",
-          "Gilbert Christian Greenfield",
-          "A",
-          "Phoenix Christian Prep",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Highland Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "MS Cross-Country",
-          "",
-          "3:00PM",
-          "North Valley Christian Meet",
-          "A",
-          "Anthem Community Park",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "Highland Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Highland Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Monday, December 14, 2026",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Horizon Honors",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, December 15, 2026",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "SCA JV Blue",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, December 15, 2026",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "SCA JV Red",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, December 16, 2026",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "ALA Ironwood",
-          "A",
-          "ALA Ironwood",
-          ""
-        ],
-        [
-          "Wednesday, December 16, 2026",
-          "HS-JV Boys Basketball ",
-          "x",
-          "5:30pm",
-          "ALA-Ironwood",
-          "A",
-          "ALA-Ironwood",
-          ""
-        ],
-        [
-          "Wednesday, December 16, 2026",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "4:00pm",
-          "ALA-Ironwood ",
-          "A",
-          "ALA-Ironwood",
-          ""
-        ],
-        [
-          "Wednesday, December 16, 2026",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "North Valley Christian",
-          "H",
-          "SCA",
-          "x"
         ],
         [
           "Tuesday, December 29, 2026",
@@ -2311,866 +3111,6 @@
           ""
         ],
         [
-          "Tuesday, January 05, 2027",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "North Valley Christian ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "North Valley Christian ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
-          "HS-Frosh Boys Basketball ",
-          "x",
-          "2:30pm",
-          "North Valley Christian ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Northland Valley",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "6:00pm",
-          "Scottsdale Prep",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Tuesday, January 05, 2027",
-          "HS-Varsity Girls Soccer ",
-          "x",
-          "4:00pm",
-          "Scottsdale Prep",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, January 06, 2027",
-          "MS Cross-Country",
-          "",
-          "4:00PM",
-          "Valley Christian Meet",
-          "A",
-          "Kiwanis Park",
-          ""
-        ],
-        [
-          "Wednesday, January 06, 2027",
-          "MS Softball",
-          "",
-          "4:00PM",
-          "Paradise Valley Christian Prep",
-          "A",
-          "Paradise Valley Christian Prep",
-          ""
-        ],
-        [
-          "Wednesday, January 06, 2027",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "SCA JV Blue",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 06, 2027",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "SCA JV Red",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, January 07, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "Cicero prep",
-          "A",
-          "Scottsdale Prep",
-          ""
-        ],
-        [
-          "Thursday, January 07, 2027",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Christ Greenfield",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, January 07, 2027",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Horizon Honors",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 08, 2027",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "PCDS ",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, January 08, 2027",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "PCDS",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, January 08, 2027",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "PCDS",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Friday, January 08, 2027",
-          "MS Girls Flag Football",
-          "",
-          "5:15PM",
-          "Gilbert Christian Val Vista",
-          "A",
-          "Gilbert Christian Agritopia",
-          ""
-        ],
-        [
-          "Saturday, January 09, 2027",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Northland Prep",
-          "A",
-          "Northland Prep",
-          ""
-        ],
-        [
-          "Saturday, January 09, 2027",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "Northland Prep ",
-          "A",
-          "Northland Prep",
-          ""
-        ],
-        [
-          "Saturday, January 09, 2027",
-          "HS-Frosh Boys Basketball ",
-          "x",
-          "2:30pm",
-          "Northalnd Prep ",
-          "A",
-          "Northaland Prep",
-          ""
-        ],
-        [
-          "Saturday, January 09, 2027",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Northland Prep ",
-          "A",
-          "Northland Prep",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Heritage Academy Mesa",
-          "A",
-          "Heritage Academy Mesa",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Heritage Academy Messa ",
-          "A",
-          "Family Life Center ",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "Heritage Academy Mesa",
-          "A",
-          "Family Life Center",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "Rancho Solano ",
-          "A",
-          "Rancho Solano ",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano",
-          ""
-        ],
-        [
-          "Monday, January 11, 2027",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Valley Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 12, 2027",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "Christ Greenfield",
-          "A",
-          "TBD",
-          ""
-        ],
-        [
-          "Tuesday, January 12, 2027",
-          "MS Varsity Baseball",
-          "",
-          "4:00PM",
-          "Gilbert Christian Val Vista",
-          "A",
-          "Gilbert Christian Greenfield",
-          ""
-        ],
-        [
-          "Tuesday, January 12, 2027",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Gilbert Christian ",
-          "A",
-          "Gilbert Christian ",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "5:30pm",
-          "Gilbert Christian",
-          "A",
-          "Gilbert Christian ",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "4:00pm",
-          "Gilbert Christian ",
-          "A",
-          "Gilbert Christian",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Gilbert Christian",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-JV Girls Basketball ",
-          "x",
-          "4:00pm",
-          "Gilbert Christian ",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "6:00pm",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "HS-Varsity Girls Soccer ",
-          "x",
-          "4:00pm",
-          "Fountain Hills",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Wednesday, January 13, 2027",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "MS Cross-Country",
-          "",
-          "",
-          "Gilbert Christian Meet",
-          "A",
-          "Gilbert Youth Soccer Association",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "Scottsdale Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "Scottsdale Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "5:30pm",
-          "Scottsdale Prep",
-          "H ",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "6:00pm",
-          "Tempe Prep",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "HS-Varsity Girls Soccer ",
-          "x",
-          "4:00pm",
-          "Tempe Prep",
-          "H",
-          "SCA",
-          ""
-        ],
-        [
-          "Thursday, January 14, 2027",
-          "MS Softball",
-          "",
-          "3:30PM",
-          "North Valley Christian",
-          "A",
-          "Victory Lanes",
-          ""
-        ],
-        [
-          "Friday, January 15, 2027",
-          "MS Girls Flag Football",
-          "x",
-          "6:30PM",
-          "Horizon Honors",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 15, 2027",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "Gilbert Christian Greenfield",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 19, 2027",
-          "MS Cross-Country",
-          "",
-          "",
-          "Christ Greenfield Host",
-          "A",
-          "",
-          ""
-        ],
-        [
-          "Tuesday, January 19, 2027",
-          "HS-Varsity Boys Soccer ",
-          "x",
-          "6:00pm",
-          "ALA-Mesa North",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 19, 2027",
-          "HS-Varsity Girls Soccer ",
-          "x",
-          "4:00pm",
-          "Mesa North ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-Varsity Boys Basketball ",
-          "x",
-          "7:00pm",
-          "San Tan Charter ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-JV Boys Basketball ",
-          "x",
-          "4:00pm ",
-          "San Tan Charter ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "2:30pm",
-          "San Tan Charter ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "San Tan Charter ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 20, 2027",
-          "MS Varsity Baseball",
-          "",
-          "3:30PM",
-          "Gilbert Christian Greenfield",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, January 21, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "San Tan Charter ",
-          "A",
-          "San Tan Charter",
-          ""
-        ],
-        [
-          "Thursday, January 21, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "San Tan Charter ",
-          "A",
-          "San Tan Charter ",
-          ""
-        ],
-        [
-          "Thursday, January 21, 2027",
-          "MS JV Red Baseball",
-          "",
-          "3:30PM",
-          "Northwest Christian",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Thursday, January 21, 2027",
-          "MS JV Blue Baseball",
-          "",
-          "3:30PM",
-          "Horizon Honors",
-          "A",
-          "TBD",
-          ""
-        ],
-        [
-          "Friday, January 22, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano",
-          ""
-        ],
-        [
-          "Friday, January 22, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano ",
-          ""
-        ],
-        [
-          "Friday, January 22, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "Rancho Solano Prep",
-          "A",
-          "Rancho Solano",
-          ""
-        ],
-        [
-          "Friday, January 22, 2027",
-          "MS Softball",
-          "",
-          "4:00PM",
-          "Paradise Valley Christian Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 22, 2027",
-          "MS Girls Flag Football",
-          "",
-          "4:00PM",
-          "Northwest Christian",
-          "A",
-          "Northwest Christian",
-          ""
-        ],
-        [
-          "Monday, January 25, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "Lincoln Prep",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 26, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "ALA-Mesa North",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 26, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "ALA-Mesa North",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 26, 2027",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "2:30pm",
-          "ALA-Mesa North",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Tuesday, January 26, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "ALA-Mesa North ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Wednesday, January 27, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "Globe ",
-          "A",
-          "Harbison Field",
-          ""
-        ],
-        [
-          "Wednesday, January 27, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "Globe ",
-          "A",
-          "Harbison Field",
-          ""
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Fountain Hills ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Fountain Hills ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-Frosh Boys Basketball ",
-          "",
-          "2:30pm",
-          "Fountain Hills ",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "Fountain Hills ",
-          "H ",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "PCDS",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "PCDS",
-          "H",
-          "SCA",
-          "x"
-        ],
-        [
-          "Friday, January 29, 2027",
-          "MS Girls Flag Football",
-          "",
-          "5:15PM",
-          "Valley Christian",
-          "A",
-          "Gilbert Christian Greenfield",
-          ""
-        ],
-        [
-          "Saturday, January 30, 2027",
-          "MS Cross-Country",
-          "",
-          "",
-          "League Championship",
-          "A",
-          "",
-          ""
-        ],
-        [
-          "Monday, February 01, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "Horizon Honors ",
-          "A",
-          "Horizon Honors ",
-          ""
-        ],
-        [
-          "Monday, February 01, 2027",
-          "HS-JV Girls Basketball ",
-          "",
-          "2:30pm",
-          "Horizon Honors",
-          "A",
-          "Horizon Honors ",
-          ""
-        ],
-        [
-          "Tuesday, February 02, 2027",
-          "HS-Varsity Boys Soccer ",
-          "",
-          "6:00pm",
-          "Chandler Prep",
-          "A",
-          "Chandler Prep ",
-          ""
-        ],
-        [
-          "Tuesday, February 02, 2027",
-          "HS-Varsity Girls Soccer ",
-          "",
-          "4:00pm",
-          "Chandler Prep",
-          "A",
-          "Chandler Prep ",
-          ""
-        ],
-        [
-          "Thursday, February 04, 2027",
-          "HS-Varsity Boys Basketball ",
-          "",
-          "7:00pm",
-          "Chandler Prep ",
-          "A",
-          "Chandler Prep ",
-          ""
-        ],
-        [
-          "Thursday, February 04, 2027",
-          "HS-JV Boys Basketball ",
-          "",
-          "4:00pm ",
-          "Chandler Prep ",
-          "A",
-          "Chandler Prep",
-          ""
-        ],
-        [
-          "Thursday, February 04, 2027",
-          "HS-Varsity Girls Basketball",
-          "",
-          "5:30pm",
-          "Chandler Prep",
-          "A",
-          "Chandler Prep ",
-          ""
-        ],
-        [
           "Friday, February 05, 2027",
           "MS Girls Flag Football",
           "",
@@ -3188,6 +3128,46 @@
           "Championship",
           "A",
           "TBD",
+          ""
+        ],
+        [
+          "Tuesday, August 04, 2026",
+          "Spiritline",
+          "TBD",
+          "",
+          "TBD",
+          "A",
+          "",
+          ""
+        ],
+        [
+          "Thursday, January 14, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "Gilbert Christian Meet",
+          "A",
+          "Gilbert Youth Soccer Association",
+          ""
+        ],
+        [
+          "Tuesday, January 19, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "Christ Greenfield Host",
+          "A",
+          "",
+          ""
+        ],
+        [
+          "Saturday, January 30, 2027",
+          "MS Cross-Country",
+          "",
+          "",
+          "League Championship",
+          "A",
+          "",
           ""
         ]
       ]
