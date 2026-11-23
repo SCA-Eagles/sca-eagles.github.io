@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-23T15:01:13.203Z",
+  "fetchedAt": "2026-11-23T15:31:10.949Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1803,7 +1803,7 @@
         [
           "Saturday, December 05, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Pima ",
           "H ",
@@ -1813,7 +1813,7 @@
         [
           "Saturday, December 05, 2026",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "Pima ",
           "H ",
@@ -1823,7 +1823,7 @@
         [
           "Saturday, December 05, 2026",
           "HS-Frosh Boys Basketball ",
-          "",
+          "x",
           "1:00pm",
           "Pima",
           "H",
@@ -1833,8 +1833,8 @@
         [
           "Saturday, December 05, 2026",
           "HS-JV Girls Basketball ",
+          "x",
           "2:30pm",
-          "",
           "Pima ",
           "H",
           "SCA",
@@ -1843,7 +1843,7 @@
         [
           "Saturday, December 05, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Pima",
           "H ",
@@ -1853,7 +1853,7 @@
         [
           "Monday, December 07, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Phoenix Christian",
           "A",
@@ -1883,7 +1883,7 @@
         [
           "Monday, December 07, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Phoenix Christian",
           "A",
@@ -1903,7 +1903,7 @@
         [
           "Monday, December 07, 2026",
           "HS-Varsity Girls Soccer ",
-          "",
+          "x",
           "4:00pm",
           "Gilbert Classical ",
           "H",
@@ -1913,7 +1913,7 @@
         [
           "Monday, December 07, 2026",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "6:00pm",
           "Gilbert Classical ",
           "H",
@@ -1923,7 +1923,7 @@
         [
           "Wednesday, December 09, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Veritas Prep",
           "A",
@@ -1953,7 +1953,7 @@
         [
           "Wednesday, December 09, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Veritas Prep",
           "A",
@@ -1963,7 +1963,7 @@
         [
           "Wednesday, December 09, 2026",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "7:00pm",
           "Arete Prep",
           "A",
@@ -1983,9 +1983,9 @@
         [
           "Friday, December 11, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:30pm",
-          "Arizoana Lutheran ",
+          "Arizona Lutheran",
           "H ",
           "SCA",
           ""
@@ -1993,9 +1993,9 @@
         [
           "Friday, December 11, 2026",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:30pm",
-          "Arizona Lutheran ",
+          "Arizona Lutheran",
           "H ",
           "SCA",
           ""
@@ -2003,7 +2003,7 @@
         [
           "Friday, December 11, 2026",
           "HS-Frosh Boys Basketball ",
-          "",
+          "x",
           "1:30pm ",
           "Arizona Lutheran",
           "H",
@@ -2013,7 +2013,7 @@
         [
           "Friday, December 11, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "6:00pm ",
           "Arizona Lutheran",
           "H ",
@@ -2023,9 +2023,9 @@
         [
           "Friday, December 11, 2026",
           "HS-JV Girls Basketball ",
+          "x",
           "3:00pm",
-          "",
-          "Arizona Lutheran ",
+          "Arizona Lutheran",
           "H",
           "SCA",
           ""
@@ -2033,7 +2033,7 @@
         [
           "Monday, December 14, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Highland Prep",
           "H ",
@@ -2053,7 +2053,7 @@
         [
           "Monday, December 14, 2026",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "Highland Prep",
           "H ",
@@ -2063,7 +2063,7 @@
         [
           "Monday, December 14, 2026",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Highland Prep",
           "H ",
@@ -2073,7 +2073,7 @@
         [
           "Wednesday, December 16, 2026",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "ALA Ironwood",
           "A",
@@ -2083,7 +2083,7 @@
         [
           "Wednesday, December 16, 2026",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "5:30pm",
           "ALA-Ironwood",
           "A",
@@ -2113,7 +2113,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "North Valley Christian ",
           "H ",
@@ -2123,7 +2123,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "North Valley Christian ",
           "H ",
@@ -2133,7 +2133,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-Frosh Boys Basketball ",
-          "",
+          "x",
           "2:30pm",
           "North Valley Christian ",
           "H",
@@ -2143,7 +2143,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Northland Valley",
           "H ",
@@ -2153,7 +2153,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "6:00pm",
           "Scottsdale Prep",
           "H",
@@ -2163,7 +2163,7 @@
         [
           "Tuesday, January 05, 2027",
           "HS-Varsity Girls Soccer ",
-          "",
+          "x",
           "4:00pm",
           "Scottsdale Prep",
           "H",
@@ -2193,7 +2193,7 @@
         [
           "Friday, January 08, 2027",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "PCDS ",
           "H ",
@@ -2203,7 +2203,7 @@
         [
           "Friday, January 08, 2027",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "PCDS",
           "H ",
@@ -2213,7 +2213,7 @@
         [
           "Friday, January 08, 2027",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "PCDS",
           "H ",
@@ -2223,7 +2223,7 @@
         [
           "Saturday, January 09, 2027",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Northland Prep",
           "A",
@@ -2233,7 +2233,7 @@
         [
           "Saturday, January 09, 2027",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "Northland Prep ",
           "A",
@@ -2243,7 +2243,7 @@
         [
           "Saturday, January 09, 2027",
           "HS-Frosh Boys Basketball ",
-          "",
+          "x",
           "2:30pm",
           "Northalnd Prep ",
           "A",
@@ -2253,7 +2253,7 @@
         [
           "Saturday, January 09, 2027",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Northland Prep ",
           "A",
@@ -2261,13 +2261,13 @@
           ""
         ],
         [
-          "Sunday, January 10, 2027",
+          "Thursday, January 14, 2027",
           "MS Cross-Country",
           "",
           "",
-          "League Championship",
+          "Gilbert Christian Meet",
           "A",
-          "",
+          "Gilbert Youth Soccer Association",
           ""
         ],
         [
@@ -2391,13 +2391,13 @@
           ""
         ],
         [
-          "Thursday, January 14, 2027",
+          "Tuesday, January 19, 2027",
           "MS Cross-Country",
           "",
           "",
-          "Gilbert Christian Meet",
+          "Christ Greenfield Host",
           "A",
-          "Gilbert Youth Soccer Association",
+          "",
           ""
         ],
         [
@@ -2451,11 +2451,11 @@
           ""
         ],
         [
-          "Tuesday, January 19, 2027",
+          "Saturday, January 30, 2027",
           "MS Cross-Country",
           "",
           "",
-          "Christ Greenfield Host",
+          "League Championship",
           "A",
           "",
           ""
