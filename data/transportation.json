@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-23T16:01:12.384Z",
+  "fetchedAt": "2026-11-23T16:13:23.893Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1772,6 +1772,16 @@
         ],
         [
           "Saturday, November 28, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "TBD",
+          "Black Friday Basketball Classic ",
+          "A",
+          "Higley High School",
+          "Van K"
+        ],
+        [
+          "Saturday, November 28, 2026",
           "HS- Varsity Football",
           "x",
           "3:00PM",
@@ -2291,6 +2301,16 @@
           ""
         ],
         [
+          "Wednesday, December 30, 2026",
+          "HS-Varsity Boys Basketball ",
+          "",
+          "TBD",
+          "New Year Classic ",
+          "A",
+          "TBD",
+          ""
+        ],
+        [
           "Tuesday, January 05, 2027",
           "HS-Varsity Boys Basketball ",
           "x",
@@ -2623,7 +2643,7 @@
         [
           "Wednesday, January 13, 2027",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Gilbert Christian",
           "H ",
@@ -2633,8 +2653,8 @@
         [
           "Wednesday, January 13, 2027",
           "HS-JV Girls Basketball ",
+          "x",
           "4:00pm",
-          "",
           "Gilbert Christian ",
           "H",
           "SCA",
@@ -2643,7 +2663,7 @@
         [
           "Wednesday, January 13, 2027",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "6:00pm",
           "Fountain Hills",
           "H",
@@ -2653,7 +2673,7 @@
         [
           "Wednesday, January 13, 2027",
           "HS-Varsity Girls Soccer ",
-          "",
+          "x",
           "4:00pm",
           "Fountain Hills",
           "H",
@@ -2683,7 +2703,7 @@
         [
           "Thursday, January 14, 2027",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "Scottsdale Prep",
           "H ",
@@ -2693,7 +2713,7 @@
         [
           "Thursday, January 14, 2027",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "Scottsdale Prep",
           "H ",
@@ -2703,7 +2723,7 @@
         [
           "Thursday, January 14, 2027",
           "HS-Varsity Girls Basketball",
-          "",
+          "x",
           "5:30pm",
           "Scottsdale Prep",
           "H ",
@@ -2713,7 +2733,7 @@
         [
           "Thursday, January 14, 2027",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "6:00pm",
           "Tempe Prep",
           "H",
@@ -2723,7 +2743,7 @@
         [
           "Thursday, January 14, 2027",
           "HS-Varsity Girls Soccer ",
-          "",
+          "x",
           "4:00pm",
           "Tempe Prep",
           "H",
@@ -2743,7 +2763,7 @@
         [
           "Friday, January 15, 2027",
           "MS Girls Flag Football",
-          "",
+          "x",
           "6:30PM",
           "Horizon Honors",
           "H",
@@ -2773,42 +2793,42 @@
         [
           "Tuesday, January 19, 2027",
           "HS-Varsity Boys Soccer ",
-          "",
+          "x",
           "6:00pm",
           "ALA-Mesa North",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Tuesday, January 19, 2027",
           "HS-Varsity Girls Soccer ",
-          "",
+          "x",
           "4:00pm",
           "Mesa North ",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Wednesday, January 20, 2027",
           "HS-Varsity Boys Basketball ",
-          "",
+          "x",
           "7:00pm",
           "San Tan Charter ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Wednesday, January 20, 2027",
           "HS-JV Boys Basketball ",
-          "",
+          "x",
           "4:00pm ",
           "San Tan Charter ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Wednesday, January 20, 2027",
@@ -2816,9 +2836,9 @@
           "",
           "2:30pm",
           "San Tan Charter ",
-          "A",
-          "San Tan Charter ",
-          ""
+          "H",
+          "SCA",
+          "x"
         ],
         [
           "Wednesday, January 20, 2027",
@@ -2828,7 +2848,7 @@
           "San Tan Charter ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Wednesday, January 20, 2027",
@@ -2936,9 +2956,9 @@
           "",
           "6:00pm",
           "Lincoln Prep",
-          "A",
+          "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Tuesday, January 26, 2027",
@@ -2948,7 +2968,7 @@
           "ALA-Mesa North",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Tuesday, January 26, 2027",
@@ -2958,7 +2978,7 @@
           "ALA-Mesa North",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Tuesday, January 26, 2027",
@@ -2968,7 +2988,7 @@
           "ALA-Mesa North",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Tuesday, January 26, 2027",
@@ -2978,7 +2998,7 @@
           "ALA-Mesa North ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Wednesday, January 27, 2027",
@@ -3008,7 +3028,7 @@
           "Fountain Hills ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3018,7 +3038,7 @@
           "Fountain Hills ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3028,7 +3048,7 @@
           "Fountain Hills ",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3038,7 +3058,7 @@
           "Fountain Hills ",
           "H ",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3048,7 +3068,7 @@
           "PCDS",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3058,7 +3078,7 @@
           "PCDS",
           "H",
           "SCA",
-          ""
+          "x"
         ],
         [
           "Friday, January 29, 2027",
@@ -3093,8 +3113,8 @@
         [
           "Monday, February 01, 2027",
           "HS-JV Girls Basketball ",
-          "2:30pm",
           "",
+          "2:30pm",
           "Horizon Honors",
           "A",
           "Horizon Honors ",
