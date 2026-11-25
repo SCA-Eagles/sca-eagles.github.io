@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { processSchedules, mondayFor, dayOffset, isoFromCell, parseRanges, parseTime, clock, FACILITY_COLS } from '../dashboard/logic.js';
-import { buildCatalog, tagEvents, resolveTeam } from '../dashboard/month-team.js';
+import { buildCatalog, tagEvents, resolveTeam, isHostSiteNote } from '../dashboard/month-team.js';
 
 const BASE = 'https://sca-eagles.github.io';
 const TIME_ZONE = 'America/Phoenix';
@@ -17,6 +17,9 @@ const timeNum = n => `${String(Math.floor(n / 60)).padStart(2, '0')}${String(n %
 const localStamp = (day, minutes) => `${dateNum(day)}T${timeNum(minutes)}`;
 const timeNote = n => n === null ? 'Time TBD' : clock(n);
 const tomorrow = d => dayOffset(d, 1);
+// In the Transportation workbook, X means "no dismissal / no vehicle needed".
+// It is accounted for, so it is not printed as a dismissal time or vehicle.
+const supplied = v => Boolean(asText(v)) && !/^x$/i.test(asText(v));
 
 // Master Schedule columns determine subscription names; transportation-only
 // teams (such as MS Golf) are additional subscriptions, never extra choices for
@@ -68,54 +71,90 @@ function isFixture(e) {
   if (e.source === 'transportation') return e.type === 'game';
   return /\bvs\.?(?=\s|$)|\bversus\b|(?:^|\s)@\s*\S|(?:^|\s)at\s+\S/i.test(asText(e.detail));
 }
-// A practice is ONLY a cell containing a clock time or time range, with no
-// other wording. Playoff, Tournament, TBD, or '3-5pm If Necessary' are events.
+// A practice is a cell whose wording is only a clock time or time range,
+// optionally with a facility area such as "(Outfield)" or "(Cages)" or the
+// team's own name ("Football 6-9am" in the MS Football column).
 // Game entries with vs/at/@ are identified separately by isFixture().
 function isTimeOnly(raw) {
-  const s = asText(raw);
-  const point = String.raw`\d{1,2}(?::\d{2})?\s*(?:am|pm)?`;
-  const oneTime = /^\d{1,2}(?::\d{2})?\s*(?:am|pm)$/i;
-  const range = new RegExp(`^${point}\s*(?:-|–|—|to)\s*${point}$`, 'i');
-  return oneTime.test(s) || range.test(s);
+  return /^\d{1,2}(?::\d{2})?\s*(?:am|pm)$/i.test(asText(raw));
+}
+// Wording such as TBD, Playoffs, Tournament or "If Necessary" is unresolved:
+// it stays an all-day tentative entry even when a time is written beside it.
+const PLACEHOLDER = /\b(?:TBD|TBA|If\s+Nec+es+ary|Playoffs?|Tournam[a-z]*|Tentative)\b/i;
+const RANGE_TEXT = /\d{1,2}(?::\d{2})?\s*(?:am|pm)?\s*(?:-|–|—|to)\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)*/gi;
+const AREA = /^(?:outfield|infield|cages?|bullpen|turf|field|gym)$/i;
+function withoutTimes(text) {
+  return asText(String(text).replace(RANGE_TEXT, ' ').replace(/\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b/gi, ' '))
+    .replace(/^[\s,;:.·&–—-]+|[\s,;:.·&–—-]+$/g, '')
+    .replace(/^(?:and)\s+|\s+(?:and)$/i, '');
+}
+// "Practice", "Practice (Outfield)", or null when the wording describes
+// something else (Try-Outs, Camp, Pictures), which keeps its Excel wording.
+function practiceTitle(rest, team) {
+  if (!rest) return 'Practice';
+  if (/^\([^()]+\)$/.test(rest)) return `Practice ${rest}`;
+  if (AREA.test(rest)) return `Practice (${rest})`;
+  const label = new Set(team.label.toLowerCase().match(/[a-z0-9/]+/g) || []);
+  const words = rest.toLowerCase().match(/[a-z0-9/]+/g) || [];
+  return words.length && words.every(w => label.has(w)) ? 'Practice' : null;
+}
+// "3:00PM-4:00PM (White) 4:00PM-5:00PM (Gold)" is two separate time slots.
+// Split only when every piece has exactly one valid range.
+function rangePieces(text) {
+  const starts = [...text.matchAll(RANGE_TEXT)].map(m => m.index);
+  if (starts.length < 2) return [text];
+  const pieces = starts.map((at, i) => text.slice(i ? at : 0, starts[i + 1] ?? text.length));
+  return pieces.every(p => parseRanges(p).length === 1) ? pieces.map(asText) : [text];
 }
 function programEvent(e, team, index) {
   const sourceText = asText(e.detail);
-  if (!sourceText || /^(?:x|n\/a|none|-)$/i.test(sourceText)) return null;
+  if (!sourceText || /^(?:x|n\/a|none|-)$/i.test(sourceText)) return [];
   const isGame = isFixture(e);
   const rawOpponent = e.source === 'transportation' ? asText(e.opponent) : gameOpponent(sourceText);
   const opponent = rawOpponent.replace(/\s+(?:home|away)$/i, '');
   const side = e.source === 'transportation' ? (e.side === 'H' ? 'Home' : e.side === 'A' ? 'Away' : '') : sideOf(sourceText);
   const subteam = subteamOf(e.team) || (isGame ? subteamOf(sourceText) : '');
   const prefix = team.label + (isGame && subteam ? ` — ${subteam}` : '');
-  const isPractice = !isGame && isTimeOnly(sourceText);
-  let summary, detail;
+  const sourceName = e.source === 'transportation' ? 'transportation' : 'master';
+  const record = (part, title, description, start, end) => {
+    // Time changes preserve the same UID. Date movements recreate the event;
+    // this is reliable for subscriptions but not a substitute for event IDs.
+    // A second time slot in the same cell gets its own UID; the first keeps
+    // the UID it has always had.
+    const baseID = isGame ? `game|${team.key}|${e.date}|${subteam}|${opponent}|${side}` :
+      `practice|${team.key}|${e.date}|${e.location || ''}|${index}` + (part ? `|slot${part}` : '');
+    const key = hash(baseID);
+    return {key,uid:`${key}@sca-eagles.github.io`,date:e.date,start,end,isGame,
+      title,description,location:asText(e.location),teamKey:team.key,
+      group:team.traits.school,side,opponent,subteam,source:sourceName};
+  };
   if (isGame) {
-    summary = `${prefix} ${opponent ? (side === 'Away' ? '@' : 'vs') + ' ' + opponent : 'Game'}`;
-    detail = [`${team.label} game`,subteam ? `${subteam} team` : '',side ? `${side} game` : '',
-      opponent ? `Opponent: ${opponent}` : '', e.dismissal ? `Dismissal: ${e.dismissal}` : '',
-      e.transport ? `Transportation: ${e.transport}` : '',e.time ? `Game time: ${e.time}` : '',
+    const summary = `${prefix} ${opponent ? (side === 'Away' ? '@' : 'vs') + ' ' + opponent : 'Game'}`;
+    const detail = [`${team.label} game`,subteam ? `${subteam} team` : '',side ? `${side} game` : '',
+      opponent ? `Opponent: ${opponent}` : '', supplied(e.dismissal) ? `Dismissal: ${e.dismissal}` : '',
+      supplied(e.transport) ? `Transportation: ${e.transport}` : '',e.time ? `Game time: ${e.time}` : '',
       e.facilityDetail && e.source==='transportation' ? `Master schedule: ${asText(e.facilityDetail)}` : ''].filter(Boolean).join('\n');
-  } else if (isPractice) {
-    summary = `${team.label} — Practice`;
-    detail = `${team.label} practice\nMaster Schedule entry: ${sourceText}`;
-  } else {
-    // Preserve the Excel wording exactly; without an opponent this is not a
-    // game or a practice. Publish it as an all-day calendar event.
-    summary = `${team.label} — ${sourceText}`;
-    detail = `Master Schedule entry: ${sourceText}`;
+    return [record(0, summary, detail, e.start ?? parseTime(sourceText), null)];
   }
   const ranges = e.ranges || parseRanges(sourceText);
-  const start = (isGame || isPractice) ? (e.start ?? parseTime(sourceText)) : null;
-  const end = isPractice && ranges.length ? ranges[0].end : null;
-  const sourceName = e.source === 'transportation' ? 'transportation' : 'master';
-  // Time changes preserve the same UID. Date movements recreate the event;
-  // this is reliable for subscriptions but not a substitute for event IDs.
-  const baseID = isGame ? `game|${team.key}|${e.date}|${subteam}|${opponent}|${side}` :
-    `practice|${team.key}|${e.date}|${e.location || ''}|${index}`;
-  const key = hash(baseID);
-  return {key,uid:`${key}@sca-eagles.github.io`,date:e.date,start,end,isGame,
-    title:summary,description:detail,location:asText(e.location),teamKey:team.key,
-    group:team.traits.school,side,opponent,subteam,source:sourceName};
+  if (ranges.length && !PLACEHOLDER.test(sourceText)) {
+    // An explicitly written range gives both a start and an end time.
+    return rangePieces(sourceText).map((piece, part) => {
+      const range = parseRanges(piece)[0] || ranges[0];
+      const label = practiceTitle(withoutTimes(piece), team);
+      return label
+        ? record(part, `${team.label} — ${label}`, `${team.label} practice\nMaster Schedule entry: ${sourceText}`, range.start, range.end)
+        : record(part, `${team.label} — ${piece}`, `Master Schedule entry: ${sourceText}`, range.start, range.end);
+    });
+  }
+  if (isTimeOnly(sourceText)) {
+    // A single time is a known start, not a known end.
+    return [record(0, `${team.label} — Practice`, `${team.label} practice\nMaster Schedule entry: ${sourceText}`,
+      e.start ?? parseTime(sourceText), null)];
+  }
+  // Preserve the Excel wording exactly; without an opponent or a stated range
+  // this is not a game or a practice. Publish it as an all-day calendar event.
+  return [record(0, `${team.label} — ${sourceText}`, `Master Schedule entry: ${sourceText}`, null, null)];
 }
 function allDates(fac,tran){
   const dates=[];
@@ -142,6 +181,8 @@ function notePractices(fac,catalog) {
         const raw=String(row[col]||'');if(!raw.trim())continue;
         let active=null;
         for(const line of raw.split(/\r?\n/).map(asText).filter(Boolean)) {
+          // Host-site games belong to the field schedule, not to an SCA team.
+          if(isHostSiteNote(line)){active=null;continue;}
           const team=resolveTeam(line,catalog,{allowUnknown:false});
           if(team && !/^(?:\d{1,2}(?::\d{2})?\s*(?:am|pm)?)/i.test(line))active=team;
           else if(athleteSport.test(line)||/\b(?:overseed|closed|maintenance|fall break|school closed|field trip)\b/i.test(line)){
@@ -208,8 +249,7 @@ export function collectEvents(fac,tran) {
   for(const {event,team} of staged){
     const indexKey=`${event.date}|${team.key}|${event.source}|${event.location}`;
     const idx=sequence.get(indexKey)||0;sequence.set(indexKey,idx+1);
-    const record=programEvent(event,team,idx);
-    if(record)mapped.push(record);
+    mapped.push(...programEvent(event,team,idx));
   }
   const unique=new Map();
   // Prioritize the transportation version if a duplicate game survives.

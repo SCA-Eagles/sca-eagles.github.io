@@ -5,7 +5,7 @@ import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
 // when an existing master column already represents the program.
-import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261115-baseball';
+import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261125-away-markers';
 
 const sports=/flag\s*football|cross\s*country|volleyball|basketball|football|baseball|softball|soccer|golf|swim(?:ming)?|wrestling|tennis|track/i;
 const tidy=x=>String(x??'').replace(/\s+/g,' ').trim();
@@ -87,6 +87,7 @@ export function resolveTeam(raw,catalog,{allowUnknown=true}={}){
   if(matches.length>1||!allowUnknown)return null;
   return {key:keyOf(q),label:nameFor(raw,q),traits:q,season:'Transportation'};
 }
+export const isHostSiteNote=line=>/\bhost(?:ing)?\s+site\b/i.test(tidy(line));
 function noteSegments(note,catalog){
   const lines=String(note.detail||'').split(/\r?\n/).map(tidy).filter(Boolean);
   const items=[];let active=null;
@@ -98,6 +99,10 @@ function noteSegments(note,catalog){
     active=null;
   }};
   for(const line of lines){
+    // "Host Site for MS Flag" means SCA hosts other schools' games on the field.
+    // It stays in the original facility note, but it is not a practice or game
+    // for the named SCA team, so it never starts a team-specific segment.
+    if(isHostSiteNote(line)){flush();continue;}
     const team=resolveTeam(line,catalog,{allowUnknown:false});
     const heading=Boolean(team&&!/^\d/.test(line)&&!/\b(?:at|vs\.?|against)\s+\w/i.test(line));
     if(heading){flush();active={team,parts:[line]};continue;}

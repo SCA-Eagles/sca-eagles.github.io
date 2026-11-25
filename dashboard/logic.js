@@ -72,6 +72,16 @@ export function parseRanges(raw){
 }
 export function parseTime(raw){const m=String(raw||'').match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);return m?mins(m[1],m[2],m[3].toLowerCase()):null;}
 export function clock(n){if(n===null||n===undefined)return 'Time TBD';const h=Math.floor(n/60);return `${(h%12)||12}:${String(n%60).padStart(2,'0')}${h>=12?'pm':'am'}`;}
+// Away markers are typed several ways in the master schedule:
+// "5:00pm@Heritage", "Varsity@ Arcadia", "At. Northland Prep", "At.Rancho Solano".
+// Rewrite them to the standard "@ Opponent" / "at Opponent" forms. A word glued
+// to @ only counts when a capitalized name follows, so an e-mail address is untouched.
+export function normalizeAwayMarkers(text){
+  return String(text??'')
+    .replace(/(am|pm)\s*@\s*(?=\S)/gi,'$1 @')
+    .replace(/([A-Za-z0-9])@\s*(?=[A-Z])/g,'$1 @ ')
+    .replace(/(^|\s)(at)\.\s*(?=[A-Za-z])/gi,'$1$2 ');
+}
 function isGame(s){return /\b(?:vs\.?|versus|game|tournament|scrimmage)\b|(?:^|\s)@\s*\S|(?:^|\s)at\s+\S/i.test(s);}
 function highSchool(team){return /\bHS\b|HIGH SCHOOL|\bVARSITY\b|\bJV\b|FROSH/i.test(team)&&!/\bMS\b|MIDDLE SCHOOL|5\/6|5TH|6TH/i.test(team);}
 function groupOf(team){return highSchool(team)?'HS':/\bMS\b|MIDDLE|5\/6|5TH|6TH/i.test(team)?'MS':'Other';}
@@ -162,7 +172,7 @@ export function processSchedules(facilities,transportation,monday){
         for(const c of cfg[location]){
           // Normalize a missing space before an away-game @, e.g. "5:00pm@Heritage".
           // Both the venue classifier and the transportation deduper depend on this.
-          const detail=norm(row[c]).replace(/(am|pm)\s*@\s*(?=\S)/gi, '$1 @');if(!validCell(detail))continue;
+          const detail=normalizeAwayMarkers(norm(row[c]));if(!validCell(detail))continue;
           const team=norm(labels[c])||`Column ${c+1}`;
           const ranges=parseRanges(detail);
           const timeOnly=/^\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)\s*$/i.test(detail);

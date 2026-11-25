@@ -1,7 +1,7 @@
 import {enableGameDetails} from './game-details.js?v=tournament-opponents';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=tournament-opponents';
-import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261115-baseball';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261125-host-site';
+import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261125-away-markers';
 import {laneFor} from './lanes.js';
 
 const $ = id => document.getElementById(id);
