@@ -3,7 +3,7 @@ import path from 'node:path';
 import {load} from 'cheerio';
 import {tidy,normalize,teamKey} from '../dashboard/game-match.js';
 import {parseTime} from '../dashboard/logic.js';
-const AZ='https://azpreps365.com', QS='https://www.quickscores.com';
+const AZ='https://azpreps365.com', QS='https://www.quickscores.com', AIA='https://aiaonline.org';
 const schoolURL=AZ+'/schools/scottsdalechristian';
 const listURL=QS+'/Orgs/Schedules.php?OrgDir=ccsl';
 const locationURL=QS+'/Orgs/LocationsList.php?OrgDir=ccsl';
@@ -71,6 +71,33 @@ export function parseQS($,url,label){
   rows.push({id:'qs-'+e.attr('id'),teamKey:key,date:stamp.slice(0,10),start:tm?+tm[1]*60+(+tm[2]):null,opponent:teams.find(t=>t!==own),venue:tidy(loc.text()),address:'',source:'QuickScores',sourceUrl:url,venueUrl:href?new URL(href,QS).href:''});
  });return rows;
 }
+// Search results can be fuzzy. Only an exact, unique school name can supply an address.
+const expandSchoolName=venue=>tidy(venue).replace(/\bH\.?S\.?$/i,'High School');
+async function searchSchools(name){
+ const url=new URL('/schools/search.json',AIA);
+ url.searchParams.set('q',name);
+ const response=await fetch(url,{signal:AbortSignal.timeout(20000),redirect:'error'});
+ if(!response.ok)throw Error('Source HTTP '+response.status);
+ const schools=await response.json();
+ if(!Array.isArray(schools))throw Error('Unexpected AIA school search response');
+ return schools;
+}
+export async function addSchoolAddress(record,lookup){
+ if(record.address||!['AZPreps365','AIA bracket'].includes(record.source))return;
+ const name=expandSchoolName(record.venue);
+ if(!name)return;
+ const key=normalize(name);
+ const matches=(await lookup(name)).filter(school=>
+  [school.name,school.full_name].some(label=>label&&normalize(expandSchoolName(label))===key));
+ if(matches.length!==1)return;
+ const {id,address}=matches[0];
+ if(!Number.isSafeInteger(id)||!address)return;
+ const [street,city,state,zip]=[address.line1,address.city,address.state,address.zip].map(tidy);
+ if(!/^\d+\s+.+/.test(street)||!city||state!=='AZ'||!/^\d{5}(?:-\d{4})?$/.test(zip))return;
+ record.address=`${street}, ${city}, ${state} ${zip}`;
+ record.addressSourceUrl=`${AIA}/schools/${id}`;
+}
+
 export async function generateGameLocations(siteDir){
  const records=[],errors=[];
  // Fetch a fresh set each run: failed sources must never publish old venue guesses.
@@ -104,13 +131,19 @@ export async function generateGameLocations(siteDir){
   if(!leagues.size)throw Error('No league schedules found');
   await pool([...leagues.values()],async({url,label})=>attempt(url,async()=>records.push(...parseQS(await page(url),url,label))));
  });
- // Exact venue-name match to QuickScores' official address directory; no school-address fallback.
+ // Prefer a QuickScores venue address, then check the AIA member-school directory.
  const venues=new Map();
  await attempt('QuickScores venue directory',async()=>{const $=await page(locationURL);$('a[href*="LocationDetails.php"]').each((i,e)=>venues.set(normalize($(e).text()),new URL($(e).attr('href'),QS).href));});
+ const schoolSearches=new Map();
+ const lookupSchool=name=>{
+  const key=normalize(name);
+  if(!schoolSearches.has(key))schoolSearches.set(key,searchSchools(name));
+  return schoolSearches.get(key);
+ };
  await pool(records,async r=>{
-  if(r.source==='AIA bracket')return;
-  const url=r.venueUrl||venues.get(normalize(r.venue));if(!url)return;
-  await attempt(url,async()=>{const $=await page(url);const address=$('#main-content > p.notranslate').clone();address.find('br').replaceWith(', ');r.address=tidy(address.text());if(r.address)r.addressSourceUrl=url;});
+  const url=r.source==='AIA bracket'?'':r.venueUrl||venues.get(normalize(r.venue));
+  if(url)await attempt(url,async()=>{const $=await page(url);const address=$('#main-content > p.notranslate').clone();address.find('br').replaceWith(', ');r.address=tidy(address.text());if(r.address)r.addressSourceUrl=url;});
+  await attempt('AIA school address for '+r.venue,()=>addSchoolAddress(r,lookupSchool));
  });
  const unique=[...new Map(records.map(r=>[r.id+'|'+r.teamKey,r])).values()];
  const payload={checkedAt:new Date().toISOString(),records:unique,errors:[...new Set(errors)]};
