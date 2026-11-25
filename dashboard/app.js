@@ -1,6 +1,6 @@
-import {enableGameDetails} from './game-details.js?v=20261119-brackets';
+import {enableGameDetails} from './game-details.js?v=tournament-opponents';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=field-lanes';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=tournament-opponents';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261115-baseball';
 import {laneFor} from './lanes.js';
 

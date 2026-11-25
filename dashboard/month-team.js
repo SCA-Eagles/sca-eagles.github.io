@@ -1,5 +1,5 @@
 import {fieldLane} from './lanes.js';
-import {enableGameDetails} from './game-details.js?v=20261119-brackets';
+import {enableGameDetails} from './game-details.js?v=tournament-opponents';
 import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.

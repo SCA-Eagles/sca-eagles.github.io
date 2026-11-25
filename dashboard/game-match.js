@@ -19,6 +19,7 @@ function schoolName(value){
 function opponentName(e){
  let s=e.opponent||e.detail?.match(/(?:\bvs\.?|\bat|@)\s+(.+)/i)?.[1]||'';
  s=s.split('·')[0].replace(/^(?:first round|second round|(?:state\s+)?(?:quarterfinals?|semifinals?|finals?|championship))\s*:\s*/i,'');
+ s=s.replace(/^[^:]*\b(?:classic|invitational|tournament)\b[^:]*:\s*vs\.?\s+/i,'');
  s=s.replace(/\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b/ig,'').trim();
  return schoolName(s);
 }
