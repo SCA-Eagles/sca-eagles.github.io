@@ -12,7 +12,7 @@ const months={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:1
 const cache=new Map();
 const finalURL=new WeakMap();
 async function page(url){
- const u=new URL(url);if(!['azpreps365.com','www.quickscores.com','aiaonline.org'].includes(u.hostname))throw Error('Unapproved location source');
+ const u=new URL(url);if(!['azpreps365.com','www.quickscores.com'].includes(u.hostname))throw Error('Unapproved location source');
  if(!cache.has(url))cache.set(url,(async()=>{const r=await fetch(url,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('Source HTTP '+r.status);const $=load(await r.text());finalURL.set($,r.url);return $;})());return cache.get(url);
 }
 async function pool(items,fn){let i=0;await Promise.all(Array.from({length:3},async()=>{while(i<items.length)await fn(items[i++]);}));}
@@ -71,26 +71,31 @@ export function parseQS($,url,label){
   rows.push({id:'qs-'+e.attr('id'),teamKey:key,date:stamp.slice(0,10),start:tm?+tm[1]*60+(+tm[2]):null,opponent:teams.find(t=>t!==own),venue:tidy(loc.text()),address:'',source:'QuickScores',sourceUrl:url,venueUrl:href?new URL(href,QS).href:''});
  });return rows;
 }
-// AIA profiles for verified venue names. Use the listed venue, never the opponent.
-const schoolProfiles=new Map([
- ['mountainpointehighschool', '/schools/106'],
- ['alhambrahighschool', '/schools/156'],
-]);
-const schoolVenueKey=venue=>normalize(tidy(venue).replace(/\bHS\.?$/i,'High School'));
-export async function addSchoolAddress(record,loadPage){
+// Search results can be fuzzy. Only an exact, unique school name can supply an address.
+const expandSchoolName=venue=>tidy(venue).replace(/\bH\.?S\.?$/i,'High School');
+async function searchSchools(name){
+ const url=new URL('/schools/search.json',AIA);
+ url.searchParams.set('q',name);
+ const response=await fetch(url,{signal:AbortSignal.timeout(20000),redirect:'error'});
+ if(!response.ok)throw Error('Source HTTP '+response.status);
+ const schools=await response.json();
+ if(!Array.isArray(schools))throw Error('Unexpected AIA school search response');
+ return schools;
+}
+export async function addSchoolAddress(record,lookup){
  if(record.address||!['AZPreps365','AIA bracket'].includes(record.source))return;
- const key=schoolVenueKey(record.venue),profile=schoolProfiles.get(key);
- if(!profile)return;
- const url=AIA+profile,$=await loadPage(url);
- const blocks=$('address').filter((_,element)=>schoolVenueKey($(element).children('div').first().text())===key);
- if(blocks.length!==1)return;
- const address=blocks.clone();
- address.children('div').first().remove();
- address.find('br').replaceWith(', ');
- const value=tidy(address.text());
- if(!/^\d+ .+, .+, AZ \d{5}(?:-\d{4})?$/.test(value))return;
- record.address=value;
- record.addressSourceUrl=url;
+ const name=expandSchoolName(record.venue);
+ if(!name)return;
+ const key=normalize(name);
+ const matches=(await lookup(name)).filter(school=>
+  [school.name,school.full_name].some(label=>label&&normalize(expandSchoolName(label))===key));
+ if(matches.length!==1)return;
+ const {id,address}=matches[0];
+ if(!Number.isSafeInteger(id)||!address)return;
+ const [street,city,state,zip]=[address.line1,address.city,address.state,address.zip].map(tidy);
+ if(!/^\d+\s+.+/.test(street)||!city||state!=='AZ'||!/^\d{5}(?:-\d{4})?$/.test(zip))return;
+ record.address=`${street}, ${city}, ${state} ${zip}`;
+ record.addressSourceUrl=`${AIA}/schools/${id}`;
 }
 
 export async function generateGameLocations(siteDir){
@@ -126,13 +131,19 @@ export async function generateGameLocations(siteDir){
   if(!leagues.size)throw Error('No league schedules found');
   await pool([...leagues.values()],async({url,label})=>attempt(url,async()=>records.push(...parseQS(await page(url),url,label))));
  });
- // Prefer a QuickScores venue address, then check supported AIA school profiles.
+ // Prefer a QuickScores venue address, then check the AIA member-school directory.
  const venues=new Map();
  await attempt('QuickScores venue directory',async()=>{const $=await page(locationURL);$('a[href*="LocationDetails.php"]').each((i,e)=>venues.set(normalize($(e).text()),new URL($(e).attr('href'),QS).href));});
+ const schoolSearches=new Map();
+ const lookupSchool=name=>{
+  const key=normalize(name);
+  if(!schoolSearches.has(key))schoolSearches.set(key,searchSchools(name));
+  return schoolSearches.get(key);
+ };
  await pool(records,async r=>{
   const url=r.source==='AIA bracket'?'':r.venueUrl||venues.get(normalize(r.venue));
   if(url)await attempt(url,async()=>{const $=await page(url);const address=$('#main-content > p.notranslate').clone();address.find('br').replaceWith(', ');r.address=tidy(address.text());if(r.address)r.addressSourceUrl=url;});
-  await attempt('AIA school address for '+r.venue,()=>addSchoolAddress(r,page));
+  await attempt('AIA school address for '+r.venue,()=>addSchoolAddress(r,lookupSchool));
  });
  const unique=[...new Map(records.map(r=>[r.id+'|'+r.teamKey,r])).values()];
  const payload={checkedAt:new Date().toISOString(),records:unique,errors:[...new Set(errors)]};
