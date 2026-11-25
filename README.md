@@ -36,8 +36,8 @@ Do not retire the original site until the new site and its automatic refresh hav
 Game cards in Today, Month and Timeline open accessible details dialogs. The
 build runs `scripts/game-locations.mjs` to publish `game-locations.json` from
 AZPreps365's SCA team schedules and the CCSL QuickScores schedule list. The
-official schedule supplies the game venue. For supported school names, the AIA
-member-school directory can supply a missing street address for that same venue,
+official schedule supplies the game venue. When the venue name uniquely matches a school in the AIA member-school
+directory, the directory can supply a missing Arizona street address,
 including bracket games. Existing QuickScores venue addresses take priority.
 The dashboard links to the official schedule and address sources.
 
