@@ -5,7 +5,7 @@ function loadLocations(){
  return dataPromise;
 }
 const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
-function officialLink(url){try{const u=new URL(url);return u.protocol==='https:'&&['azpreps365.com','www.quickscores.com'].includes(u.hostname)?u.href:null;}catch{return null;}}
+function officialLink(url){try{const u=new URL(url);return u.protocol==='https:'&&['azpreps365.com','www.quickscores.com','aiaonline.org'].includes(u.hostname)?u.href:null;}catch{return null;}}
 let dialog,content,heading,request=0;
 function setup(){
  if(dialog)return;
@@ -39,7 +39,7 @@ export async function showGame(e){
   content.append(node('p',!data||stale?'Official game details are temporarily unavailable.':'No unique official listing matched this game.'));
   const a=node('a',/\bHS\b/i.test(e.team)?'Check AZPreps365':'Check QuickScores');a.href=/\bHS\b/i.test(e.team)?'https://azpreps365.com/schools/scottsdalechristian':'https://www.quickscores.com/ccsl';a.target='_blank';a.rel='noopener noreferrer';content.append(a);
  }
- const note=node('p','Locations and addresses come only from AZPreps365 or QuickScores. Missing details are never inferred.');note.className='game-source-note';content.append(note);
+ const note=node('p','Game venues come from official schedules. Addresses come from official venue or AIA school listings.');note.className='game-source-note';content.append(note);
 }
 export function enableGameDetails(element,event,{hint=true}={}){
  if(event.type!=='game')return;
