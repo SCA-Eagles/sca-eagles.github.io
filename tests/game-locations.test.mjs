@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {load} from 'cheerio';
 import {teamKey,matchGame} from '../dashboard/game-match.js';
-import {parseAZ,parseBracket,parseQS} from '../scripts/game-locations.mjs';
+import {addSchoolAddress,parseAZ,parseBracket,parseQS} from '../scripts/game-locations.mjs';
 const event={type:'game',team:'HS-Varsity Volleyball',date:'2026-11-12',opponent:'Semifinal: San Tan Charter',start:1140,location:'Wrong spreadsheet location'};
 const record={teamKey:teamKey(event.team),date:event.date,opponent:'San Tan Charter',start:1140,venue:'Mountain Pointe High School',address:''};
 test('neutral venue uses official listing and never the home or spreadsheet venue',()=>{assert.equal(matchGame(event,[record]).venue,'Mountain Pointe High School');assert.equal(matchGame(event,[record]).address,'');});
@@ -54,4 +54,43 @@ test('QuickScores division prefixes preserve the December 4 flag football venue 
  const match=matchGame(game,records);
  assert.equal(match?.venue,'Scottsdale Christian Academy');
  assert.equal(match.venueUrl,'https://www.quickscores.com/Orgs/LocationDetails.php?OrgDir=ccsl&LocationID=434647');
+});
+
+const school=(id,name,line1,zip)=>({
+ id,name,full_name:name+' High School',address:{line1,city:'Phoenix',state:'AZ',zip},
+});
+
+test('AIA directory supplies addresses for exact regular-season and bracket venues', async () => {
+ for (const [source,venue,match] of [
+  ['AIA bracket','Mountain Pointe HS',school(106,'Mountain Pointe','4201 E. Knox Road','85044')],
+  ['AZPreps365','Alhambra High School',school(156,'Alhambra','3839 W. Camelback Rd.','85019')],
+  ['AZPreps365','North HS',school(89,'North','1101 E. Thomas Road','85014')],
+ ]) {
+  const game={source,venue,address:''};
+  await addSchoolAddress(game,async name=>{
+   assert.equal(name,match.full_name);
+   return [school(999,'Fuzzy Match','100 E. Main St.','85044'),match];
+  });
+  assert.equal(game.venue,venue);
+  assert.equal(game.address,`${match.address.line1}, Phoenix, AZ ${match.address.zip}`);
+  assert.equal(game.addressSourceUrl,'https://aiaonline.org/schools/'+match.id);
+ }
+});
+
+test('AIA lookup preserves official addresses and rejects unmatched or ambiguous schools', async () => {
+ const existing={source:'AZPreps365',venue:'Alhambra HS',address:'Existing address'};
+ await addSchoolAddress(existing,async ()=>assert.fail('Unexpected directory lookup'));
+ assert.equal(existing.address,'Existing address');
+ const alhambra=school(156,'Alhambra','3839 W. Camelback Rd.','85019');
+ for (const [venue,results] of [
+  ['High Seed',[alhambra]],
+  ['Alhambra HS Annex',[alhambra]],
+  ['Alhambra HS',[alhambra,{...alhambra,id:1000}]],
+  ['Alhambra HS',[{...alhambra,address:{...alhambra.address,state:'CA'}}]],
+ ]) {
+  const game={source:'AIA bracket',venue,address:'',opponent:'Alhambra HS'};
+  await addSchoolAddress(game,async ()=>results);
+  assert.equal(game.address,'');
+  assert.equal(game.addressSourceUrl,undefined);
+ }
 });
