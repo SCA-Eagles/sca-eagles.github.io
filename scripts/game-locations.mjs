@@ -62,7 +62,8 @@ export function qsTeam(label,own){
 export function parseQS($,url,label){
  const rows=[];
  $('li.event').each((i,el)=>{
-  const e=$(el),teams=e.find('.team-name').map((i,t)=>tidy($(t).text())).get();
+  const e=$(el),teams=e.find('.team-name').map((i,t)=>
+   tidy($(t).text()).replace(/^\[(?:Big|Small) School\]\s*/i,'')).get();
   const own=teams.find(t=>/^Scottsdale Christian(?: Academy)?(?:\s+(?:Red|Blue|White|Gold))?$/i.test(t));if(!own||teams.length!==2)return;
   const stamp=e.find('time[datetime]').attr('datetime')||'';if(!/^\d{4}-\d{2}-\d{2}T/.test(stamp))return;
   const key=qsTeam(label,own);if(!key)return;
