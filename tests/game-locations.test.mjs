@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {load} from 'cheerio';
 import {teamKey,matchGame} from '../dashboard/game-match.js';
-import {parseAZ,parseBracket,parseQS} from '../scripts/game-locations.mjs';
+import {addSchoolAddress,parseAZ,parseBracket,parseQS} from '../scripts/game-locations.mjs';
 const event={type:'game',team:'HS-Varsity Volleyball',date:'2026-11-12',opponent:'Semifinal: San Tan Charter',start:1140,location:'Wrong spreadsheet location'};
 const record={teamKey:teamKey(event.team),date:event.date,opponent:'San Tan Charter',start:1140,venue:'Mountain Pointe High School',address:''};
 test('neutral venue uses official listing and never the home or spreadsheet venue',()=>{assert.equal(matchGame(event,[record]).venue,'Mountain Pointe High School');assert.equal(matchGame(event,[record]).address,'');});
@@ -40,4 +40,35 @@ test('AIA final matches a school alias and ignores unconfirmed bracket venues',(
  assert.equal(matchGame({...event,opponent:''},records),null);
  $('.location').text('High Seed');
  assert.deepEqual(parseBracket($,url,'football-flag'),[]);
+});
+
+test('AIA school profiles supply addresses for the explicit regular-season and bracket venues', async () => {
+ for (const [source, venue, school, id, street, zip] of [
+  ['AIA bracket', 'Mountain Pointe HS', 'Mountain Pointe High School', '106', '4201 E. Knox Road', '85044'],
+  ['AZPreps365', 'Alhambra High School', 'Alhambra High School', '156', '3839 W. Camelback Rd.', '85019'],
+ ]) {
+  const game={source,venue,address:''};
+  await addSchoolAddress(game,async url=>{
+   assert.equal(url,'https://aiaonline.org/schools/'+id);
+   return load(`<address><div>${school}</div>${street}<br>Phoenix, AZ ${zip}</address>`);
+  });
+  assert.equal(game.venue,venue);
+  assert.equal(game.address,`${street}, Phoenix, AZ ${zip}`);
+  assert.equal(game.addressSourceUrl,'https://aiaonline.org/schools/'+id);
+ }
+});
+
+test('school lookup preserves an existing address and skips unknown or unconfirmed venues', async () => {
+ for (const game of [
+  {source:'AZPreps365',venue:'Alhambra HS',address:'Existing address'},
+  {source:'AIA bracket',venue:'High Seed',address:'',opponent:'Alhambra HS'},
+  {source:'AZPreps365',venue:'Alhambra HS Annex',address:''},
+ ]) {
+  const original={...game};
+  await addSchoolAddress(game,async ()=>assert.fail('Unexpected profile fetch'));
+  assert.deepEqual(game,original);
+ }
+ const game={source:'AIA bracket',venue:'Mountain Pointe HS',address:''};
+ await addSchoolAddress(game,async ()=>load('<address><div>Different School</div>100 E. Main St.<br>Phoenix, AZ 85044</address>'));
+ assert.equal(game.address,'');
 });
