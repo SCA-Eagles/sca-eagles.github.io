@@ -94,3 +94,13 @@ test('AIA lookup preserves official addresses and rejects unmatched or ambiguous
   assert.equal(game.addressSourceUrl,undefined);
  }
 });
+
+test('a named tournament with an explicit opponent matches its official venue', () => {
+ const game={type:'game',team:'HS-Varsity Boys Basketball',date:'2026-11-25',
+  start:1110,opponent:'Phx Coyote Classic: vs Camelback'};
+ const listing={teamKey:teamKey(game.team),date:game.date,start:game.start,
+  opponent:'Camelback',venue:'Alhambra High School',address:'3839 W. Camelback Rd., Phoenix, AZ 85019'};
+ assert.equal(matchGame(game,[listing])?.address,listing.address);
+ assert.equal(matchGame({...game,opponent:'Phx Coyote Classic: vs Another School'},[listing]),null);
+ assert.equal(matchGame({...game,opponent:'If Necessary: vs Camelback'},[listing]),null);
+});

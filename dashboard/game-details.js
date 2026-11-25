@@ -1,4 +1,4 @@
-import {matchGame} from './game-match.js?v=20261119-brackets';
+import {matchGame} from './game-match.js?v=tournament-opponents';
 let dataPromise;
 function loadLocations(){
  if(!dataPromise)dataPromise=fetch('./game-locations.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Unavailable');return r.json();}).catch(()=>{dataPromise=null;return null;});
