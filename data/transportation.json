@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-25T03:31:18.550Z",
+  "fetchedAt": "2026-11-25T04:01:13.936Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1761,6 +1761,16 @@
           "Van K"
         ],
         [
+          "Wednesday, November 25, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "6:30pm",
+          "Phx Coyote Classic: vs Camelback",
+          "A",
+          "Alhambra HS",
+          "Van K"
+        ],
+        [
           "Friday, November 27, 2026",
           "HS-Varsity Girls Basketball",
           "x",
@@ -1768,7 +1778,7 @@
           "Black Friday Basketball Classic ",
           "A",
           "Higley High School",
-          "Van K"
+          "x"
         ],
         [
           "Saturday, November 28, 2026",
@@ -3037,7 +3047,7 @@
           "5:15PM",
           "Valley Christian",
           "A",
-          "Gilbert Christian Greenfield",
+          "Gilbert Christian Agritopia",
           ""
         ],
         [
