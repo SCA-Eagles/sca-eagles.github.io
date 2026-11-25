@@ -41,3 +41,17 @@ test('AIA final matches a school alias and ignores unconfirmed bracket venues',(
  $('.location').text('High Seed');
  assert.deepEqual(parseBracket($,url,'football-flag'),[]);
 });
+
+test('QuickScores division prefixes preserve the December 4 flag football venue match', () => {
+ const schedule='https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ccsl&LeagueID=1766702';
+ const $=load(`<li class="event" id="7"><time datetime="2026-12-04T16:00"></time>
+  <span class="team-name">[Big School] Scottsdale Christian</span>
+  <span class="team-name">[Big School] Gilbert Christian Agritopia</span>
+  <span class="e-local"><a href="/Orgs/LocationDetails.php?OrgDir=ccsl&LocationID=434647">Scottsdale Christian Academy</a></span>
+ </li>`);
+ const records=parseQS($,schedule,'Girls Flag Football- A');
+ const game={type:'game',team:'MS Girls Flag Football',date:'2026-12-04',opponent:'Gilbert Christian Agritopia',start:960};
+ const match=matchGame(game,records);
+ assert.equal(match?.venue,'Scottsdale Christian Academy');
+ assert.equal(match.venueUrl,'https://www.quickscores.com/Orgs/LocationDetails.php?OrgDir=ccsl&LocationID=434647');
+});
