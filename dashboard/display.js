@@ -1,3 +1,5 @@
+import {clock} from './logic.js?v=20261125-away-markers';
+
 // Display-only text cleanup. Never changes event data, team keys, filters or
 // calendar feeds; it only decides how names, details and badges read on screen.
 const KEEP_UPPER = new Set(['HS','MS','JV','SCA','CCSL','AIA','PE','II','III','JH','MPR','D22']);
@@ -19,6 +21,12 @@ export function displayTeam(name) {
     .split(' ')
     .map(titleWord)
     .join(' ');
+}
+
+export function displayTimeRange({start, end}) {
+  const first = clock(start).replace(':00', '');
+  const last = clock(end).replace(':00', '');
+  return `${first.slice(-2) === last.slice(-2) ? first.slice(0, -2) : first}–${last}`;
 }
 
 function tidyText(text) {

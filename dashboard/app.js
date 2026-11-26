@@ -1,6 +1,6 @@
 import {enableGameDetails} from './game-details.js?v=official-team-colors';
-import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=official-team-colors';
+import {displayTeam,displayDetail,displayTimeRange,badgeFor,isHiddenNote} from './display.js?v=month-practice-times';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=month-practice-times';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261125-away-markers';
 import {laneFor} from './lanes.js';
 
@@ -83,12 +83,6 @@ function eventCard(e){
   
 const shortClock = n => clock(n).replace(':00', '');
 
-const rangeLabel = ({start, end}) => {
-  const a = shortClock(start);
-  const b = shortClock(end);
-  return `${a.slice(-2) === b.slice(-2) ? a.slice(0, -2) : a}–${b}`;
-};
-
 const details = String(e.detail || '')
   .replace(/(\d{1,2}(?::\d{2})?)\s*ppm\b/gi, '$1pm');
 
@@ -99,7 +93,7 @@ const ranges = e.type === 'note'
 const time = e.source === 'transportation'
   ? (e.start != null ? shortClock(e.start) : (e.time || 'TBD'))
   : ranges.length
-    ? ranges.map(rangeLabel).join(' · ')
+    ? ranges.map(displayTimeRange).join(' · ')
     : (e.start == null ? 'TBD' : shortClock(e.start));
 
   const when=el('div','when',time);

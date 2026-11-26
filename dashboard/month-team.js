@@ -1,6 +1,6 @@
 import {fieldLane} from './lanes.js';
 import {enableGameDetails} from './game-details.js?v=official-team-colors';
-import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
+import {displayTeam,displayDetail,displayTimeRange,badgeFor} from './display.js?v=month-practice-times';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
@@ -209,7 +209,13 @@ export function drawMonth(container,{focus,selected,events,scheduleEvents,onDay,
         if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(create('span','tag',`Dismissal: ${e.dismissal}`));
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }
-      body.append(meta);card.append(body,create('div','when',e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','')));enableGameDetails(card,e,{scheduleEvents});items.append(card);
+      const when=create('div','when');
+      if(e.type==='practice'&&e.ranges?.length){
+        when.append(...e.ranges.map(range=>create('div','',displayTimeRange(range))));
+      }else{
+        when.textContent=e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','');
+      }
+      body.append(meta);card.append(body,when);enableGameDetails(card,e,{scheduleEvents});items.append(card);
     }
     if(!entries.length)items.append(create('div','lane-empty','Nothing scheduled'));
     lane.append(items);gridDetails.append(lane);
