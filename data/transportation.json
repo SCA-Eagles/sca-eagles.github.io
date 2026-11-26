@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-26T13:31:16.762Z",
+  "fetchedAt": "2026-11-26T14:01:11.539Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1782,12 +1782,22 @@
         ],
         [
           "Saturday, November 28, 2026",
+          "HS-Varsity Boys Basketball ",
+          "x",
+          "9:00AM",
+          "Copper Canyon",
+          "A",
+          "PXU Coyote Classic: South Mountain HS",
+          "Van K"
+        ],
+        [
+          "Saturday, November 28, 2026",
           "HS- Varsity Football",
           "x",
           "3:00PM",
           "State Championship: San Tan Charter",
           "A",
-          "Mountain Point HS",
+          "Mountain Pointe HS",
           "x"
         ],
         [
