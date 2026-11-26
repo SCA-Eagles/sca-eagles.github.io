@@ -1,6 +1,6 @@
 import {enableGameDetails} from './game-details.js?v=official-team-colors';
 import {displayTeam,displayDetail,displayTimeRange,badgeFor,isHiddenNote} from './display.js?v=month-practice-times';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=month-practice-times';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261126-month-game-ranges';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261125-away-markers';
 import {laneFor} from './lanes.js';
 

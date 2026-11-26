@@ -210,7 +210,9 @@ export function drawMonth(container,{focus,selected,events,scheduleEvents,onDay,
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }
       const when=create('div','when');
-      if(e.type==='practice'&&e.ranges?.length){
+      // Show every stated range for master-sheet practices and games, as Today does.
+      // Transportation games and notes keep their single start time.
+      if(e.source==='facilities'&&e.type!=='note'&&e.ranges?.length){
         when.append(...e.ranges.map(range=>create('div','',displayTimeRange(range))));
       }else{
         when.textContent=e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','');
