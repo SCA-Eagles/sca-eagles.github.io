@@ -2,7 +2,7 @@
   "ok": true,
   "source": "facilities",
   "label": "Field & Gym Schedule",
-  "fetchedAt": "2026-11-26T04:01:12.152Z",
+  "fetchedAt": "2026-11-26T04:22:02.218Z",
   "sheetNames": [
     "Winter",
     "Spring",
@@ -2139,6 +2139,24 @@
     {
       "name": "Spring",
       "rows": [
+        [
+          "",
+          "",
+          "Baseball Field Schedule",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
         [
           "",
           "VARSITY SOFTBALL",
