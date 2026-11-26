@@ -1,4 +1,4 @@
-import {matchGame} from './game-match.js?v=tournament-opponents';
+import {matchGame} from './game-match.js?v=official-team-colors';
 let dataPromise;
 function loadLocations(){
  if(!dataPromise)dataPromise=fetch('./game-locations.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Unavailable');return r.json();}).catch(()=>{dataPromise=null;return null;});
@@ -24,12 +24,12 @@ function setup(){
 function staleLocations(data){
  return !data||!Number.isFinite(Date.parse(data.checkedAt))||Date.now()-Date.parse(data.checkedAt)>36*60*60*1000;
 }
-export async function showGame(e){
+export async function showGame(e,scheduleEvents){
  setup();const current=++request;heading.textContent=e.team;content.replaceChildren(node('p','Checking official game details…'));if(!dialog.open)dialog.showModal();
  const data=await loadLocations();if(current!==request||!dialog.open)return;
  content.replaceChildren(node('p',new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})));
  const stale=staleLocations(data);
- const match=data&&!stale?matchGame(e,data.records||[]):null;
+ const match=data&&!stale?matchGame(e,data.records||[],scheduleEvents):null;
  const dl=node('dl');for(const [label,value]of [['Location',match?.venue||'Location not listed'],['Address',match?.address||'Address not listed']]){dl.append(node('dt',label),node('dd',value));}content.append(dl);
  if(match){
   if(match.opponent)content.prepend(node('p','vs '+match.opponent));
@@ -41,14 +41,14 @@ export async function showGame(e){
  }
  const note=node('p','Game venues come from official schedules. Addresses come from official venue or AIA school listings.');note.className='game-source-note';content.append(note);
 }
-export function enableGameDetails(element,event,{hint=true}={}){
+export function enableGameDetails(element,event,{hint=true,scheduleEvents}={}){
  if(event.type!=='game')return;
  element.classList.add('game-clickable');element.tabIndex=0;element.setAttribute('role','button');element.setAttribute('aria-haspopup','dialog');element.setAttribute('aria-label',`Game details: ${event.team}, ${event.date}`);
- element.addEventListener('click',()=>showGame(event));element.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGame(event);}});
+ element.addEventListener('click',()=>showGame(event,scheduleEvents));element.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGame(event,scheduleEvents);}});
  const meta=element.querySelector('.meta');
  if(meta)loadLocations().then(data=>{
   if(staleLocations(data))return;
-  const match=matchGame(event,data.records||[]);
+  const match=matchGame(event,data.records||[],scheduleEvents);
   if(!match?.venue)return;
   let venue=meta.querySelector('.game-venue');
   if(!venue){venue=node('span');venue.className='tag game-venue';meta.append(venue);}

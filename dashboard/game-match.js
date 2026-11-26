@@ -1,4 +1,4 @@
-// Exact team/date/opponent matching. Never derive a venue from home/away or opponent.
+// Match official games. Never derive a venue from home/away or opponent.
 export const tidy=x=>String(x??'').replace(/\s+/g,' ').trim();
 export const normalize=x=>tidy(x).toLowerCase().replace(/[^a-z0-9]/g,'');
 export function teamKey(raw){
@@ -23,12 +23,29 @@ function opponentName(e){
  s=s.replace(/\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b/ig,'').trim();
  return schoolName(s);
 }
-export function matchGame(e,records){
+const withoutColor=key=>key.slice(0,key.lastIndexOf('|')+1);
+
+export function matchGame(e,records,scheduleEvents=[]){
  if(e.type!=='game')return null;
- const key=teamKey(e.team);let list=records.filter(r=>r.teamKey===key&&r.date===e.date);
- const opponent=opponentName(e);
- if(!opponent)list=list.filter(r=>r.source!=='AIA bracket');
- if(opponent)list=list.filter(r=>schoolName(r.opponent)===opponent);
- if(list.length>1&&Number.isFinite(e.start))list=list.filter(r=>r.start===e.start);
- return list.length===1?list[0]:null;
+ const key=teamKey(e.team),opponent=opponentName(e);
+ const sameMatchup=records.filter(r=>r.date===e.date&&
+  (opponent?schoolName(r.opponent)===opponent:r.source!=='AIA bracket'));
+ let exact=sameMatchup.filter(r=>r.teamKey===key);
+ if(exact.length){
+  if(exact.length>1&&Number.isFinite(e.start))exact=exact.filter(r=>r.start===e.start);
+  return exact.length===1?exact[0]:null;
+ }
+
+ // Use an uncolored listing only if it identifies one game in both schedules,
+ // even when the dashboard is filtered to a single team.
+ const baseKey=withoutColor(key);
+ if(baseKey===key||!opponent||!Number.isFinite(e.start)||!scheduleEvents.includes(e))return null;
+ const candidates=sameMatchup.filter(r=>r.start===e.start&&r.teamKey?.startsWith(baseKey));
+ if(candidates.length!==1)return null;
+ const [match]=candidates;
+ if(match.teamKey!==baseKey||!['QuickScores','AZPreps365'].includes(match.source))return null;
+ const competingGame=scheduleEvents.some(other=>other!==e&&other.type==='game'&&other.date===e.date&&
+  (!Number.isFinite(other.start)||other.start===e.start)&&withoutColor(teamKey(other.team))===baseKey&&
+  opponentName(other)===opponent);
+ return competingGame?null:match;
 }

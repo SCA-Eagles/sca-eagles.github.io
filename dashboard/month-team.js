@@ -1,5 +1,5 @@
 import {fieldLane} from './lanes.js';
-import {enableGameDetails} from './game-details.js?v=tournament-opponents';
+import {enableGameDetails} from './game-details.js?v=official-team-colors';
 import {displayTeam,displayDetail,badgeFor} from './display.js?v=20261115-ux';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
@@ -157,7 +157,7 @@ export function filtered(e,level,teamId){
   if(teamId!=='all'&&(!e.teamId||e.teamId!==teamId))return false;
   return level==='all'||e.group===level||(level==='MS'&&e.group==='ELEMENTARY');
 }
-export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
+export function drawMonth(container,{focus,selected,events,scheduleEvents,onDay,onTimeline}){
   container.replaceChildren();const first=local(monthStart(focus)),count=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();
   const dow=(first.getDay()+6)%7;
   const create=(tag,klass,text)=>{const e=document.createElement(tag);if(klass)e.className=klass;if(text!==undefined)e.textContent=String(text);return e;};
@@ -209,7 +209,7 @@ export function drawMonth(container,{focus,selected,events,onDay,onTimeline}){
         if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(create('span','tag',`Dismissal: ${e.dismissal}`));
         if(e.transport&&!/^x$/i.test(e.transport))meta.append(create('span','tag',`Vehicle: ${e.transport}`));
       }
-      body.append(meta);card.append(body,create('div','when',e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','')));enableGameDetails(card,e);items.append(card);
+      body.append(meta);card.append(body,create('div','when',e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','')));enableGameDetails(card,e,{scheduleEvents});items.append(card);
     }
     if(!entries.length)items.append(create('div','lane-empty','Nothing scheduled'));
     lane.append(items);gridDetails.append(lane);

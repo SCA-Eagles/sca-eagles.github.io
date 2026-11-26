@@ -104,3 +104,39 @@ test('a named tournament with an explicit opponent matches its official venue', 
  assert.equal(matchGame({...game,opponent:'Phx Coyote Classic: vs Another School'},[listing]),null);
  assert.equal(matchGame({...game,opponent:'If Necessary: vs Camelback'},[listing]),null);
 });
+
+test('official games without a team color can match a unique date, opponent and start time', () => {
+ for(const [team,officialTeam,source] of [
+  ['MS JV Blue Baseball','MS JV Baseball','QuickScores'],
+  ['5/6 Gold Girls Volleyball','5/6 Girls Volleyball','QuickScores'],
+  ['HS Girls JV Red Basketball','HS Girls JV Basketball','AZPreps365'],
+ ]){
+  const game={type:'game',team,date:'2026-12-01',opponent:'Example School',start:930};
+  const listing={teamKey:teamKey(officialTeam),date:game.date,opponent:game.opponent,start:game.start,
+   source,venue:'Official Venue',address:'123 Example Rd., Phoenix, AZ 85032'};
+  assert.equal(matchGame(game,[listing],[game]),listing);
+ }
+});
+
+test('an omitted color never overrides explicit colors or ambiguous matchups', () => {
+ const blue={type:'game',team:'MS JV Blue Baseball',date:'2026-12-01',opponent:'Example School',start:930};
+ const red={...blue,team:'MS JV Red Baseball'};
+ const uncolored={teamKey:teamKey('MS JV Baseball'),date:blue.date,opponent:blue.opponent,start:blue.start,
+  source:'QuickScores',venue:'Official Venue'};
+ const explicitBlue={...uncolored,teamKey:teamKey(blue.team)};
+ const explicitRed={...uncolored,teamKey:teamKey(red.team)};
+ assert.equal(matchGame(blue,[uncolored,explicitBlue],[blue,red]),explicitBlue);
+ assert.equal(matchGame(blue,[explicitRed],[blue]),null);
+ assert.equal(matchGame(blue,[uncolored,explicitRed],[blue]),null);
+ assert.equal(matchGame(blue,[{...uncolored,source:'AIA bracket'}],[blue]),null);
+ assert.equal(matchGame(blue,[uncolored,{...uncolored,venue:'Another Venue'}],[blue]),null);
+ assert.equal(matchGame(blue,[uncolored],[blue,red]),null);
+ assert.equal(matchGame(blue,[uncolored],[blue,{...red,start:null}]),null);
+ assert.equal(matchGame(blue,[uncolored],[blue,{...red,start:990}]),uncolored);
+ assert.equal(matchGame(blue,[uncolored]),null);
+ for(const overrides of [{start:null},{start:990},{opponent:''},{opponent:'Different School'},
+  {date:'2026-12-02'},{team:'MS Varsity Blue Baseball'},{type:'practice'}]){
+  const game={...blue,...overrides};
+  assert.equal(matchGame(game,[uncolored],[game]),null);
+ }
+});

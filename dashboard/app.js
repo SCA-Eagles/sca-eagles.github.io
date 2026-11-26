@@ -1,6 +1,6 @@
-import {enableGameDetails} from './game-details.js?v=tournament-opponents';
+import {enableGameDetails} from './game-details.js?v=official-team-colors';
 import {displayTeam,displayDetail,badgeFor,isHiddenNote} from './display.js?v=20261115-ux';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261125-host-site';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=official-team-colors';
 import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261125-away-markers';
 import {laneFor} from './lanes.js';
 
@@ -114,7 +114,7 @@ const time = e.source === 'transportation'
     if(e.dismissal&&!/^x$/i.test(e.dismissal))meta.append(el('span','tag',`Dismissal: ${e.dismissal}`));
     if(e.transport&&!/^x$/i.test(e.transport))meta.append(el('span','tag',`Vehicle: ${e.transport}`));
   }
-  body.append(meta);card.append(body,when);enableGameDetails(card,e);return card;
+  body.append(meta);card.append(body,when);enableGameDetails(card,e,{scheduleEvents:model.events});return card;
 }
 function laneSection(lane,entries){
   const section=el('section',`facility-lane lane-${lane.id}`);section.dataset.lane=lane.id;
@@ -142,7 +142,7 @@ function dayStrip(target,events){
 function dayHeading(date,count){const head=el('div','day-header');head.append(el('h2','',niceDate(date,{weekday:'long',month:'long',day:'numeric'})),el('span','count',`${count} calendar ${count===1?'item':'items'}`));return head;}
 function renderMonth(events){
   drawMonth($('monthDetails'),{
-    focus:monthFocus,selected,events,
+    focus:monthFocus,selected,events,scheduleEvents:monthModel.events,
     onDay:date=>{selected=date;followToday=false;render();},
     onTimeline:date=>{selected=date;monday=mondayFor(new Date(date+'T12:00:00'));followToday=false;mode='timeline';load();}
   });
@@ -259,7 +259,7 @@ function renderTimeline(events){
         const team=el('div','bar-title',e.type==='note'?(e.detail||e.team):displayTeam(e.team));
         const time=el('div','time-small',item.point?`${clock(item.start)} · start only`:`${clock(item.start)}–${clock(item.end)}`);
         block.append(team,time);block.title=`${displayTeam(e.team)} — ${time.textContent}. ${displayDetail(e)}`;
-        enableGameDetails(block,e,{hint:false});track.append(block);
+        enableGameDetails(block,e,{hint:false,scheduleEvents:model.events});track.append(block);
       }
       body.append(track);
     }
