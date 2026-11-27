@@ -9,6 +9,50 @@ const listURL=QS+'/Orgs/Schedules.php?OrgDir=ccsl';
 const locationURL=QS+'/Orgs/LocationsList.php?OrgDir=ccsl';
 const sports={football:'Boys Football','football-flag':'Girls Flag Football','volleyball-girls':'Girls Volleyball','volleyball-boys':'Boys Volleyball','basketball-boys':'Boys Basketball','basketball-girls':'Girls Basketball','soccer-winter-boys':'Boys Soccer','soccer-winter-girls':'Girls Soccer',baseball:'Boys Baseball',softball:'Girls Softball','tennis-boys':'Boys Tennis','tennis-girls':'Girls Tennis','crosscountry-boys':'Boys Cross Country','crosscountry-girls':'Girls Cross Country','swimming-boys':'Boys Swim','swimming-girls':'Girls Swim','golf-spring':'Golf','track-boys':'Boys Track','track-girls':'Girls Track', 'beach-girls':'Girls Beach Volleyball'};
 const months={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+function monthNumber(token){
+ const title=token?token.slice(0,1).toUpperCase()+token.slice(1).toLowerCase():'';
+ return months[title]||0;
+}
+function isoDay(year,month,day){
+ const y=Number(year),m=Number(month),d=Number(day);
+ const dt=new Date(y,m-1,d,12);
+ if(dt.getFullYear()!==y||dt.getMonth()!==m-1||dt.getDate()!==d)return '';
+ return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+}
+function nextDay(iso){
+ const [y,m,d]=iso.split('-').map(Number);
+ const dt=new Date(y,m-1,d+1,12);
+ return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+}
+// "Dec 29 – 30", "Nov 30 – Dec 2", or "Sep 12". A span longer than two weeks
+// is not a readable tournament range, so it is left out rather than truncated.
+function tournamentDates(text,season){
+ const clean=tidy(text);
+ const m=clean.match(/^([A-Za-z]{3})\s+(\d{1,2})(?:\s*[–—-]\s*(?:([A-Za-z]{3})\s+)?(\d{1,2}))?$/);
+ if(!m)return [];
+ const startMonth=monthNumber(m[1]),endMonth=m[3]?monthNumber(m[3]):startMonth;
+ if(!startMonth||!endMonth)return [];
+ const yearFor=month=>Number(month>=7?season[1]:season[2]);
+ const start=isoDay(yearFor(startMonth),startMonth,m[2]);
+ const end=isoDay(yearFor(endMonth),endMonth,m[4]||m[2]);
+ if(!start||!end||end<start)return [];
+ const days=[];
+ for(let day=start;day<=end;day=nextDay(day)){
+  days.push(day);
+  if(days.length>14)return [];
+ }
+ return days;
+}
+function listedVenues($,event){
+ const names=[];
+ event.find('.venue').each((_,el)=>{
+  const copy=$(el).clone();
+  copy.find('.event-hosted-by').remove();
+  const name=tidy(copy.text());
+  if(name&&!/^\d+\s+venues?$/i.test(name))names.push(name);
+ });
+ return [...new Set(names)].join(' · ');
+}
 const cache=new Map();
 const finalURL=new WeakMap();
 async function page(url){
@@ -26,7 +70,23 @@ export function parseAZ($,url){
   const month=months[parts[2]],year=month>=7?season[1]:season[2];
   const op=e.find('.opponent').clone();op.find('.mascot,figure').remove();
   rows.push({id:'az-'+e.attr('data-contest-id'),teamKey:key,date:`${year}-${String(month).padStart(2,'0')}-${parts[1].padStart(2,'0')}`,start:parseTime(e.find('.time').text()),opponent:tidy(op.text()),venue:tidy(e.find('.location').text()),address:'',source:'AZPreps365',sourceUrl:url});
- });return rows;
+ });
+ // Multi-day tournaments are sibling .event blocks, not .event-contest rows.
+ // "5 venues" and "Hosted by" are not a single official venue.
+ $('.event').each((_,el)=>{
+  const e=$(el);
+  if(e.hasClass('event-contest')||e.find('.event-contest').length)return;
+  const name=tidy(e.find('.event-name').first().text());
+  const days=tournamentDates(e.find('.event-details .text-sm').first().text(),season);
+  if(!name||!days.length)return;
+  const venue=listedVenues($,e);
+  const href=e.find('a[href*="/calendar/tournaments/"]').attr('href')||'';
+  const officialId=href.match(/tournaments\/(\d+)/)?.[1];
+  const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const idBase=officialId?`az-tournament-${officialId}`:`az-tournament-${slug}`;
+  for(const date of days)rows.push({id:`${idBase}-${date}`,teamKey:key,date,start:parseTime(e.find('.time').text()),opponent:name,venue,address:'',source:'AZPreps365',sourceUrl:url,tournament:true});
+ });
+ return rows;
 }
 export function parseBracket($,url,sport){
  const rows=[];
@@ -86,7 +146,8 @@ async function searchSchools(name){
 export async function addSchoolAddress(record,lookup){
  if(record.address||!['AZPreps365','AIA bracket'].includes(record.source))return;
  const name=expandSchoolName(record.venue);
- if(!name)return;
+ // A venue count or a host line is not a school address. Do not look either up.
+ if(!name||/^\d+\s+venues?$/i.test(name)||/^hosted by\b/i.test(name))return;
  const key=normalize(name);
  const matches=(await lookup(name)).filter(school=>
   [school.name,school.full_name].some(label=>label&&normalize(expandSchoolName(label))===key));
