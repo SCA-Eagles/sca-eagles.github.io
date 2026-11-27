@@ -1,4 +1,4 @@
-import {clock} from './logic.js?v=20261125-away-markers';
+import {clock, isTournamentPlaceholder} from './logic.js?v=20261127-schedule-fixes';
 
 // Display-only text cleanup. Never changes event data, team keys, filters or
 // calendar feeds; it only decides how names, details and badges read on screen.
@@ -47,7 +47,8 @@ function gameParts(e) {
 export function displayDetail(e) {
   if (e.source === 'transportation' && e.type === 'game') {
     const { opponent, label } = gameParts(e);
-    return label ? `${label} ${opponent}` : opponent;
+    const base = label ? `${label} ${opponent}` : opponent;
+    return isTournamentPlaceholder(e.facilityDetail) && base ? `${base} · Tournament` : base;
   }
   const raw = tidyText(e.detail);
   if (e.type === 'note') return raw;

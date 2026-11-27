@@ -1,11 +1,11 @@
 import {fieldLane} from './lanes.js';
-import {enableGameDetails} from './game-details.js?v=official-team-colors';
-import {displayTeam,displayDetail,displayTimeRange,badgeFor} from './display.js?v=month-practice-times';
+import {enableGameDetails} from './game-details.js?v=20261127-schedule-fixes';
+import {displayTeam,displayDetail,displayTimeRange,badgeFor} from './display.js?v=20261127-schedule-fixes';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
 // when an existing master column already represents the program.
-import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261125-away-markers';
+import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261127-schedule-fixes';
 
 const sports=/flag\s*football|cross\s*country|volleyball|basketball|football|baseball|softball|soccer|golf|swim(?:ming)?|wrestling|tennis|track/i;
 const tidy=x=>String(x??'').replace(/\s+/g,' ').trim();
@@ -149,6 +149,16 @@ export function availableTeams(catalog,month,events){
   }
   return [...map.values()].sort((a,b)=>a.label.localeCompare(b.label));
 }
+const MONTH_LANE_PREVIEW=3;
+const shortClock=n=>clock(n).replace(':00','');
+// One clock style for the month list: 9:00AM, 9:00 am and 9am all read "9am".
+function monthTimeText(e){
+  if(e.start!=null&&Number.isFinite(e.start))return shortClock(e.start);
+  const parsed=e.source==='transportation'?parseTime(e.time):null;
+  if(parsed!=null)return shortClock(parsed);
+  if(e.source==='transportation'&&tidy(e.time))return tidy(e.time);
+  return 'TBD';
+}
 export function filtered(e,level,teamId){
   // All Teams mode shows original combined notes; team mode shows only the
   // extracted notes matching the selected master team and nearby restrictions.
@@ -199,7 +209,8 @@ export function drawMonth(container,{focus,selected,events,scheduleEvents,onDay,
     const lane=create('section',`facility-lane lane-${key}`),bar=create('div','lane-title'),title=create('div','lane-label');
     title.append(create('h3','',label));bar.append(title,create('span','lane-count',`${entries.length} ${entries.length===1?'item':'items'}`));lane.append(bar);
     const items=create('div','lane-items');
-    for(const e of entries){
+    const hiddenCards=[];
+    entries.forEach((e,index)=>{
       const card=create('article',`event ${e.type}`),body=create('div','body');card.append(create('span','marker'));
       const detailText=displayDetail(e),badge=badgeFor(e,key);
       body.append(create('div','name',displayTeam(e.team)));if(detailText)body.append(create('div','description',detailText));
@@ -211,13 +222,25 @@ export function drawMonth(container,{focus,selected,events,scheduleEvents,onDay,
       }
       const when=create('div','when');
       // Show every stated range for master-sheet practices and games, as Today does.
-      // Transportation games and notes keep their single start time.
+      // A single start keeps that start only, in the same short clock style.
       if(e.source==='facilities'&&e.type!=='note'&&e.ranges?.length){
         when.append(...e.ranges.map(range=>create('div','',displayTimeRange(range))));
-      }else{
-        when.textContent=e.start==null?(e.source==='transportation'&&e.time?e.time:'TBD'):clock(e.start).replace(':00','');
-      }
-      body.append(meta);card.append(body,when);enableGameDetails(card,e,{scheduleEvents});items.append(card);
+      }else when.textContent=monthTimeText(e);
+      body.append(meta);card.append(body,when);enableGameDetails(card,e,{scheduleEvents});
+      if(index>=MONTH_LANE_PREVIEW){card.hidden=true;hiddenCards.push(card);}
+      items.append(card);
+    });
+    if(hiddenCards.length){
+      const more=create('button','month-more',`+${hiddenCards.length} more`);
+      more.type='button';
+      more.setAttribute('aria-expanded','false');
+      more.onclick=()=>{
+        const open=more.getAttribute('aria-expanded')==='true';
+        for(const card of hiddenCards)card.hidden=open;
+        more.setAttribute('aria-expanded',String(!open));
+        more.textContent=open?`+${hiddenCards.length} more`:'Show less';
+      };
+      items.append(more);
     }
     if(!entries.length)items.append(create('div','lane-empty','Nothing scheduled'));
     lane.append(items);gridDetails.append(lane);

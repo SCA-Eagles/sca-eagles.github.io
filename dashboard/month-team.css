@@ -24,7 +24,16 @@
 .month-count-summary{font-size:12px;color:var(--muted);white-space:nowrap}
 .month-action{display:flex;justify-content:flex-end;padding-top:12px}
 .month-view .facility-grid{margin-top:8px}
-.month-view .event{min-width:0}
+.month-view .lane-items{gap:4px}
+.month-view .event{min-width:0;align-items:center;gap:8px;min-height:44px;padding:7px 8px}
+.month-view .event .marker{min-height:16px}
+.month-view .event .body{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px;row-gap:1px}
+.month-view .event .name{font-size:12px}
+.month-view .event .description{margin-top:0}
+.month-view .event .meta{margin-top:0}
+.month-view .event .when{font-variant-numeric:tabular-nums}
+.month-more{width:100%;min-height:44px;border:1px dashed var(--line);border-radius:8px;background:#f7f9fb;color:var(--navy);font-size:13px;font-weight:800}
+.month-more:hover{background:#e7eef5}
 @media(max-width:650px){
  .toolbar{align-items:stretch;flex-direction:column}
  .team-filters{display:grid;grid-template-columns:1fr 1.2fr;gap:7px}

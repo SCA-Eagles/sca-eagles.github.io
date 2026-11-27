@@ -28,8 +28,13 @@ const withoutColor=key=>key.slice(0,key.lastIndexOf('|')+1);
 export function matchGame(e,records,scheduleEvents=[]){
  if(e.type!=='game')return null;
  const key=teamKey(e.team),opponent=opponentName(e);
- const sameMatchup=records.filter(r=>r.date===e.date&&
-  (opponent?schoolName(r.opponent)===opponent:r.source!=='AIA bracket'));
+ const sameMatchup=records.filter(r=>{
+  if(r.date!==e.date)return false;
+  // A tournament listing is only that named event. It must not fill in a venue
+  // for a different game, or for a game with no opponent.
+  if(r.tournament)return Boolean(opponent)&&schoolName(r.opponent)===opponent;
+  return opponent?schoolName(r.opponent)===opponent:r.source!=='AIA bracket';
+ });
  let exact=sameMatchup.filter(r=>r.teamKey===key);
  if(exact.length){
   if(exact.length>1&&Number.isFinite(e.start))exact=exact.filter(r=>r.start===e.start);
