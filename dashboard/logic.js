@@ -102,18 +102,29 @@ function meaningfulOpponent(text) {
     .replace(/\bvs?\.?\b|\bat\b|\bhome\b|\baway\b|\bprep\b|\bhigh\b|\bschool\b|\bpm\b|\bam\b/g,' ');
   return [...new Set(clean.match(/[a-z]{4,}/g)||[])].filter(t=>!['game','girls','boys','varsity','football','volleyball','basketball','tournament','scrimmage','field','gym','saturday','friday','monday','tuesday','wednesday','thursday','sunday'].includes(t));
 }
-// "Tournament" or "At Tournament" is a placeholder, not a second contest.
-// A time or any other name means the cell is its own event.
+const TOURNAMENT_WORD = /\b(?:tournaments?|tourneys?|invitationals?)\b/i;
+// "Tournament", "Black Friday Classic Tournament", "Desert Classic Tourney",
+// or "Holiday Invitational" names the event. A time, a "vs" opponent, or an
+// "at" that is not just the lead-in makes the cell its own contest.
 export function isTournamentPlaceholder(detail) {
   const text = norm(detail);
-  if (!text || !/\btournaments?\b/i.test(text)) return false;
+  if (!text || !TOURNAMENT_WORD.test(text)) return false;
   if (parseRanges(text).length || parseTime(text) !== null) return false;
-  const stripped = text
-    .replace(/\b(?:at|the|a|an)\b/gi, ' ')
-    .replace(/\btournaments?\b/gi, ' ')
-    .replace(/[^a-z0-9]+/gi, ' ')
+  if (/\b(?:vs\.?|versus)\b|(?:^|\s)@\s*\S/i.test(text)) return false;
+  const rest = text.replace(/^(?:at\s+(?:the\s+)?)/i, '');
+  if (/\bat\s+\S/i.test(rest)) return false;
+  return true;
+}
+// "Black Friday Classic Tournament" is shown as "Black Friday Classic".
+// A bare "Tournament" stays "Tournament". "Invitational" stays in the name.
+export function tournamentContextLabel(detail) {
+  if (!isTournamentPlaceholder(detail)) return '';
+  const named = norm(detail)
+    .replace(/^(?:at\s+(?:the\s+)?)/i, '')
+    .replace(/\b(?:tournaments?|tourneys?)\b/gi, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
-  return !stripped;
+  return named || 'Tournament';
 }
 function hasOpponentClue(facilityDetail, opponent) {
   if (!opponent) return false;
@@ -170,7 +181,8 @@ function combineSameGames(events) {
   return events.filter(e=>!matched.has(e));
 }
 function sameProgram(f, t) {
-  if (f.date !== t.date || f.type !== 'game' || t.type !== 'game') return false;
+  if (f.date !== t.date || t.type !== 'game') return false;
+  if (f.type !== 'game' && f.type !== 'event') return false;
   const a = teamParts(f.team), b = teamParts(t.team);
   if (!a.sport || !b.sport || a.sport !== b.sport) return false;
   if (a.school && b.school && a.school !== b.school) return false;
@@ -179,27 +191,31 @@ function sameProgram(f, t) {
   if (a.gender && b.gender && a.gender !== b.gender) return false;
   return true;
 }
-// A tournament-only facilities cell is the same contest as the one transportation
-// game for that team and date. Keep the transportation game, including its
-// calendar identity, and drop the placeholder. Two games, or a cell that names
-// a time or opponent, stay separate.
+// A tournament-only facilities cell is context for that team's transportation
+// games on the same date, whether there is one game or several. Drop the
+// placeholder and keep each transportation game, including its calendar
+// identity. A cell with a time or an opponent, or a day with no transportation
+// game, stays as its own event. Two placeholders claiming the same game stay
+// separate.
 function attachTournamentPlaceholders(events) {
-  const facility = events.filter(e => e.source === 'facilities' && e.type === 'game' && isTournamentPlaceholder(e.detail));
+  const facility = events.filter(e => e.source === 'facilities' && (e.type === 'game' || e.type === 'event') && isTournamentPlaceholder(e.detail));
   const transport = events.filter(e => e.source === 'transportation' && e.type === 'game');
-  const pairs = [];
-  for (const f of facility) for (const t of transport) if (sameProgram(f, t)) pairs.push({f, t});
-  const facCount = new Map(), tranCount = new Map();
-  for (const pair of pairs) {
-    facCount.set(pair.f, (facCount.get(pair.f) || 0) + 1);
-    tranCount.set(pair.t, (tranCount.get(pair.t) || 0) + 1);
+  const matches = facility.map(f => ({f, games: transport.filter(t => sameProgram(f, t))}));
+  const claimed = new Map();
+  for (const {f, games} of matches) for (const game of games) {
+    const list = claimed.get(game) || [];
+    list.push(f);
+    claimed.set(game, list);
   }
   const drop = new Set();
-  for (const pair of pairs) {
-    if (facCount.get(pair.f) !== 1 || tranCount.get(pair.t) !== 1) continue;
-    if (!pair.t.facilityDetail) pair.t.facilityDetail = pair.f.detail;
-    if (!pair.t.facilityLocation) pair.t.facilityLocation = pair.f.location;
-    if (pair.f.fieldArea && !pair.t.fieldArea) pair.t.fieldArea = pair.f.fieldArea;
-    drop.add(pair.f);
+  for (const {f, games} of matches) {
+    if (!games.length || games.some(game => claimed.get(game).length !== 1)) continue;
+    for (const game of games) {
+      if (!game.facilityDetail) game.facilityDetail = f.detail;
+      if (!game.facilityLocation) game.facilityLocation = f.location;
+      if (f.fieldArea && !game.fieldArea) game.fieldArea = f.fieldArea;
+    }
+    drop.add(f);
   }
   return events.filter(e => !drop.has(e));
 }
@@ -244,7 +260,7 @@ export function processSchedules(facilities,transportation,monday){
     events.push({date,team,detail:[opponent?`vs ${opponent}`:'',side==='A'?'Away':side==='H'?'Home':'',venue].filter(Boolean).join(' · '),type:'game',location:venue||'Venue TBD',source:'transportation',group:groupOf(team),start:parseTime(time),time,dismissal,transport,side,opponent});
   }
   const rank={game:0,practice:1,event:2,note:3};
-  const combined=attachTournamentPlaceholders(combineSameGames(events));
+  const combined=combineSameGames(attachTournamentPlaceholders(events));
   combined.sort((a,b)=>a.date.localeCompare(b.date)||(a.start??9999)-(b.start??9999)||(rank[a.type]??4)-(rank[b.type]??4));
   return {events:combined,monday};
 }

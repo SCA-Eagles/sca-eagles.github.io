@@ -98,9 +98,6 @@ test('a cell with a time or opponent is not folded into a different game', () =>
   assert.ok(basketball.some(e => e.opponent === 'Copper Canyon' && e.source === 'transportation'));
   assert.ok(basketball.some(e => e.source === 'facilities' && /Other School/.test(e.detail)));
 
-  const named = dashboard('Black Friday Classic Tournament');
-  assert.equal(named.filter(e => /Basketball/i.test(e.team)).length, 2);
-
   const timed = dashboard('3pm Tournament');
   assert.equal(timed.filter(e => /Basketball/i.test(e.team)).length, 2);
 
@@ -108,15 +105,19 @@ test('a cell with a time or opponent is not folded into a different game', () =>
   assert.equal(playoffs.filter(e => /Basketball/i.test(e.team)).length, 2);
 });
 
-test('two transportation games on the same day stay separate from a tournament note', () => {
+test('a tournament note folds into every transportation game for that team', () => {
   const rows = [
     copper,
     [SAT, 'HS-Varsity Boys Basketball', 'x', '11:00AM', 'Another School', 'A', 'Another Gym', 'Van D'],
   ];
   const events = dashboard('At Tournament', rows);
   const basketball = events.filter(e => /Basketball/i.test(e.team));
-  assert.equal(basketball.length, 3);
-  assert.equal(calendar('At Tournament', rows).filter(e => /Basketball/i.test(e.title)).length, 3);
+  assert.equal(basketball.length, 2);
+  assert.ok(basketball.every(e => e.source === 'transportation'));
+  for (const game of basketball) assert.match(displayDetail(game), /· Tournament$/);
+  const alone = calendar('', rows).filter(e => /Basketball/.test(e.title)).map(e => e.uid).sort();
+  const merged = calendar('At Tournament', rows).filter(e => /Basketball/.test(e.title)).map(e => e.uid).sort();
+  assert.deepEqual(merged, alone);
 });
 
 test('a varsity tournament note does not absorb the JV game', () => {
