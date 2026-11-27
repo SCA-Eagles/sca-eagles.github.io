@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-27T21:01:11.718Z",
+  "fetchedAt": "2026-11-27T21:31:19.632Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1774,10 +1774,40 @@
           "Friday, November 27, 2026",
           "HS-Varsity Girls Basketball",
           "x",
-          "TBD",
-          "Black Friday Basketball Classic ",
+          "3:00PM",
+          "Black Friday Basketball Classic: vs. Ben Franklin ",
           "A",
-          "Higley High School",
+          "ALA Gilbert HS",
+          "x"
+        ],
+        [
+          "Friday, November 27, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "6:00PM",
+          "Black Friday Basketball Classic: vs. Dischii'bikoh ",
+          "A",
+          "ALA Gilbert HS",
+          "x"
+        ],
+        [
+          "Saturday, November 28, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "10:30AM",
+          "Black Friday Basketball Classic: vs. Heritage Gateway ",
+          "A",
+          "Heritage Gateway Academy",
+          "x"
+        ],
+        [
+          "Saturday, November 28, 2026",
+          "HS-Varsity Girls Basketball",
+          "x",
+          "7:30PM",
+          "Black Friday Basketball Classic: vs. Globe ",
+          "A",
+          "Heritage Gateway Academy",
           "x"
         ],
         [
