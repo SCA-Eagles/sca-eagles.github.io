@@ -1,7 +1,7 @@
 import {enableGameDetails} from './game-details.js?v=20261127-schedule-fixes';
-import {displayTeam,displayDetail,displayTimeRange,badgeFor,isHiddenNote} from './display.js?v=20261127-schedule-fixes';
-import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261127-schedule-fixes';
-import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261127-schedule-fixes';
+import {displayTeam,displayDetail,displayTimeRange,badgeFor,isHiddenNote} from './display.js?v=20261127-named-tournament';
+import {monthStart,moveMonth,monthTitle,buildCatalog,tagEvents,buildMonthModel,availableTeams,filtered,drawMonth} from './month-team.js?v=20261127-named-tournament';
+import { mondayFor, dayOffset, weekDays, niceDate, processSchedules, clock, parseRanges } from './logic.js?v=20261127-named-tournament';
 import {laneFor} from './lanes.js';
 
 const $ = id => document.getElementById(id);

@@ -1,11 +1,11 @@
 import {fieldLane} from './lanes.js';
 import {enableGameDetails} from './game-details.js?v=20261127-schedule-fixes';
-import {displayTeam,displayDetail,displayTimeRange,badgeFor} from './display.js?v=20261127-schedule-fixes';
+import {displayTeam,displayDetail,displayTimeRange,badgeFor} from './display.js?v=20261127-named-tournament';
 // SCA Master Schedule: month calendar and season-aware team categories.
 // The Master AD facility column headers are the authoritative filter taxonomy.
 // Transportation supplies individual game details without adding JV/color choices
 // when an existing master column already represents the program.
-import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261127-schedule-fixes';
+import {mondayFor, dayOffset, niceDate, parseRanges, parseTime, clock, processSchedules} from './logic.js?v=20261127-named-tournament';
 
 const sports=/flag\s*football|cross\s*country|volleyball|basketball|football|baseball|softball|soccer|golf|swim(?:ming)?|wrestling|tennis|track/i;
 const tidy=x=>String(x??'').replace(/\s+/g,' ').trim();

@@ -1,4 +1,4 @@
-import {clock, isTournamentPlaceholder} from './logic.js?v=20261127-schedule-fixes';
+import {clock, tournamentContextLabel} from './logic.js?v=20261127-named-tournament';
 
 // Display-only text cleanup. Never changes event data, team keys, filters or
 // calendar feeds; it only decides how names, details and badges read on screen.
@@ -48,7 +48,8 @@ export function displayDetail(e) {
   if (e.source === 'transportation' && e.type === 'game') {
     const { opponent, label } = gameParts(e);
     const base = label ? `${label} ${opponent}` : opponent;
-    return isTournamentPlaceholder(e.facilityDetail) && base ? `${base} · Tournament` : base;
+    const context = tournamentContextLabel(e.facilityDetail);
+    return context && base ? `${base} · ${context}` : base;
   }
   const raw = tidyText(e.detail);
   if (e.type === 'note') return raw;
