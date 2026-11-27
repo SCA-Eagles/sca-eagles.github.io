@@ -2,7 +2,7 @@
   "ok": true,
   "source": "transportation",
   "label": "Transportation Schedule",
-  "fetchedAt": "2026-11-27T22:13:11.067Z",
+  "fetchedAt": "2026-11-27T22:19:30.044Z",
   "sheetNames": [
     "2026-2027 Transportation"
   ],
@@ -1829,16 +1829,6 @@
           "A",
           "Mountain Pointe HS",
           "x"
-        ],
-        [
-          "Saturday, November 28, 2026",
-          "HS-Varsity Girls Basketball",
-          "x",
-          "TBD",
-          "Black Friday Basketball Classic ",
-          "A",
-          "Higley High School",
-          "Van K"
         ],
         [
           "Tuesday, December 01, 2026",
